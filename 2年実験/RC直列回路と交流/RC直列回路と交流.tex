@@ -1,0 +1,172 @@
+\documentclass[uplatex]{jsarticle}
+\usepackage{amsmath}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{color}
+\usepackage{float}
+
+\setlength{\textheight}{244truemm}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{25truemm}
+\setlength{\footskip}{15truemm}
+\addtolength{\topmargin}{-1truein}
+\setlength{\textwidth}{145truemm}
+\setlength{\oddsidemargin}{35truemm}
+\addtolength{\oddsidemargin}{-1truein}
+
+\begin{document}
+	\section{目的}
+		抵抗($R$)とコンデンサ($C$)の直列接続回路の電圧・電流を測定し、回路のインピーダンス・電流・位相について理解する。
+	\section{理論}
+		抵抗$R \ [\mathrm{\Omega}]$とコンデンサ$C \ [\mathrm{F}]$の直列接続回路は、交流に対して電流の流れを妨げる働きをする。
+		これをインピーダンスという。RC直列回路のインピーダンス$Z \ [\mathrm{\Omega}]$は、$R$と容量性リアクタンス$X_{C}$との代数和にならず、
+		次式で表される。
+		\begin{flalign}
+			Z & = \sqrt{R^{2} + \left(X_{C}\right)^{2}} \nonumber &\\
+			  & = \sqrt{R^{2} + \left(\frac{1}{\omega C}\right)^{2}} \qquad[\mathrm{\Omega}]
+		\end{flalign}
+		また、交流電源の電圧を$v \ [\mathrm{V}]$、RC直列回路を流れる電流を$i \ [\mathrm{A}]$とすると、
+		\begin{flalign}
+			i & = \frac{v}{Z} \qquad[\mathrm{A}] &
+		\end{flalign}
+		となる。
+		\begin{figure}[h]
+			\begin{minipage}{0.5\hsize}
+				\begin{center}
+					\includegraphics[width = 5cm]{RC直列回路と交流図1.png}
+				\end{center}
+				\caption{RC直列回路}
+			\end{minipage}
+			\begin{minipage}{0.5\hsize}
+				\begin{center}
+					\includegraphics[width = 6cm]{RC直列回路と交流図2.png}
+				\end{center}
+				\caption{RC直列回路}
+			\end{minipage}
+		\end{figure}
+	\section{実験}
+		\subsection{原理}
+			\subsubsection{電流の大きさ}
+				RC直列回路に流れる電流は$R$を利用して測定する。図2においてRC直列回路を流れる電流は、$R$をも流れている。
+				従って、$R$の両端の電圧$v_{2}$ [V]を測定し、$R \ [\mathrm{\Omega}]$で割れば、$R$を流れる電流$i_{R}$すなわち、
+				$i$がわかる。
+				\begin{flalign}
+					i_{R} & = \frac{v_{2}}{R} &\\
+					i & = i_{R} \nonumber
+				\end{flalign}
+			\subsubsection{電圧と電流の位相差}
+				2つ以上の交流波形の時間的なずれを位相差と呼ぶ。位相差は交流波形の1周期を角度(360°または2π)に換算し、表現する。\par
+				図3を例にとると、$V$に比べ、$I$は右側にちょうど1目盛分ずれている。1周期4目盛を360°として、ずれは1目盛分なのだから、
+				$V$に対する$I$の位相差は次のように計算できる。
+				\begin{flalign}
+					\frac{360°}{4} \times 1 & = 90° \nonumber&
+				\end{flalign}\par
+				一般に、$V$と$I$の関係のように$V$に比べ$I$が右側にある状態を、\\
+				\qquad$I$は$V$に比べ、90°遅れている\\
+				と表現する。
+				\begin{figure}[h]
+					\begin{center}
+						\includegraphics[width = 10cm]{RC直列回路と交流図3.png}
+					\end{center}
+					\caption{電圧($V$)と電流($I$)との位相差}
+				\end{figure}
+		\subsection{コンデンサの電圧と電流の位相差}
+			コンデンサだけの回路で、コンデンサの電圧に対するコンデンサを流れる電流の位相差について測定する。図2の接続図で、
+			$R$の値を$X_{C}$に比べて、無視できるぐらい小さな値にすると、コンデンサだけの回路と考えることができる。
+			\subsubsection{測定}
+				\begin{enumerate}
+					\item[(ア)]{図2のように接続する。}
+					\item[(イ)]{抵抗 $R = 10 \ [\mathrm{\Omega}]$}
+					\item[(ウ)]{コンデンサ $C = 0.021 \ [\mathrm{\mu F}]$
+					\item[(エ)]{交流電圧 $V = 2.83 \ [\mathrm{Vrms}]$}
+					\item[(オ)]{$f = 1 \ [\mathrm{kHz}]$}
+					\item[(カ)]{$f = 1 \ [\mathrm{kHz}] ～ 10 \ [\mathrm{kHz}]、1 \ [\mathrm{kHz}]$間隔}
+					\item[(キ)]{コンデンサの電圧波形$v$、コンデンサの電流波形$v_{2}$、として位相差を測定する。}
+				\end{enumerate}
+			\subsubsection{測定結果}
+				\begin{table}[H]
+					\centering
+					\caption{コンデンサの電圧と電流の位相差}
+					\begin{tabular}{c|c|c|c|c}\hline\hline
+						周波数 [kHz] & 1周期 [目盛] & ずれ [目盛] & 位相差 [°] & $v$に対する$v_{2}$の遅れ・進み \\ \hline
+						1 & 3.8 & 1.0 & 95 & 進んでいる \\
+						2 & 5.0 & 1.4 & $1.0\times10^{2}$ & 進んでいる \\
+						3 & 6.4 & 1.6 & 90 & 進んでいる \\
+						4 & 4.9 & 1.2 & 88 & 進んでいる \\
+						5 & 4.0 & 0.9 & 81 & 進んでいる \\
+						6 & 3.3 & 0.8 & 87 & 進んでいる \\
+						7 & 5.6 & 1.2 & 77 & 進んでいる \\
+						8 & 5.0 & 1.2 & 86 & 進んでいる \\
+						9 & 4.4 & 1.0 & 82 & 進んでいる \\
+						10 & 4.0 & 0.9 & 81 & 進んでいる \\ \hline
+					\end{tabular}
+				\end{table}
+		\subsection{RC直列回路の電流・インピーダンス・位相差測定}
+			\subsubsection{測定}
+				\begin{enumerate}
+					\item[(ア)]{図2のように接続する。}
+					\item[(イ)]{抵抗 $R = 1000 \ [\mathrm{\Omega}]$}
+					\item[(ウ)]{コンデンサ $C = 0.05 \ [\mathrm{\mu F}]$}
+				  	\item[(エ)]{交流電圧 $V = 2.83 \ [\mathrm{Vrms}]$}
+					\item[(オ)]{$f = 1 \ [\mathrm{kHz}]$}
+					\item[(カ)]{$f = 1 \ [\mathrm{kHz}] ～ 10 \ [\mathrm{kHz}]、1 \ [\mathrm{kHz}]$間隔で、抵抗の電圧$v_{2} \ [\mathrm{Vrms}]$、
+					位相差を測定する。}
+					\item[(キ)]{測定結果から、電流$i \ [\mathrm{Arms}]$、インピーダンス$Z \ [\mathrm{\Omega}]$を算出する。}
+				\end{enumerate}
+			\subsubsection{測定結果}
+				\begin{table}[h]
+					\centering
+					\small
+					\caption{RC直列回路の電流・インピーダンス・位相差}
+					\begin{tabular}{c|c|c|c|c|c|c|c|c|c}\hline\hline
+						 & \multicolumn{2}{c|}{計算結果} & \multicolumn{7}{c}{測定結果} \\ \cline{2-10}
+						\multicolumn{1}{c|}{周波数} & & &\multicolumn{3}{c|}{電流・インピーダンス} & \multicolumn{4}{c}{位相差} \\ \cline{4-10}
+						[kHz] & $i$ [mA] & $Z [\mathrm{k\Omega}]$ & $v_{2}$ & $i$ & $Z$ & 1周期 & ずれ  & 位相差 & $v$に対する$v_{2}$の \\
+						 & & & [V] & [mA] & $[\mathrm{k\Omega}]$ & [目盛] & [目盛] & [°] & 遅れ・進み \\ \hline
+						1 & 0.85 & 3.3 & 0.85 & 0.85 & 3.3 & 3.9 & 0.8 & 74 & 進んでいる \\
+						2 & 1.5 & 1.9 & 1.5 & 1.5 & 1.9 & 5.0 & 0.8 & 58 & 進んでいる \\
+						3 & 1.9 & 1.5 & 1.9 & 1.9 & 1.5 & 6.6 & 0.8 & 44 & 進んでいる \\
+						4 & 2.2 & 1.3 & 2.1 & 2.1 & 1.3 & 5.0 & 0.6 & 43 & 進んでいる \\
+						5 & 2.4 & 1.2 & 2.3 & 2.3 & 1.2 & 4.0 & 0.4 & 36 & 進んでいる \\
+						6 & 2.5 & 1.1 & 2.4 & 2.4 & 1.2 & 3.3 & 0.3 & 33 & 進んでいる \\
+						7 & 2.6 & 1.1 & 2.5 & 2.5 & 1.1 & 5.7 & 0.4 & 25 & 進んでいる \\
+						8 & 2.6 & 1.1 & 2.6 & 2.6 & 1.1 & 5.0 & 0.3 & 22 & 進んでいる \\
+						9 & 2.7 & 1.1 & 2.6 & 2.6 & 1.1 & 4.5 & 0.2 & 16 & 進んでいる \\
+						10 & 2.7 & 1.0 & 2.6 & 2.6 & 1.1 & 4.0 & 0.2 & 18 & 進んでいる \\ \hline
+					\end{tabular}
+				\end{table}
+	\section{使用器具}
+		発振器: L151-1-76 \par
+		コンデンサ: N46-3-27 \par
+		抵抗: N72-3-69 \par
+		オシロスコープ: DSO NO.11
+	\newpage
+	\section{課題・考察}
+		\begin{enumerate}
+			\item[1.]{3.2.2の測定結果から、周波数対位相差をグラフで表せ。}
+				\begin{figure}[h]
+					\begin{center}
+						\includegraphics[width = 7cm]{RC直列回路と交流グラフ1.png}
+					\end{center}
+					\caption{周波数対位相差グラフ}
+				\end{figure}
+			\item[2.]{3.3.2の測定結果から、周波数対インピーダンス、周波数対位相差をグラフで表せ。}
+				\begin{figure}[h]
+					\begin{minipage}{0.5\hsize}
+						\begin{center}
+							\includegraphics[width = 7cm]{RC直列回路と交流グラフ2.png}
+						\end{center}
+						\caption{周波数対インピーダンスグラフ}
+					\end{minipage}
+					\begin{minipage}{0.5\hsize}
+						\begin{center}
+							\includegraphics[width = 7cm]{RC直列回路と交流グラフ3.png}
+						\end{center}
+						\caption{周波数対位相差グラフ}
+					\end{minipage}
+				\end{figure}
+			\item[3.]{3.2.2の測定結果から、コンデンサの電圧とコンデンサを流れる電流について言えることは何か。教科書等を参考に述べよ。} \\
+				実験での誤差が大きく、近似線が傾いてしまっているが、概ねコンデンサを流れる電流$i$は電圧$v$より90 [°]だけ位相が進んでいるといえる。
+			\item[4.]{3.3.2の測定結果において、電流の大きさ、インピーダンスについて、計算値と測定結果を比較せよ。} \\
+				電流、インピーダンスともにほとんど同じといえる。
+		\end{enumerate}
+\end{document}

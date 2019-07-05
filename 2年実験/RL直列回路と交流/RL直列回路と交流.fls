@@ -1,0 +1,76 @@
+PWD C:/Users/Len/Desktop/ƒŒƒ|[ƒg/RL’¼—ñ‰ñ˜H‚ÆŒğ—¬
+INPUT c:/w32tex/share/texmf-dist/web2c/texmf.cnf
+INPUT c:/w32tex/share/texmf-dist/web2c/eptex/platex.fmt
+INPUT RL’¼—ñ‰ñ˜H‚ÆŒğ—¬.tex
+OUTPUT RL’¼—ñ‰ñ˜H‚ÆŒğ—¬.log
+INPUT c:/w32tex/share/texmf-dist/tex/platex/base/jarticle.cls
+INPUT c:/w32tex/share/texmf-dist/tex/platex/base/jarticle.cls
+INPUT c:/w32tex/share/texmf-dist/tex/platex/base/jsize10.clo
+INPUT c:/w32tex/share/texmf-dist/tex/platex/base/jsize10.clo
+INPUT c:/w32tex/share/texmf-dist/tex/latex/amsmath/amsmath.sty
+INPUT c:/w32tex/share/texmf-dist/tex/latex/amsmath/amsmath.sty
+INPUT c:/w32tex/share/texmf-dist/tex/latex/amsmath/amstext.sty
+INPUT c:/w32tex/share/texmf-dist/tex/latex/amsmath/amstext.sty
+INPUT c:/w32tex/share/texmf-dist/tex/latex/amsmath/amsgen.sty
+INPUT c:/w32tex/share/texmf-dist/tex/latex/amsmath/amsgen.sty
+INPUT c:/w32tex/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
+INPUT c:/w32tex/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
+INPUT c:/w32tex/share/texmf-dist/tex/latex/amsmath/amsopn.sty
+INPUT c:/w32tex/share/texmf-dist/tex/latex/amsmath/amsopn.sty
+INPUT c:/w32tex/share/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT c:/w32tex/share/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT c:/w32tex/share/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT c:/w32tex/share/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT c:/w32tex/share/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT c:/w32tex/share/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT c:/w32tex/share/texmf-dist/tex/latex/graphics/trig.sty
+INPUT c:/w32tex/share/texmf-dist/tex/latex/graphics/trig.sty
+INPUT c:/w32tex/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT c:/w32tex/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT c:/w32tex/share/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+INPUT c:/w32tex/share/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+INPUT c:/w32tex/share/texmf-dist/tex/latex/graphics/color.sty
+INPUT c:/w32tex/share/texmf-dist/tex/latex/graphics/color.sty
+INPUT c:/w32tex/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT c:/w32tex/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT c:/w32tex/share/texmf-dist/tex/latex/graphics/dvipsnam.def
+INPUT c:/w32tex/share/texmf-dist/tex/latex/graphics/dvipsnam.def
+INPUT RL’¼—ñ‰ñ˜H‚ÆŒğ—¬.aux
+INPUT RL’¼—ñ‰ñ˜H‚ÆŒğ—¬.aux
+OUTPUT RL’¼—ñ‰ñ˜H‚ÆŒğ—¬.aux
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin10.tfm
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/ptex-fonts/standard/min10.tfm
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth10.tfm
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/ptex-fonts/standard/goth10.tfm
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT RL’¼—ñ‰ñ˜H‚ÆŒğ—¬}1.jpg
+INPUT extractbb -B cropbox -O RL’¼—ñ‰ñ˜H‚ÆŒğ—¬}1.jpg
+INPUT RL’¼—ñ‰ñ˜H‚ÆŒğ—¬}2.jpg
+INPUT extractbb -B cropbox -O RL’¼—ñ‰ñ˜H‚ÆŒğ—¬}2.jpg
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+OUTPUT RL’¼—ñ‰ñ˜H‚ÆŒğ—¬.dvi
+INPUT RL’¼—ñ‰ñ˜H‚ÆŒğ—¬}3.jpg
+INPUT extractbb -B cropbox -O RL’¼—ñ‰ñ˜H‚ÆŒğ—¬}3.jpg
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin9.tfm
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/ptex-fonts/standard/min9.tfm
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/public/cm/cmmi9.tfm
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT c:/w32tex/share/texmf-dist/fonts/tfm/ptex-fonts/standard/min6.tfm
+INPUT RL’¼—ñ‰ñ˜H‚ÆŒğ—¬ƒOƒ‰ƒt1.jpg
+INPUT extractbb -B cropbox -O RL’¼—ñ‰ñ˜H‚ÆŒğ—¬ƒOƒ‰ƒt1.jpg
+INPUT RL’¼—ñ‰ñ˜H‚ÆŒğ—¬ƒOƒ‰ƒt2.jpg
+INPUT extractbb -B cropbox -O RL’¼—ñ‰ñ˜H‚ÆŒğ—¬ƒOƒ‰ƒt2.jpg
+INPUT RL’¼—ñ‰ñ˜H‚ÆŒğ—¬ƒOƒ‰ƒt3.jpg
+INPUT extractbb -B cropbox -O RL’¼—ñ‰ñ˜H‚ÆŒğ—¬ƒOƒ‰ƒt3.jpg
+INPUT RL’¼—ñ‰ñ˜H‚ÆŒğ—¬.aux

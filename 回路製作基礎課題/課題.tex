@@ -1,0 +1,70 @@
+\documentclass[fleqn, uplatex]{jsarticle}
+
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{color}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{amsmath}
+
+\setlength{\textheight}{244truemm}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{25truemm}
+\setlength{\footskip}{15truemm}
+\addtolength{\topmargin}{-1truein}
+
+\title{回路製作基礎実習課題}
+\author{EC2 37番 平田蓮}
+\date{}
+
+\begin{document}
+    \maketitle
+    \begin{enumerate}
+        \item 回路図2において、点$A$の電圧を0[V]とし、点$B$に電圧$V_{i}$[V]を印加したとする。\\
+        $B$-$D$間電圧$V_{1}$[V]を求め、$B$-$D$間抵抗を$R_{1} [\mathrm \Omega]$としたとき、$R_{1}$を流れる電流$I_{1}$[A]を求めよ。\\
+        また同様に、点$C$の電圧$V_{o}$として、点$D$-$C$間電圧$V_{2}$[V]を求め、$D$-$C$間抵抗を$R_{2} [\mathrm \Omega]$としたとき、$R_{2}$を流れる電流$I_{2}$[A]を求めよ。\\[1ex]
+
+        点$A$と点$D$に電位差は無いため、点$D$は0[V]。\\
+        よって、$B$-$D$間電圧$V_{1} = V_{i} - 0 = V_{i}$[V]。
+        \begin{flalign*}
+            \Leftrightarrow I_{1} = \frac{V_{1}}{R_{1}} = \frac{V_{i}}{R_{1}} [\mathrm A]
+        \end{flalign*}
+        また、$V_{2} = 0 - V_{o} = - V_{o}$[V]。
+        \begin{flalign*}
+            \Leftrightarrow I_{2} = \frac{V_{2}}{R_{2}} = - \frac{V_{o}}{R_{2}} [\mathrm A]
+        \end{flalign*}
+        \\[1ex]
+        \item 反転入力端子に電流が流れ込まないとすると、電流$I_{1}$と$I_{2}$は等しいといえる。\\
+        このことから、電流$I_{1}$と電流$I_{2}$の式を等しいものとして、$V_{1}$、$V_{2}$と$V_{i}$、$V_{o}$の関係を利用して電圧$V_{i}$と$V_{o}$の関係を求めよ。($V_{o} = AV_{i}$の形で示せ)\\[1ex]
+
+        $I_{1} = I_{2}$より、
+        \begin{flalign*}
+            \frac{V_{i}}{R_{1}} &= - \frac{V_{o}}{R_{2}} \\
+            \frac{R_{2}}{R_{1}} V_{i} &= - V_{o} \\
+            V_{o} &= - \frac{R_{2}}{R_{1}} V_{i}
+        \end{flalign*}
+        \\[1ex]
+        \item 回路図2(反転増幅回路)において、非反転入力端子(点$A$)に、ある電圧$V_{s}$[V]を接続したとする。入力信号(点$B$の電圧)$V_{i}$ を$V_{s} + A \sin \omega t$[V]としたとき、出力電圧(点$C$の電圧)$V_{o}$[V]は、
+        \begin{flalign*}
+            V_{o} = - \frac{R_{2}}{R_{1}} A \sin \omega t + V_{s} [\mathrm V]
+        \end{flalign*}
+        となることを示せ。\\[1ex]
+
+        1.より、$B$-$D$間電圧は、$V_{i} - V_{s} = A \sin \omega t$[V]。\\
+        よって、$R_{1}$を流れる電流は、
+        \begin{flalign*}
+            \frac{R_{1}}{A \sin \omega t} [\mathrm A]
+        \end{flalign*}
+        また、$D$-$C$間電圧は、$V_{s} - V_{o}$[V]。\\
+        よって、$R_{2}$を流れる電流は、
+        \begin{flalign*}
+            \frac{R_{2}}{V_{s} - V_{o}} [\mathrm A]
+        \end{flalign*}
+        2.より、上の二つは等しいので、
+        \begin{flalign*}
+            \frac{R_{1}}{A \sin \omega t} &= \frac{R_{2}}{V_{s} - V_{o}} \\
+            R_{1} (V_{s} - V_{o}) &= R_{2} A \sin \omega t \\
+            - R_{1} V_{o} &= R_{2} A \sin \omega t - R_{1} V_{s} \\
+            V_{o} &= - \frac{R_{2}}{R_{1}} A \sin \omega t + V_{s}
+        \end{flalign*}
+    \end{enumerate}
+\end{document}

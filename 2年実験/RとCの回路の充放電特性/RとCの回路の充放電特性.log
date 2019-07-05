@@ -1,0 +1,326 @@
+This is e-upTeX, Version 3.14159265-p3.8.0-u1.23-180226-2.6 (utf8.uptex) (TeX Live 2018) (preloaded format=uplatex 2018.5.8)  20 MAY 2018 22:16
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**RとCの回路の充放電特性.tex
+(./RとCの回路の充放電特性.tex
+pLaTeX2e <2018-04-01u02>+1 (based on LaTeX2e <2018-04-01> patch level 4)
+Babel <3.20> and hyphenation patterns for 84 language(s) loaded.
+(/usr/local/texlive/2018/texmf-dist/tex/platex/jsclasses/jsarticle.cls
+Document Class: jsarticle 2018/03/11 jsclasses (okumura, texjporg)
+\jsc@mpt=\dimen118
+\jsc@mmm=\dimen119
+\jsc@smallskipamount=\skip41
+LaTeX Info: Redefining \rmfamily on input line 466.
+LaTeX Info: Redefining \sffamily on input line 469.
+LaTeX Info: Redefining \ttfamily on input line 472.
+LaTeX Info: Redefining \textmc on input line 476.
+LaTeX Info: Redefining \textgt on input line 478.
+\symmincho=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
+(Font)                  JY2/mc/m/n --> JY2/gt/m/n on input line 540.
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 9.24683pt on input line 731.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 9.24683pt on input line 731.
+\fullwidth=\dimen120
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 7.39746pt on input line 884.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 7.39746pt on input line 884.
+\c@part=\count83
+\c@section=\count84
+\c@subsection=\count85
+\c@subsubsection=\count86
+\c@paragraph=\count87
+\c@subparagraph=\count88
+\@abstractbox=\box42
+\c@figure=\count89
+\c@table=\count90
+\abovecaptionskip=\skip42
+\belowcaptionskip=\skip43
+\jsc@tocl@width=\dimen121
+\@lnumwidth=\dimen122
+\bibindent=\dimen123
+(/usr/local/texlive/2018/texmf-dist/tex/platex/jsclasses/jslogo.sty
+Package: jslogo 2017/02/24 okumura, texjporg
+LaTeX Info: Redefining \TeX on input line 94.
+LaTeX Info: Redefining \LaTeX on input line 147.
+LaTeX Info: Redefining \LaTeXe on input line 200.
+)
+\heisei=\count91
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: dvipdfmx.def on input line 99.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+File: dvipdfmx.def 2017/06/24 v5.0g Graphics/color driver for dvipdfmx
+))
+\Gin@req@height=\dimen124
+\Gin@req@width=\dimen125
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: dvipdfmx.def on input line 147.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
+)) (/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2017/03/19 v3.3-145 Customizing captions (AR)
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2018/04/15 v1.7-167 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 64.
+\captionmargin=\dimen126
+\captionmargin@=\dimen127
+\captionwidth=\dimen128
+\caption@tempdima=\dimen129
+\caption@indent=\dimen130
+\caption@parindent=\dimen131
+\caption@hangindent=\dimen132
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2->{\small \advance \leftskip .0628\linewidth \advance \rightskip .0628\linewidth \vskip \abovecaptionskip \sbox \@tempboxa {#1\hskip 1zw\relax #2}\ifdim \wd \@tempboxa <\hsize \centering \fi #1\hskip 1zw\relax #2\par \vskip \belowcaptionskip }.
+\c@ContinuedFloat=\count92
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count93
+\float@exts=\toks16
+\float@box=\box43
+\@float@everytoks=\toks17
+\@floatcapt=\box44
+) (./RとCの回路の充放電特性.aux)
+\openout1 = `RとCの回路の充放電特性.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for JY2/mc/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for JT2/mc/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 13.31541pt on input line 15.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 13.31541pt on input line 15.
+LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
+(Font)              scaled to size 13.31541pt on input line 15.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 13.31541pt on input line 15.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 18.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 18.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 6.47278pt on input line 18.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 4.62341pt on input line 18.
+File: 1-a.eps Graphic file (type eps)
+<1-a.eps>
+File: 1-b.eps Graphic file (type eps)
+<1-b.eps>
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 25--40
+[][]$[]$[] []$[]$[] 
+ []
+
+File: 2-a.eps Graphic file (type eps)
+<2-a.eps>
+File: 2-b.eps Graphic file (type eps)
+<2-b.eps>
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 44--59
+[][]$[]$[] []$[]$[] 
+ []
+
+File: 3-a.eps Graphic file (type eps)
+<3-a.eps>
+File: 3-b.eps Graphic file (type eps)
+<3-b.eps>
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 65--80
+[][]$[]$[] []$[]$[] 
+ []
+
+[1
+
+]
+File: 4.eps Graphic file (type eps)
+<4.eps>
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 11.09619pt on input line 95.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 11.09619pt on input line 95.
+LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
+(Font)              scaled to size 11.09619pt on input line 95.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 11.09619pt on input line 95.
+LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
+(Font)              scaled to size 9.24683pt on input line 98.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 9.24683pt on input line 98.
+ [2]
+File: 5-a.eps Graphic file (type eps)
+<5-a.eps>
+
+Overfull \hbox (1.0748pt too wide) in paragraph at lines 123--124
+ [] 
+ []
+
+File: 5-b.eps Graphic file (type eps)
+<5-b.eps>
+
+Overfull \hbox (1.0748pt too wide) in paragraph at lines 130--131
+ [] 
+ []
+
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 121--136
+[][]$[]$[] []$[]$[] 
+ []
+
+File: 6-a.pdf Graphic file (type pdf)
+<6-a.pdf>
+
+Overfull \hbox (1.0748pt too wide) in paragraph at lines 141--142
+ [] 
+ []
+
+File: 6-b.pdf Graphic file (type pdf)
+<6-b.pdf>
+
+Overfull \hbox (1.0748pt too wide) in paragraph at lines 148--149
+ [] 
+ []
+
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 139--154
+[][]$[]$[] []$[]$[] 
+ []
+
+File: 7-a.pdf Graphic file (type pdf)
+<7-a.pdf>
+
+Overfull \hbox (1.0748pt too wide) in paragraph at lines 159--160
+ [] 
+ []
+
+File: 7-b.pdf Graphic file (type pdf)
+<7-b.pdf>
+
+Overfull \hbox (1.0748pt too wide) in paragraph at lines 166--167
+ [] 
+ []
+
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 157--172
+[][]$[]$[] []$[]$[] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: 8-a.pdf Graphic file (type pdf)
+<8-a.pdf>
+
+Overfull \hbox (1.0748pt too wide) in paragraph at lines 177--178
+ [] 
+ []
+
+File: 8-b.pdf Graphic file (type pdf)
+<8-b.pdf>
+
+Overfull \hbox (1.0748pt too wide) in paragraph at lines 184--185
+ [] 
+ []
+
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 175--190
+[][]$[]$[] []$[]$[] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: 9-a.pdf Graphic file (type pdf)
+<9-a.pdf>
+
+Overfull \hbox (1.0748pt too wide) in paragraph at lines 195--196
+ [] 
+ []
+
+File: 9-b.pdf Graphic file (type pdf)
+<9-b.pdf>
+
+Overfull \hbox (1.0748pt too wide) in paragraph at lines 202--203
+ [] 
+ []
+
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 193--208
+[][]$[]$[] []$[]$[] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
+(Font)              scaled to size 8.32214pt on input line 212.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 8.32214pt on input line 212.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 214.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 214.
+LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
+(Font)              scaled to size 5.5481pt on input line 214.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[3] [4] [5]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 255.
+ [6
+
+] (./RとCの回路の充放電特性.aux) ) 
+Here is how much of TeX's memory you used:
+ 2130 strings out of 493270
+ 32773 string characters out of 6145019
+ 133195 words of memory out of 5000000
+ 6074 multiletter control sequences out of 15000+600000
+ 13363 words of font info for 65 fonts, out of 8000000 for 9000
+ 934 hyphenation exceptions out of 8191
+ 36i,12n,39p,286b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on RとCの回路の充放電特性.dvi (6 pages, 20716 bytes).
