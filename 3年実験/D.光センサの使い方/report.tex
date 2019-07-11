@@ -183,7 +183,7 @@
                 \label{fig:応用回路}
             \end{figure}
 
-            図\ref{fig:hanteikairo}の赤色LEDに並列に緑色LEDを接続し,
+            図\ref{fig:判定回路}の赤色LEDに並列に緑色LEDを接続し,
             NOT素子を挟むことで赤色と動作を反転させる.
 
             また, ~二つのLEDに流れる電流に差を生じさせないために,
@@ -337,6 +337,38 @@
             \end{figure}
 
     \subsection{照度計}
+        PDの出力信号は極めて微弱であるため, ~一般的には何らかの
+        増幅手段を併用する. ~ここではオペアンプを使って信号を
+        増幅し, ~簡単な照度計を作成してみる.
+
+        \subsubsection{回路の作成}
+            \begin{enumerate}
+                \item 図\ref{fig:照度計}のように配線を行う.
+                    ~オペアンプとPD間の配線は極力省く.
+                \item 光源をPDに当て, ~オシロスコープで出力電圧の波形を
+                    確認する.
+            \end{enumerate}
+
+            \begin{figure}[ht]
+                \centering
+                %\includegraphics{images/PD_release_circuit.eps}
+                \caption{照度計回路}
+                \label{fig:照度計}
+            \end{figure}
+
+            \paragraph{使用素子 $\cdot$ 使用器具}
+                \begin{description}
+                    \setlength{\leftskip}{1.5em}
+                    \item[PD] S1133
+                    \item[オペアンプ] TL071
+                    \item[デジタルマルチメータ] EC-21
+                    \item[直流電源] Ec-11
+                    \item[ブレッドボード] EC-08
+                    \item[オシロスコープ] No.15  
+                \end{description}
+
+        \subsection{結果}
+            
 
     \subsection{蛍光灯の光観察}
         \subsubsection{実験方法}
