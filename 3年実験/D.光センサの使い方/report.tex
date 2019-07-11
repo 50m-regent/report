@@ -10,7 +10,7 @@
 \author{平田 蓮}
 \team{第10班}
 \date{2019年7月22日}
-\expdate{2019年7月1日，7月8日，7月22日}
+\expdate{2019年7月1日, 7月8日, 7月22日}
 \coauthor{
     8番 & 小林 歩夢 \\
     21番 & 相馬 拓杜 
@@ -59,12 +59,13 @@
 
         \subsubsection{実験方法}
             \begin{enumerate}
-                \item 図\ref{fig:kisotokusei}のように配線を行う.
+                \item 図\ref{fig:基礎特性}のように配線を行う.
                 \item 電源電圧を0[V]から徐々にあげると電流$I_F$が
                     増加し, ~LEDの明るさが変化することと, ~CdSの
                     抵抗値$R_C$が変化していることを確認する.
-                \item 電源電圧を変化させ, ~$I_F$が1[mA]から20[mA]
-                    の時の$R_C$を測定しまとめる.
+                \item 組立済回路部分に暗幕を被せ光を遮断し,
+                    ~電源電圧を変化させ, ~$I_F$が1[mA]から20[mA]
+                    の時の$R_C$を測定し, ~まとめる.
                 \item 作成した表より, ~$I_F$-$R_C$グラフを両対数グラフ
                     で作成する.
             \end{enumerate}
@@ -73,21 +74,23 @@
                 \centering
                 %\includegraphics{images/CdS_circuit.eps}
                 \caption{CdSセル基礎特性測定回路}
-                \label{fig:kisotokusei}
+                \label{fig:基礎特性}
             \end{figure}
 
-        \subsubsection{使用素子 $\cdot$ 使用器具}
-            \begin{description}
-                \item[組み立て済み回路] CDS-A1
-                \item[CdSセル] MKY-54C348
-                \item[LED] L-513SGT3
-                \item[デジタルマルチメータ] EC-12
-                \item[直流電源] Ec-01
-                \item[電流計] 341 
-            \end{description}
+            \paragraph{使用素子 $\cdot$ 使用器具}
+                \begin{description}
+                    \setlength{\leftskip}{1.5em}
+                    \item[組立済回路] CDS-A1
+                    \item[CdSセル] MKY-54C348
+                    \item[LED] L-513SGT3
+                    \item[デジタルマルチメータ] EC-12
+                    \item[直流電源] Ec-01
+                    \item[電流計] 341 
+                \end{description}
+                
 
         \subsubsection{結果}
-            図\ref{tab:kisotokuseikekka}, \ref{fig:kisotokuseigraph}
+            図\ref{tab:基礎特性結果}, \ref{fig:基礎特性グラフ}
             に結果の表とグラフを示す.
 
             \begin{figure}[ht]
@@ -95,7 +98,7 @@
                 \begin{minipage}{0.5\hsize}
                     \begin{center}
                         \caption{基礎特性測定結果}
-                        \label{tab:kisotokuseikekka}
+                        \label{tab:基礎特性結果}
                         \begin{tabular}{c|c}
                             
                         \end{tabular}
@@ -105,18 +108,18 @@
                     \begin{center}
                         %\includegraphics[width=8cm]{graphs/kisotokusei.pdf}
                         \caption{基礎特性グラフ(両対数)}
-                        \label{fig:kisotokuseigraph}
+                        \label{fig:基礎特性グラフ}
                     \end{center}
                 \end{minipage}
             \end{figure}
 
-    \subsection{明暗判定回路}
+    \subsection{明暗判定回路} \label{明暗判定回路}
         CdSセルを用いて, ~暗くなったら赤色LEDを点灯させる簡単な回路を
         作成してみよう.
 
         \subsubsection{実験方法}
             \begin{enumerate}
-                \item 図\ref{fig:hanteikairo}のように配線を行う.
+                \item 図\ref{fig:判定回路}のように配線を行う.
                     ~$VR$は10[k$\Omega$]の半固定抵抗とし,
                     ~$R$は1[k$\Omega$]の炭素皮膜抵抗とする.
                     ~また, ICには5[V]の電源電圧を供給する.
@@ -129,20 +132,21 @@
                 \centering
                 %\includegraphics{images/hanteikairo.eps}
                 \caption{明暗判定回路}
-                \label{fig:hanteikairo}
+                \label{fig:判定回路}
             \end{figure}
 
-        \subsubsection{使用素子 $\cdot$ 使用器具}
-            \begin{description}
-                \item[CdSセル] MKY-54C348
-                \item[LED] L-513LE1T
-                \item[IC] 74HC04
-                \item[デジタルマルチメータ] EC-12
-                \item[直流電源] Ec-01
-                \item[ブレッドボード] EC-16 
-            \end{description}
+            \paragraph{使用素子 $\cdot$ 使用器具}
+                \begin{description}
+                    \setlength{\leftskip}{1.5em}
+                    \item[CdSセル] MKY-54C348
+                    \item[LED] L-513LE1T
+                    \item[IC] 74HC04
+                    \item[デジタルマルチメータ] EC-12
+                    \item[直流電源] Ec-01
+                    \item[ブレッドボード] EC-16 
+                \end{description}
 
-        \subsubsection{結果 $\cdot$ 考察}
+        \subsubsection{結果 $\cdot$ 考察} \label{明暗判定考察}
             CdSセルに指をかざすとLEDが点灯し, ~指を離すと再び点灯した.
 
             これは, ~光が遮断されることでCdSの抵抗値が増え, ~C点での
@@ -150,19 +154,187 @@
             電位差が生まれるためである.
 
     \subsection{応用回路}
+        CdSセルに蛍光灯の光が当たっている場合には緑色のLEDを点灯させ,
+        ~CdS暗幕で覆った場合には赤色のLEDを点灯させる回路を設計$\cdot$
+        作成してみる. ~\ref{明暗判定回路}節を参考にすると簡単に設計することが
+        できる.
+
+        ただし, ~使用器具は\ref{明暗判定回路}節と同様で,
+        ~素子は以下のものを使用する.
+
+            \paragraph{使用素子}
+                \begin{description}
+                    \setlength{\leftskip}{1.5em}
+                    \item[CdSセル] MKY-54C348
+                    \item[LED1(赤色)] L-513LE1T
+                    \item[LED2(緑色)] L-513SGT3
+                    \item[IC] 74HC04
+                    \item[半固定抵抗(1個)] 10[k$\Omega$]
+                    \item[炭素皮膜抵抗(2個)] 1[k$\Omega$]
+                \end{description}
+
+        \subsubsection{設計 $\cdot$ 組立}
+            図\ref{fig:応用回路}に設計した回路図を示す.
+            
+            \begin{figure}[ht]
+                \centering
+                %\includegraphics{images/ouyoukairo.eps}
+                \caption{応用回路}
+                \label{fig:応用回路}
+            \end{figure}
+
+            図\ref{fig:hanteikairo}の赤色LEDに並列に緑色LEDを接続し,
+            NOT素子を挟むことで赤色と動作を反転させる.
+
+            また, ~二つのLEDに流れる電流に差を生じさせないために,
+            ~赤色LED側にもNOTを二つ挟んだ.
+        
+        \subsubsection{結果 $\cdot$ 考察}
+            動作確認をしたところ, ~設計した回路は想定通りに動作した.
+            
+            この回路は, ~\ref{明暗判定考察}節に記したように
+            赤色LEDが動作する. ~緑色LEDは赤色LEDと反転動作をするので,
+            ~CdSに光が当たっている時のみ点灯する.
 
 \section{フォトダイオード}
     \subsection{構造と原理}
+        フォトダイオード(PD)は, ~半導体のPN接合に光が当たると電位差が
+        生じる光起電力を利用したものである. ~PDはそれ自身起電力を有する
+        素子であるため, ~これを動作させる場合に外部電源を必要としない.
+        ~このため, ~電源が無くても簡単な光検出回路を構成することができる.
+        
+        しかしながら, ~その出力信号は極めて微弱であるため, ~一般的には
+        何らかの増幅手段を併用する必要がある. ~なお, ~PDは入射光量と
+        出力電流の線型性が優れており, ~CdSセルに比べ応答速度が100倍以上
+        早いなどの特徴がある. ~図\ref{fig:PD}にPDの回路記号を示す.
 
-    \subsection{短絡特性}
+        \begin{figure}[ht]
+            \centering
+            %\includegraphics{images/PD.eps}
+            \caption{PD回路記号}
+            \label{fig:PD}
+        \end{figure}
+
+    \subsection{短絡特性} \label{短絡特性}
+        光源にLEDを用いて, ~LEDの明るさによりPDの光起電力が変化する
+        ことを確認する. ~なお, ~LEDに流れる電流と発光強度は正比例しない
+        ので, ~ここでは光の強度によりPDの短絡電流が変化することを確認する.
+
         \subsubsection{実験方法}
+            \begin{enumerate}
+                \item 図\ref{fig:短絡特性回路}のように配線を行う.
+                    ~電流計$A_1$, $A_2$にはデジダルマルチメータを
+                    使用する.
+                \item 電源電圧を0[V]から徐々にあげると電流$I_F$が
+                    増加し, ~LEDの明るさが変化することと, ~同時に
+                    $I_S$が変化していることを確認する.
+                \item 組立済回路部分に暗幕を被せ光を遮断し,
+                    ~電源電圧を変化させ, ~$I_F$が5[mA]から20[mA]
+                    の時の$I_S$を測定し, ~まとめる.
+                \item 作成した表より, ~$I_F$-$I_S$グラフを両対数グラフ
+                    で作成する.
+            \end{enumerate}
+
+            \begin{figure}[ht]
+                \centering
+                %\includegraphics{images/PD_short_circuit.eps}
+                \caption{PD短絡特性測定回路}
+                \label{fig:短絡特性回路}
+            \end{figure}
+            
+            \paragraph{使用素子 $\cdot$ 使用器具}
+                \begin{description}
+                    \setlength{\leftskip}{1.5em}
+                    \item[組立済回路] PD-A3
+                    \item[PD] S1133
+                    \item[LED] L-513SGT3
+                    \item[デジタルマルチメータ] EC-21, EC-23
+                    \item[直流電源] Ec-11
+                \end{description}
 
         \subsubsection{結果}
+            図\ref{tab:短絡特性結果}, \ref{fig:短絡特性グラフ}
+            に結果の表とグラフを示す.
+
+            \begin{figure}[ht]
+                \def\@captype{table}
+                \begin{minipage}{0.5\hsize}
+                    \begin{center}
+                        \caption{短絡特性測定結果}
+                        \label{tab:短絡特性結果}
+                        \begin{tabular}{c|c}
+                            
+                        \end{tabular}
+                    \end{center}
+                \end{minipage}
+                \begin{minipage}{0.5\hsize}
+                    \begin{center}
+                        %\includegraphics[width=8cm]{graphs/tanrakukusei.pdf}
+                        \caption{短絡特性グラフ(両対数)}
+                        \label{fig:短絡特性グラフ}
+                    \end{center}
+                \end{minipage}
+            \end{figure}
 
     \subsection{開放特性}
+        ここでは\ref{短絡特性}節と対照的に,
+        光の強度によりPDの開放電圧が変化することを確認する.
+            
         \subsubsection{実験方法}
+            \begin{enumerate}
+                \item 図\ref{fig:開放特性回路}のように配線を行う.
+                    ~電流計$A$, ~電圧計$V$にはデジダルマルチメータを
+                    使用する.
+                \item 電源電圧を0[V]から徐々にあげると電流$I_F$が
+                    増加し, ~LEDの明るさが変化することと, ~同時に
+                    $V_O$が変化していることを確認する.
+                \item 組立済回路部分に暗幕を被せ光を遮断し,
+                    ~電源電圧を変化させ, ~$I_F$が5[mA]から20[mA]
+                    の時の$V_O$を測定し, ~まとめる.
+                \item 作成した表より, ~$I_F$-$V_O$グラフを片対数グラフ
+                    で作成する.
+            \end{enumerate}
+
+            \begin{figure}[ht]
+                \centering
+                %\includegraphics{images/PD_release_circuit.eps}
+                \caption{PD開放特性測定回路}
+                \label{fig:開放特性回路}
+            \end{figure}
+            
+            \paragraph{使用素子 $\cdot$ 使用器具}
+                \begin{description}
+                    \setlength{\leftskip}{1.5em}
+                    \item[組立済回路] PD-A3
+                    \item[PD] S1133
+                    \item[LED] L-513SGT3
+                    \item[デジタルマルチメータ] EC-21, EC-23
+                    \item[直流電源] Ec-11
+                \end{description}
 
         \subsubsection{結果}
+            図\ref{tab:開放特性結果}, \ref{fig:開放特性グラフ}
+            に結果の表とグラフを示す.
+
+            \begin{figure}[ht]
+                \def\@captype{table}
+                \begin{minipage}{0.5\hsize}
+                    \begin{center}
+                        \caption{開放特性測定結果}
+                        \label{tab:開放特性結果}
+                        \begin{tabular}{c|c}
+                            
+                        \end{tabular}
+                    \end{center}
+                \end{minipage}
+                \begin{minipage}{0.5\hsize}
+                    \begin{center}
+                        %\includegraphics[width=8cm]{graphs/kaihoukusei.pdf}
+                        \caption{開放特性グラフ(片対数)}
+                        \label{fig:開放特性グラフ}
+                    \end{center}
+                \end{minipage}
+            \end{figure}
 
     \subsection{照度計}
 
