@@ -73,7 +73,7 @@
 
             \begin{figure}[ht]
                 \centering
-                \includegraphics[width=8cm]{images/CdS_circuit.eps}
+                \includegraphics[width=10cm]{images/CdS_circuit.eps}
                 \caption{CdSセル基礎特性測定回路}
                 \label{fig:基礎特性}
             \end{figure}
@@ -100,19 +100,33 @@
                     \begin{center}
                         \caption{基礎特性測定結果}
                         \label{tab:基礎特性結果}
-                        \begin{tabular}{c|c}
-                            
+                        \begin{tabular}{c|c||c|c}
+                            $I_F$[mA] & $R_C$[k$\Omega$] & $I_F$[mA] & $R_C$[k$\Omega$] \\ \hline
+                            1 & 3.343 & 11 & 0.450 \\
+                            2 & 1.758 & 12 & 0.426 \\
+                            3 & 1.185 & 13 & 0.405 \\
+                            4 & 0.959 & 14 & 0.388 \\
+                            5 & 0.796 & 15 & 0.372 \\
+                            6 & 0.685 & 16 & 0.358 \\
+                            7 & 0.618 & 17 & 0.345 \\
+                            8 & 0.560 & 18 & 0.334 \\
+                            9 & 0.514 & 19 & 0.324 \\
+                            10 & 0.478 & 20 & 0.314
                         \end{tabular}
                     \end{center}
                 \end{minipage}
                 \begin{minipage}{0.5\hsize}
                     \begin{center}
-                        %\includegraphics[width=8cm]{graphs/kisotokusei.pdf}
+                        \includegraphics[width=8cm]{graphs/kihon.pdf}
                         \caption{基礎特性グラフ(両対数)}
                         \label{fig:基礎特性グラフ}
                     \end{center}
                 \end{minipage}
             \end{figure}
+
+            グラフから, ~線型性が見て取れる.
+            ~傾きは負なので, ~CdSセルの抵抗値はLEDに流れる電流のべき乗に
+            反比例することがわかる.
 
     \subsection{明暗判定回路} \label{明暗判定回路}
         CdSセルを用いて, ~暗くなったら赤色LEDを点灯させる簡単な回路を
@@ -240,7 +254,7 @@
 
             \begin{figure}[ht]
                 \centering
-                \includegraphics[width=8cm]{images/tannraku.eps}
+                \includegraphics[width=10cm]{images/tanraku.eps}
                 \caption{PD短絡特性測定回路}
                 \label{fig:短絡特性回路}
             \end{figure}
@@ -265,19 +279,30 @@
                     \begin{center}
                         \caption{短絡特性測定結果}
                         \label{tab:短絡特性結果}
-                        \begin{tabular}{c|c}
-                            
+                        \begin{tabular}{c|c||c|c}
+                            $I_F$[mA] & $I_S$[$\mu$A] & $I_F$[mA] & $I_S$[$\mu$A] \\ \hline
+                            5 & 1.6 & 13 & 5.7 \\
+                            6 & 2.1 & 14 & 6.1 \\
+                            7 & 2.6 & 15 & 6.6 \\
+                            8 & 3.1 & 16 & 7.0 \\
+                            9 & 3.6 & 17 & 7.5 \\
+                            10 & 4.1 & 18 & 8.0 \\
+                            11 & 4.6 & 19 & 8.4 \\
+                            12 & 5.1 & 20 & 8.9
                         \end{tabular}
                     \end{center}
                 \end{minipage}
                 \begin{minipage}{0.5\hsize}
                     \begin{center}
-                        %\includegraphics[width=8cm]{graphs/tanrakukusei.pdf}
+                        \includegraphics[width=8cm]{graphs/tanraku.pdf}
                         \caption{短絡特性グラフ(両対数)}
                         \label{fig:短絡特性グラフ}
                     \end{center}
                 \end{minipage}
             \end{figure}
+
+            グラフから, ~線型性が見て取れる. ~傾きは正なので,
+            ~PDの流す電流は, ~LEDに流れる電流のべき乗に比例することがわかる.
 
     \subsection{開放特性}
         ここでは\ref{短絡特性}節と対照的に,
@@ -300,7 +325,7 @@
 
             \begin{figure}[ht]
                 \centering
-                \includegraphics[width=8cm]{images/kaihou.eps}
+                \includegraphics[width=10cm]{images/kaihou.eps}
                 \caption{PD開放特性測定回路}
                 \label{fig:開放特性回路}
             \end{figure}
@@ -325,19 +350,31 @@
                     \begin{center}
                         \caption{開放特性測定結果}
                         \label{tab:開放特性結果}
-                        \begin{tabular}{c|c}
-                            
+                        \begin{tabular}{c|c||c|c}
+                            $I_F$[mA] & $V_O$[V] & $I_F$[mA] & $V_O$[V] \\ \hline
+                            5.0 & 0.406 & 13 & 0.437 \\
+                            6.0 & 0.413 & 14 & 0.439 \\
+                            7.0 & 0.417 & 15 & 0.441 \\
+                            8.0 & 0.422 & 16 & 0.442 \\
+                            9.0 & 0.425 & 17 & 0.444 \\
+                            10 & 0.429 & 18 & 0.446 \\
+                            11 & 0.432 & 19 & 0.447 \\
+                            12 & 0.434 & 20 & 0.448
                         \end{tabular}
                     \end{center}
                 \end{minipage}
                 \begin{minipage}{0.5\hsize}
                     \begin{center}
-                        %\includegraphics[width=8cm]{graphs/kaihoukusei.pdf}
+                        \includegraphics[width=8cm]{graphs/kaihou.pdf}
                         \caption{開放特性グラフ(片対数)}
                         \label{fig:開放特性グラフ}
                     \end{center}
                 \end{minipage}
             \end{figure}
+
+            グラフから, ~線型性が見て取れる.
+            ~傾きは正なので, ~PDによる起電力はLEDに流れる電流の指数関数で
+            表せることがわかる. 
 
     \subsection{照度計}
         \ref{フォトダイオード構造と原理}節にも示したように,
@@ -372,7 +409,9 @@
                 \end{description}
 
         \subsubsection{結果}
-            
+            PDに当てる光を強くしたり弱くすることで, ~PDの起電力に変化が起きる.
+            ~その結果, ~オシロスコープの画面では, ~電圧の波形が代償に動くのを
+            確認することができた.
 
     \subsection{蛍光灯の光観察}
         \subsubsection{実験方法}
@@ -387,12 +426,38 @@
             \end{enumerate}
 
         \subsubsection{結果}
+            図\ref{fig:波形}にオシロスコープの波形を示す.
+
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[width=8cm]{images/A0000DS.BMP}
+                \caption{PD出力波形}
+                \label{fig:波形}
+            \end{figure}
+
+            図より, ~波形の周期は約25[$\mu$s]であることが分かる.
+
+            また, ~波形の周波数は約42[kHz]であることが分かる.
 
 \section{課題}
-    \subsection{CdSセルはどのような製品で使用されているか.}
+    \subsection{CdSセルはどのような製品で使用されているか.} \label{課題1}
+        CdSセルはフォトレジスタとも呼ばれ, ~露出計やラジオ, ~街灯など
+        に利用されている.
 
     \subsection{フォトダイオードはどのような製品で使用されているか.}
+        フォトダイオードは, ~他の光検出センサーと同様の用途で使われる.
+        \ref{課題1}節で記したことのほかにも, ~ビデオレコーダやテレビの
+        リモコンに使用されている.
 
     \subsection{フォトトランジスタとはどのようなものか.}
+        フォトトランジスタは, ~トランジスタの一種で, ~光検出をすることが
+        できる. ~増幅作用を持ち, ~フォトダイオードとは違い増幅器をつける
+        必要がない. ~短所としてその応答速度があげられ, ~フォトダイオード
+        より動作に時間がかかる.
+
+\begin{thebibliography}{99}
+    \bibitem{フォトレジスタ} フォトレジスタ サヌキテックネット https://sanuki-tech.net/make-electronics/parts/cds-cell/
+    \bibitem{フォトトランジスタ} フォトトランジスタの構造と特徴 光センサゼミナール http://www.kodenshi.co.jp/seminar/vol-02.html/
+\end{thebibliography}
 
 \end{document}

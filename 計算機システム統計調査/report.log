@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2019.7.4)  5 JUL 2019 17:23
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2019.7.4)  17 JUL 2019 11:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -69,70 +69,59 @@ File: dvipdfmx.def 2017/06/24 v5.0g Graphics/color driver for dvipdfmx
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 5.
+(Font)              scaled to size 16.60605pt on input line 16.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 5.
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 5.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 5.
+(Font)              scaled to size 16.60605pt on input line 16.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 25.
+(Font)              scaled to size 11.53198pt on input line 16.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 25.
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 25.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 25.
-File: syotoku.pdf Graphic file (type pdf)
-<syotoku.pdf>
-LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 29.
+(Font)              scaled to size 11.53198pt on input line 16.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 16.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 16.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 16.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 29.
-File: syotokuzouka.pdf Graphic file (type pdf)
-<syotokuzouka.pdf>
-File: jinkou.pdf Graphic file (type pdf)
-<jinkou.pdf>
- [1
+(Font)              scaled to size 5.76599pt on input line 16.
 
-]
-File: jinkouzouka.pdf Graphic file (type pdf)
-<jinkouzouka.pdf>
-File: mitudo.pdf Graphic file (type pdf)
-<mitudo.pdf>
- [2]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 94.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 94.
-LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 94.
- [3] [4] (./report.aux) ) 
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \relax 
+l.16 \maketitle
+               
+? 
+! Emergency stop.
+<to be read again> 
+                   \relax 
+l.16 \maketitle
+               
+End of file on the terminal!
+
+ 
 Here is how much of TeX's memory you used:
- 848 strings out of 493223
- 10454 string characters out of 6144416
- 77406 words of memory out of 5000000
- 4882 multiletter control sequences out of 15000+600000
- 11993 words of font info for 54 fonts, out of 8000000 for 9000
+ 826 strings out of 493223
+ 9994 string characters out of 6144416
+ 74406 words of memory out of 5000000
+ 4872 multiletter control sequences out of 15000+600000
+ 11762 words of font info for 50 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 25i,4n,21p,237b,336s stack positions out of 5000i,500n,10000p,200000b,80000s
-
-Output written on report.dvi (4 pages, 5128 bytes).
+ 25i,7n,21p,237b,246s stack positions out of 5000i,500n,10000p,200000b,80000s
+No pages of output.
