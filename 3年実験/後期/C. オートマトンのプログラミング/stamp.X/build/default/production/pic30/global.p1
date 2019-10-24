@@ -1,0 +1,81 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"9 pic30/global.c
+[v _UPDATE `Cuc ~T0 @X0 1 e ]
+[i _UPDATE
+-> -> 9 `i `uc
+]
+[; ;global.c: 9: const unsigned char UPDATE = 9;
+"10
+[v _cnt `uc ~T0 @X0 1 e ]
+[i _cnt
+-> -> 1 `i `uc
+]
+[; ;global.c: 10: unsigned char cnt = 1;
+"11
+[v _outfg `uc ~T0 @X0 1 e ]
+[; ;global.c: 11: unsigned char outfg;
+"12
+[v _outcoin `uc ~T0 @X0 1 e ]
+[; ;global.c: 12: unsigned char outcoin;
+"16
+[v _red_led `uc ~T0 @X0 -> 0 `x e ]
+[i _red_led
+:U ..
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 3 `i `uc
+-> -> 7 `i `uc
+"17
+-> -> 15 `i `uc
+..
+]
+[; ;global.c: 16: char red_led[]= { 0x00,0x01,0x03,0x07, 0x0f
+[; ;global.c: 17: };
+"19
+[v _status_bit `uc ~T0 @X0 -> 0 `x e ]
+[i _status_bit
+:U ..
+-> -> 0 `i `uc
+"20
+-> -> 1 `i `uc
+-> -> 3 `i `uc
+-> -> 7 `i `uc
+-> -> 15 `i `uc
+-> -> 16 `i `uc
+"21
+-> -> 17 `i `uc
+-> -> 19 `i `uc
+-> -> 23 `i `uc
+-> -> 31 `i `uc
+-> -> 32 `i `uc
+"22
+-> -> 33 `i `uc
+-> -> 35 `i `uc
+-> -> 39 `i `uc
+-> -> 47 `i `uc
+-> -> 48 `i `uc
+"23
+-> -> 49 `i `uc
+-> -> 51 `i `uc
+-> -> 55 `i `uc
+"24
+-> -> 63 `i `uc
+..
+]
+[; ;global.c: 19: char status_bit[] = { 0x00,
+[; ;global.c: 20: 0x01, 0x03, 0x07, 0x0f, 0x10,
+[; ;global.c: 21: 0x11, 0x13, 0x17, 0x1f, 0x20,
+[; ;global.c: 22: 0x21,0x23,0x27,0x2f,0x30,
+[; ;global.c: 23: 0x31,0x33,0x37,0x3f
+[; ;global.c: 24: };
+[; ;global.c: 26: void global(void);
+"27
+[v _global `(v ~T0 @X0 1 ef ]
+"28
+{
+[; ;global.c: 27: void global(void)
+[; ;global.c: 28: {}
+[e :U _global ]
+[f ]
+[e :UE 1 ]
+}
