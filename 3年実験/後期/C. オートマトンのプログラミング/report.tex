@@ -55,7 +55,7 @@
 
         \begin{figure}[ht]
             \centering
-            
+            \includegraphics[width=8cm]{images/rei.pdf}
             \caption{30円切手自動販売機}
             \label{fig:例状態遷移図}
         \end{figure}
@@ -110,10 +110,43 @@
     \subsection{ソースコード}
     
 \section{調査課題「ワンチップマイコンについて調査せよ」}
-    
+    コンピュータを形成するのに必要な要素は入出力装置, 記憶装置, 処理装置などである.
+    これらを一つのICにまとめたものがワンチップマイコンである.
+
+    ワンチップマイコンの特徴として, 以下のものが挙げられる.
+
+    \begin{itemize}
+        \item 小さい
+        \item 安い
+        \item 多種類
+        \item プログラムの書き換えが可能
+    \end{itemize}
+
+    現在主流のワンチップマイコンは, Microchip社製のPICシリーズと,
+    現在はMicrochip社に買収されたAtmel社製のAVRシリーズがある.
+    今回の実験ではPICシリーズを使用した.
+
+    AVRにはPICと比べて以下のような特徴がある.
+
+    \begin{itemize}
+        \item 高速
+        \item 操作が簡単
+        \item 知名度が低く, 情報が少ない
+    \end{itemize}
+
+    それぞれに特徴があり, 用途によって使い分けることが必要である.
 
 \section{考察}
-    
+    今回は練習問題で入力集合の大きさが4の自販機が最大だったが,
+    実際の自販機を考えると、入力集合の大きさはより大きくなる.
+
+    そのため, 実装するには状態遷移図, ソフトウェア共に工夫が必要になってくると考えられる.
+
+    今回はソフトウェア面での工夫を考えてみた.
+    今回の実験で使用したコードでは, 一つの遷移関数Transition()の中で状態の遷移を行なったが, 
+    構造体やクラスを使って硬貨や自販機の処理との関係性をシミュレーションをすることで
+    簡潔なコードで多種の入力がある自販機を実装することができると考えた.
+    この方法をとることで出力種類の増加にも対応させることができる.
 
 \section{感想}
     今回の実験では, 前期のディジタル論理回路の授業内容が活かせた.
@@ -121,8 +154,11 @@
     発展課題には挑戦しなかったので, 今後機会があったら調べてみたい.
 
 \begin{thebibliography}{99}
-    \bibitem{フォトレジスタ} フォトレジスタ サヌキテックネット https://sanuki-tech.net/make-electronics/parts/cds-cell/
-    \bibitem{フォトトランジスタ} フォトトランジスタの構造と特徴 光センサゼミナール http://www.kodenshi.co.jp/seminar/vol-02.html/
+    \bibitem{Electro} Electro-ワンチップマイコン http://laboratory.sub.jp/ele/13.html/
+    \bibitem{nmri} 第1章 ワンチップマイクロチップコンピュータとは \\
+        https://www.nmri.go.jp/oldpages/eng/khirata/mcon/ch01.html/
+    \bibitem{design spark} さらなる可能性を秘めたPIC, AVRマイコン \\
+        https://www.rs-online.com/designspark/unlimited-possibilities-of-pic-and-avr-microcontrollers-jp/
 \end{thebibliography}
 
 \end{document}
