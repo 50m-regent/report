@@ -80,7 +80,8 @@
             \item $Z$: \{1[枚], 10[円], 20[円]\}
         \end{itemize}
 
-        このFAの状態遷移図を図\ref{fig:例状態遷移図}に示す。
+        このFAの状態遷移図を図\ref{fig:例状態遷移図}に示す.
+        以下, 全ての状態遷移図で入出力を入力/出力のように示す.
 
         \begin{figure}[ht]
             \centering
@@ -122,9 +123,9 @@
     \end{figure}
 
 \section{仮想自動販売機作成実習}
-    今回は, 10円と50円が使える20円切手にした.
+    今回は, 10円と50円が使える20円切手自販機を実装してみた.
     10円入ってるときに50円を入れると60円になり切手が3枚出力されるので,
-    3枚目は100円のランプを使うこととした.
+    3枚目は100円のランプを使うこととする.
     また, Cancelを押すと払い戻しをする.
 
     図\ref{fig:本番状態遷移図}に状態遷移図を示す.
@@ -149,24 +150,6 @@ void  StampOut(int num) {
 
         \begin{lstlisting}[caption=piclib.h extern.h]
 void StampOut(int num);		/* スタンプ表示		*/
-        \end{lstlisting}
-
-        \begin{lstlisting}[caption=stamp.c メインループ, label=main]
-do {
-    it = sw_read();
-    if (it == 0) continue;
-    outfg = outcoin = 0;
-    s = Transition(it, &st, &a, &b);
-    DispStatus(status_bit[st]);
-    if (a | b) outfg = 1;
-    StampOut(s);
-    if (a) DispCoinA(a);
-    if (b) DispCoinB(b);
-    while(it = sw_read()){	/*  スイッチ入力監視	*/
-        if (it == Exit) break;
-        timer(30);
-    }
-} while (st != stExit);
         \end{lstlisting}
 
         \begin{lstlisting}[caption=stamp.c 遷移関数, label=transition]
@@ -197,6 +180,24 @@ int Transition (char it, Status* st, int* a, int* b) {
     }
     return 0;
 }
+        \end{lstlisting}
+
+        \begin{lstlisting}[caption=stamp.c メインループ, label=main]
+do {
+    it = sw_read();
+    if (it == 0) continue;
+    outfg = outcoin = 0;
+    s = Transition(it, &st, &a, &b);
+    DispStatus(status_bit[st]);
+    if (a | b) outfg = 1;
+    StampOut(s);
+    if (a) DispCoinA(a);
+    if (b) DispCoinB(b);
+    while(it = sw_read()){	/*  スイッチ入力監視	*/
+        if (it == Exit) break;
+        timer(30);
+    }
+} while (st != stExit);
         \end{lstlisting}
 
         まず, ソースコード\ref{piclib}にあるように, 切手の出力をする関数を複数枚出力ができるように変更した.
@@ -237,13 +238,13 @@ int Transition (char it, Status* st, int* a, int* b) {
     それぞれに特徴があり, 用途によって使い分けることが必要である.
 
 \section{考察}
-    今回は練習問題で入力集合の大きさが4の自販機が最大だったが,
-    実際の自販機を考えると、入力集合の大きさはより大きくなる.
+    今回は最大で入力集合の大きさが4の自販機を練習問題で考えたが,
+    実際の自販機を考えると, 入力集合の大きさはより大きくなる.
 
     そのため, 実装するには状態遷移図, ソフトウェア共に工夫が必要になってくると考えられる.
 
     今回はソフトウェア面での工夫を考えてみた.
-    今回の実験で使用したコードでは, 一つの遷移関数Transition()の中で状態の遷移を行なったが, 
+    今回の実験で使用したコードでは, 一つの遷移関数Transitionの中で状態の遷移を行なったが, 
     構造体やクラスを使って硬貨や自販機の処理との関係性をシミュレーションをすることで
     簡潔なコードで多種の入力がある自販機を実装することができると考えた.
     この方法をとることで出力種類の増加にも対応させることができる.
