@@ -1,6 +1,26 @@
 \documentclass[titlepage]{jsarticle}
 \usepackage[dvipdfmx]{graphicx}
+\usepackage{listings}
 \usepackage{h31ec-exp}
+\lstset{
+  basicstyle={\ttfamily},
+  identifierstyle={\small},
+  commentstyle={\smallitshape},
+  keywordstyle={\small\bfseries},
+  ndkeywordstyle={\small},
+  stringstyle={\small\ttfamily},
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,
+  xrightmargin=0zw,
+  xleftmargin=3zw,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1zw,
+  lineskip=-0.5ex
+}
+\renewcommand{\lstlistingname}{ソースコード}
 \makeatletter
 \newcommand{\figcaption}[1]{\def\@captype{figure}\caption{#1}}
 \newcommand{\tblcaption}[1]{\def\@captype{table}\caption{#1}}
@@ -8,10 +28,19 @@
 \title{オートマトンのプログラミング}
 \grade{3年32番}
 \author{平田 蓮}
-\team{第C班}
+\team{第4班}
 \date{2019年10月29日}
 \expdate{2019年10月7日, 10月21日, 10月28日}
-\coauthor{}
+\coauthor{
+    4番 　石橋那起 \\
+    8番 　小林歩夢 \\
+    12番 　小室弦太 \\
+    15番 　佐藤貴幸 \\
+    20番 　関晋一朗 \\
+    24番 高橋祐己哉 \\
+    28番 外川諒太郎 \\
+    36番 　本多充稔
+}
 
 \begin{document}
 \maketitle
@@ -108,6 +137,77 @@
     \end{figure}
 
     \subsection{ソースコード}
+        今回変更を加えた部分のソースコードを以下に示す. \\
+
+        \begin{lstlisting}[caption=piclib.c, label=piclib]
+void  StampOut(int num) {
+    if (num > 2) led_on(LED100);
+    if (num > 1) led_on(STAMP2);
+    if (num > 0) led_on(STAMP1);
+}
+        \end{lstlisting}
+
+        \begin{lstlisting}[caption=piclib.h extern.h]
+void StampOut(int num);		/* スタンプ表示		*/
+        \end{lstlisting}
+
+        \begin{lstlisting}[caption=stamp.c メインループ, label=main]
+do {
+    it = sw_read();
+    if (it == 0) continue;
+    outfg = outcoin = 0;
+    s = Transition(it, &st, &a, &b);
+    DispStatus(status_bit[st]);
+    if (a | b) outfg = 1;
+    StampOut(s);
+    if (a) DispCoinA(a);
+    if (b) DispCoinB(b);
+    while(it = sw_read()){	/*  スイッチ入力監視	*/
+        if (it == Exit) break;
+        timer(30);
+    }
+} while (st != stExit);
+        \end{lstlisting}
+
+        \begin{lstlisting}[caption=stamp.c 遷移関数, label=transition]
+int Transition (char it, Status* st, int* a, int* b) {
+    *a = *b = 0;	/* コインA,Bの出力枚数を0にしておく */
+    if (it == Exit) *st = stExit;
+    if (it == Cancel) {
+        *a = *st;
+        *st = stEmpty;
+    }
+    if (it == CoinA) {
+        ++*st;
+        *st = *st % 2;
+        if (!*st) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+    if (it == CoinB) {
+        *st += 5;
+        *st = *st % 2;
+        if (*st) {
+            return 2;
+        } else {
+            return 3;
+        }
+    }
+    return 0;
+}
+        \end{lstlisting}
+
+        まず, ソースコード\ref{piclib}にあるように, 切手の出力をする関数を複数枚出力ができるように変更した.
+        StanpOut関数は引数で切手の枚数を受け取り, その値の個数だけLEDを光らせる.
+        また, それに伴いpiclib.hとextern.hにあるStampout関数のプロトタイプ宣言を変更した.
+
+        ソースコード\ref{transition}には, 変更後の遷移関数を示した.
+        遷移関数Transitionは受け付ける入力を2種類に増やし,
+        それぞれの入力に対し適切な切手枚数を返すように変更した.
+
+        最後に, これらの変更に伴い, ソースコード\ref{main}のようにstamp.cのメインループ内を変更した.
     
 \section{調査課題「ワンチップマイコンについて調査せよ」}
     コンピュータを形成するのに必要な要素は入出力装置, 記憶装置, 処理装置などである.
