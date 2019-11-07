@@ -1,0 +1,20 @@
+オートマトン実習用基板ポート表
+入出力ポートの設定はポートAは全て入力、ポートBは全て出力
+
+		I/O対応表
+
+	端子名	bit	対応I/O	
+	RA0	0x01	10円SW
+PortA	RA1	0x02	50円SW
+	RA2	0x04	100円SW
+	RA3	0x08	購入SW
+	RA4	0x10	CancelSW
+
+	RB0	0x01	LED(10円A)
+	RB1	0x02	LED(10円B)
+	RB2	0x04	LED(10円C)
+PortB	RB3	0x08	LED(10円D)
+	RB4	0x10	LED(50円)
+	RB5	0x20	LED(100円)
+	RB6	0x40	LED(切手1)
+	RB7	0x80	LED(切手2)
