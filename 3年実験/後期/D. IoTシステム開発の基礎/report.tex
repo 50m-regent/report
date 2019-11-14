@@ -45,14 +45,44 @@
 \begin{document}
 \maketitle
 \section{目的}
-    本実験では, Raspberry Piを用いてLinux環境を構築し, その手順とともにIoT(Internet of Things)システム開発の基礎を習得する.
-
-\section{IoT(Internet of Thing)}
-    
+    本実験では, Raspberry Piを用いてLinux環境を構築し, その手順とともにIoT(Internet of Things)
+    システム開発の基礎を習得する.
 
 \section{実験手順}
     \subsection{Linux環境の構築}
-        
+        \subsubsection{Raspbianのインストール}
+            Raspberry Piでは内蔵されたストレージからではなく,
+            microSDカードからOSを読み込んで起動する.
+            そのため, Raspberry Piを使用するためにOSが入ったmicroSDカードを用意する
+            必要がある. 今回はRaspberry Pi公式サポートOSであるRaspbianを使用する.
+
+            以下に大まかな手順を示す.
+
+            \begin{enumerate}
+                \item OSファイルの準備
+                \item Raspberry Piの起動, OSのインストール
+            \end{enumerate}
+
+            \paragraph{OSファイルの準備}
+                必要なOSファイルは, 校内サーバーからダウンロードをして使用する.
+
+                \begin{enumerate}
+                    \item http://ftp.nagaoka-ct.ac.jp/pub/linux/raspbian
+                        にアクセスしてNOOBS\_v3\_2\_0.zipダウンロードする
+                        (このとき, デスクトップに保存すること).
+                    \item microSDカードをPCに接続し, 解凍したファイルの中身を全てコピーする.
+                    \item デスクトップにあるzipファイルを削除する.
+                \end{enumerate}
+
+            \paragraph{Raspberry Piの起動, OSのインストール}
+                \begin{enumerate}
+                    \item もう一つのモニターからPCと周辺機器に接続しているケーブル類を外し,
+                        今回の実験で使うものを代わりに接続する.
+                    \item Raspberry PiにmicroSDカード, HDMIケーブル, 周辺機器のケーブルを
+                        接続する.
+                    \item Raspberry Piに電源ケーブルを接続し, 起動する.
+                    \item 画面に出る指示に従いインストールを進める.
+                \end{enumerate}
 
     \subsection{IoTシステム作成}
 
@@ -75,9 +105,5 @@
     しかし, エラーに直面しても, 自分で調べたり, 今まで学習してきた知識を活用することで
     修正することができた. この力は今後とても大切になってくると感じた.
     これからも学習を怠らないようにしたい.
-
-\begin{thebibliography}{99}
-    \bibitem{IoT} IoTとは? MONO WIRELESS https://mono-wireless.com/jp/tech/Internet\_of\_Things.html
-\end{thebibliography}
 
 \end{document}
