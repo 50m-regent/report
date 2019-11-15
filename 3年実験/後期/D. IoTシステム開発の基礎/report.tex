@@ -61,6 +61,7 @@
             \begin{enumerate}
                 \item OSファイルの準備
                 \item Raspberry Piの起動, OSのインストール
+                \item Raspbianの初期設定
             \end{enumerate}
 
             \paragraph{OSファイルの準備}
@@ -69,7 +70,7 @@
                 \begin{enumerate}
                     \item http://ftp.nagaoka-ct.ac.jp/pub/linux/raspbian
                         にアクセスしてNOOBS\_v3\_2\_0.zipダウンロードする
-                        (このとき, デスクトップに保存すること).
+                        (このとき, デスクトップに保存しないと容量が足りないので気を付ける).
                     \item microSDカードをPCに接続し, 解凍したファイルの中身を全てコピーする.
                     \item デスクトップにあるzipファイルを削除する.
                 \end{enumerate}
@@ -82,6 +83,26 @@
                         接続する.
                     \item Raspberry Piに電源ケーブルを接続し, 起動する.
                     \item 画面に出る指示に従いインストールを進める.
+                \end{enumerate}
+
+            \paragraph{Raspbianの初期設定}
+                インストールが完了してRaspberry Piが起動したらLANケーブルをRaspberry Pi
+                に接続し, 初期設定を進める.
+
+                \begin{enumerate}
+                    \item プロキシの設定
+                    
+                        Raspberry Piでターミナルを開き, 以下の内容を/etc/apt/apt.confに
+                        書き込む.
+                            
+                    \verb|sudo vi /etc/apt/apt.conf|
+
+                        \begin{lstlisting}[caption=apt.conf]
+Acquire::http::proxy "http://st-proxy.st.nagaoka-ct.ac.jp:8080/";
+Acquire::https::proxy "https://st-proxy.st.nagaoka-ct.ac.jp:8080/";
+Acquire::ftp::proxy "ftp://st-proxy.st.nagaoka-ct.ac.jp:8080/";
+                        \end{lstlisting}
+                    \item あああ
                 \end{enumerate}
 
     \subsection{IoTシステム作成}
