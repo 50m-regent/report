@@ -45,7 +45,7 @@
 \section{KENTAC 2600について}
   本実験で使用するロジック学習装置KENTAC 2600の主な特徴を以下に挙げる.
   \begin{itemize}
-    \item 入出力の端子とLEDディスプレイを確認することにより, High/Lowを目で確認できる.
+    \item 入出力の端子とLEDディスプレイを接続することにより, High/Lowを目で確認できる.
     \item 回路素子記号がパネル上に描かれているため, わかりやすい.
     \item 信号発信器を内蔵しているので, 外部の発信器が必要ない.
   \end{itemize}
@@ -59,7 +59,7 @@
     この節では, 4入力のプライオリティエンコーダを設計する.
     入力をそれぞれ$A_i$ ($i \in \{0, 1, 2, 3\}$), 出力を$Z_1, Z_2, E$とし,
     $(Z_2 \ Z_1)_2$で入力されている最大の添字を表す.
-    また, $E$はどこからも1の入力がなければ1, それ以外の場合は0である.
+    $E$はどこからも1の入力がなければ1, それ以外の場合は0である.
 
     まず, このプライオリティエンコーダの真理値表を表\ref{tab:priority_encoder}示す.
     表内の$\times$はドントケア入力であることを示す.
@@ -77,7 +77,28 @@
         $\times$ & $\times$ & $\times$ & 1 & 1 & 1 & 0 \\ \hline
       \end{tabular}
     \end{table}
-    次に, この表から各出力の式を導出する.
+
+    次に, この表からカルノー図を作成して各出力の式を導出する.
+    カルノー図を以下に示す.
+    \begin{figure}[h]
+      \begin{minipage}{0.33\hsize}
+        \centering
+        \includegraphics[width=5cm]{images/haisen.pdf}
+        \caption{$Z_2$についてのカルノー図}
+      \end{minipage}
+      \begin{minipage}{0.33\hsize}
+        \centering
+        \includegraphics[width=5cm]{images/haisen.pdf}
+        \caption{$Z_1$についてのカルノー図}
+      \end{minipage}
+      \begin{minipage}{0.33\hsize}
+        \centering
+        \includegraphics[width=5cm]{images/haisen.pdf}
+        \caption{$E$についてのカルノー図}
+      \end{minipage}
+    \end{figure}
+
+    また, これらの式は以下のように真理値表から直接求めることもできる.
     \begin{eqnarray*}
       Z_2 &=& A_2 \overline{A_3} + A_3 =
         A_2 \overline{A_3} + A_2A_3 + \overline{A_2}A_3 =
@@ -92,13 +113,12 @@
     構成した回路を図\ref{fig:priority_encoder}に示す.
     \begin{figure}[h]
       \centering
-      \includegraphics[width=5cm]{images/haisen.pdf}
+      \includegraphics[width=10cm]{images/haisen.pdf}
       \caption{4入力プライオリティエンコーダの論理回路}
       \label{fig:priority_encoder}
     \end{figure}
   \subsection{加算器} \label{ssec:FA}
-    論理回路によって1ビットの加算を行うことを考える.
-    このような回路を半加算器(HA: Half Adder)という.
+    論理回路によって桁上がり入力を考慮しない1ビットの加算を行う回路を半加算器(HA: Half Adder)という.
 
     HAは, 入力$A$, $B$に対してその和$(C^+ \ S)_2$を出力する($C^+$は桁上がり).
     HAは下位ビットからの桁上がりを考慮していないので複数桁の演算をできない.
@@ -130,7 +150,7 @@
         \label{fig:full_adder_timing}
       \end{minipage}
     \end{figure}
-  \subsection{2ビット加算器の作成}
+  \subsection{2ビット加算器}
     \ref{ssec:FA}節で作成したFAを使用して, $(A_2 \ A_1)_2 + (B_2 \ B_1)_2 = (S_3 \ S_2 \ S_1)_2$
     の演算を行う2ビットの加算器を作成する.
 
@@ -143,9 +163,12 @@
       \label{fig:2bit_adder}
     \end{figure}
 \section{順序論理回路の設計}
-  組み合わせ論理回路はその瞬間の入力によって出力がただ1つに定まる回路であった.
-  しかし, コンピュータの動作の中にはその時の入力だけでなく, その時の状態も出力に関わる物が多い.
+  組み合わせ論理回路はその時の入力によって出力がただ1つに定まる回路であった.
+  しかし, コンピュータの動作の中にはその時の入力だけでなく, その時の内部状態も出力に関わる物が多い.
   このような回路を順序回路という.
+  順序回路はその時の入力と内部状態によって出力(次の内部状態状態)が決まるので,
+  組み合わせ論理回路と違い, 入力に対して出力が一意に定まらない.
+
   順序回路を構成する際に, 1ビットの記憶素子としてフリップフロップ(FF: Flip Flop)を使用する.
   FFはその特徴によって様々な種類が存在するが, 本節ではJK-FFとD-FFに触れる.
   \subsection{JK-FFとD-FF}
@@ -154,19 +177,19 @@
     両FFのタイミングチャート, 状態遷移表を以下に示す.
     状態遷移表の$\times$はドントケア入力を表す.
     \begin{figure}[h]
-      \begin{minipage}{0.45\hsize}
+      \begin{minipage}{0.49\hsize}
         \centering
         \includegraphics[width=5cm]{images/haisen.pdf}
         \caption{JK-FFのタイミングチャート}
       \end{minipage}
-      \begin{minipage}{0.45\hsize}
+      \begin{minipage}{0.49\hsize}
         \centering
         \includegraphics[width=5cm]{images/haisen.pdf}
         \caption{D-FFのタイミングチャート}
       \end{minipage}
     \end{figure}
     \begin{table}[h]
-      \begin{minipage}{0.45\hsize}
+      \begin{minipage}{0.49\hsize}
         \centering
         \caption{JK-FFの状態遷移表}
         \begin{tabular}{ccc||c}
@@ -179,30 +202,36 @@
           1 & 1 & 1 & $\overline{Q}$ \\ \hline
         \end{tabular}
       \end{minipage}
-      \begin{minipage}{0.45\hsize}
+      \begin{minipage}{0.49\hsize}
         \centering
         \caption{D-FFの状態遷移表}
-        \begin{tabular}{cc||c}
+        \begin{tabular}{c||c}
           \hline
-          $D$ & CLK & $Q^+$ \\ \hline \hline
-          $\times$ & 0 & $Q$ \\
-          $\times$ & 1 & $D$ \\ \hline
+          CLK & $Q^+$ \\ \hline \hline
+          0 & $Q$ \\
+          1 & $D$ \\ \hline
         \end{tabular}
       \end{minipage}
     \end{table}
+
+    JK-FFは, $J = K = 1$の時以外は$R = J$, $S = K$と見たときのRS-FFと同じ動作をする.
+    $J = K = 1$の時は内部状態$Q$を反転させる.
+
+    D-FFは, はCLKが0の時は現在の内部状態を保持し, それ以外は内部状態$Q$を$D$にする.
   \subsection{シフトレジスタの作成}
     簡単な順序回路の例として3ビットシフトレジスタを設計する.
     シフトレジスタは, クロック入力ごとに保持しているビット列を1桁ずつシフトさせる回路である.
     この操作の度に最上位ビットは捨てられ, 最下位ビットにはクロック入力時の入力が入る.
-    構成方法としては, フリップフロップを直列に並べ, 下位ビットの状態を上位ビットに書き込むようにすればいい.
+    構成方法としては, フリップフロップを直列に並べ, 下位ビットの内部状態を上位ビットに書き込むようにすればいい.
 
-    D-FFを使用すれば簡単に作成することができるが, KENTAC 2600にはD-FFが2個しか内蔵されていないので,
-    JK-FFを使ってD-FFを作成する.
+    D-FFを使用すれば簡単に構成することができるが, KENTAC 2600にはD-FFが2個しか内蔵されていないので,
+    JK-FFを用いてD-FFと同じ動作をする回路を作成する.
 
     作成したD-FFを3つ直列に接続してシフトレジスタを作成する.
     このシフトレジスタの内部状態を$Q_3$, $Q_2$, $Q_1$とする.
-    また, 直近の入力が$1 \rightarrow 1 \rightarrow 0$だった時に出力$X$が1になるようにする.
-    これは, ($Q_3, Q_2, Q_1$)が(0, 1, 1)のときにXに1を出力すればいい.
+    $Q_3$が最上位ビットである.
+    また, 直近の入力$A$が$1 \rightarrow 1 \rightarrow 0$だった時に出力$X$が1になるようにする.
+    これは, ($Q_3, Q_2, Q_1$)が(1, 1, 0)のときにXに1を出力すればいい.
 
     作成した回路を図\ref{fig:JK-FF_by_D-FF}, \ref{fig:shift_register}に示す.
 
@@ -219,9 +248,9 @@
       \label{fig:shift_register}
     \end{figure}
   \subsection{カウンタの作成}
-    カウンタはクロック入力の階数を数える順序回路である.
+    カウンタはクロック入力の回数を数える順序回路である.
     今回は3ビットの8進カウンタを考える.
-    始めに, 今の状態を$(Q_3 \ Q_2 \ Q_1)_2$, 次の状態を$(Q_3^+ \ Q_2^+ \ Q_1^+)_2$として
+    始めに, 現在の内部状態を$(Q_3 \ Q_2 \ Q_1)_2$, 次の内部状態を$(Q_3^+ \ Q_2^+ \ Q_1^+)_2$として
     状態遷移表を考える.
     \begin{table}[h]
       \caption{8進カウンタの状態遷移表}
