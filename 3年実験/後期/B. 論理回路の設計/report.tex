@@ -190,6 +190,76 @@
         \end{tabular}
       \end{minipage}
     \end{table}
+  \subsection{シフトレジスタの作成}
+    簡単な順序回路の例として3ビットシフトレジスタを設計する.
+    シフトレジスタは, クロック入力ごとに保持しているビット列を1桁ずつシフトさせる回路である.
+    この操作の度に最上位ビットは捨てられ, 最下位ビットにはクロック入力時の入力が入る.
+    構成方法としては, フリップフロップを直列に並べ, 下位ビットの状態を上位ビットに書き込むようにすればいい.
+
+    D-FFを使用すれば簡単に作成することができるが, KENTAC 2600にはD-FFが2個しか内蔵されていないので,
+    JK-FFを使ってD-FFを作成する.
+
+    作成したD-FFを3つ直列に接続してシフトレジスタを作成する.
+    このシフトレジスタの内部状態を$Q_3$, $Q_2$, $Q_1$とする.
+    また, 直近の入力が$1 \rightarrow 1 \rightarrow 0$だった時に出力$X$が1になるようにする.
+    これは, ($Q_3, Q_2, Q_1$)が(0, 1, 1)のときにXに1を出力すればいい.
+
+    作成した回路を図\ref{fig:JK-FF_by_D-FF}, \ref{fig:shift_register}に示す.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=5cm]{images/haisen.pdf}
+      \caption{JK-FFによるD-FF}
+      \label{fig:JK-FF_by_D-FF}
+    \end{figure}
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=10cm]{images/haisen.pdf}
+      \caption{3ビットシフトレジスタの論理回路}
+      \label{fig:shift_register}
+    \end{figure}
+  \subsection{カウンタの作成}
+    カウンタはクロック入力の階数を数える順序回路である.
+    今回は3ビットの8進カウンタを考える.
+    始めに, 今の状態を$(Q_3 \ Q_2 \ Q_1)_2$, 次の状態を$(Q_3^+ \ Q_2^+ \ Q_1^+)_2$として
+    状態遷移表を考える.
+    \begin{table}[h]
+      \caption{8進カウンタの状態遷移表}
+      \label{tab:counter}
+      \centering
+      \begin{tabular}{ccc||ccc}
+        \hline
+        $Q_3$ & $Q_2$ & $Q_1$ & $Q_3^+$ & $Q_2^+$ & $Q_1^+$ \\ \hline \hline
+        0 & 0 & 0 & 0 & 0 & 1 \\
+        0 & 0 & 1 & 0 & 1 & 0 \\
+        0 & 1 & 0 & 0 & 1 & 1 \\
+        0 & 1 & 1 & 1 & 0 & 0 \\
+        1 & 0 & 0 & 1 & 0 & 1 \\
+        1 & 0 & 1 & 1 & 1 & 0 \\
+        1 & 1 & 0 & 1 & 1 & 1 \\
+        1 & 1 & 1 & 0 & 0 & 0 \\ \hline
+      \end{tabular}
+    \end{table}
+
+    表\ref{tab:counter}に示したこの表から$Q_3^+$, $Q_2^+$, $Q_1^+$の論理式を導く.
+    各フリップフロップは, 自身より下位のビットが全て1になった時に反転すれば良いので,
+    下位ビット全ての論理積を取り, JK-FFの両方の入力端子に入力するように設計する.
+    $Q_3$, $Q_2$, $Q_1$それぞれの入力を($J_3, K_3$), ($J_2, K_2$), ($J_1, K_1$)として
+    求めた論理式をまとめると,
+    \begin{eqnarray*}
+      J_1 &=& K_1 = 1 \\
+      J_2 &=& K_2 = Q_1 \\
+      J_3 &=& K_3 = Q_1Q_2
+    \end{eqnarray*}
+    となる.
+
+    この式をもとに作成した回路を図\ref{fig:counter}に示す.
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=10cm]{images/haisen.pdf}
+      \caption{8進カウンタの論理回路}
+      \label{fig:counter}
+    \end{figure}
 \section{調査課題}
 
 \section{感想 $\cdot$ 意見}
