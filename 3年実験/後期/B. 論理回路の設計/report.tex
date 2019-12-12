@@ -2,6 +2,7 @@
 \usepackage[dvipdfmx]{graphicx}
 \usepackage{listings}
 \usepackage{h31ec-exp}
+\usepackage{biblatex}
 \lstset{
   basicstyle={\ttfamily},
   identifierstyle={\small},
@@ -36,7 +37,7 @@
 \begin{document}
 \maketitle
 \section{目的}
-  本実験では, ロジック学習装置KENTAC 2600 (昭和電業社) を用いて基本的な論理回路の設計を行うことで,
+  本実験では, ロジック学習装置KENTAC 2600 (昭和電業社) を用いて基本的な論理回路の設計を行い,
   コンピュータのハードウェア設計の基礎となる論理回路設計の理解を深めることを目的とする.
   まず, マルチプレクサや半加算器などの組み合わせ論理回路の設計に取り組み,
   真理値表と論理式と論理回路の対応へのイメージを深める.
@@ -45,15 +46,15 @@
 \section{KENTAC 2600について}
   本実験で使用するロジック学習装置KENTAC 2600の主な特徴を以下に挙げる.
   \begin{itemize}
-    \item 入出力の端子とLEDディスプレイを接続することにより, High/Lowを目で確認できる.
+    \item 入出力の端子とLEDディスプレイを接続することで, High/Lowを目で確認できる.
     \item 回路素子記号がパネル上に描かれているため, わかりやすい.
     \item 信号発信器を内蔵しているので, 外部の発信器が必要ない.
   \end{itemize}
 \section{組み合わせ論理回路の設計}
   \subsection{プライオリティエンコーダの設計}
-    情報を保存したり伝送したりする際には, なるべく使用する記憶素子や伝送路を少なくすることが望ましい.
-    そこで用いられるのが符号化(エンコード)という手法であり, 符号化を行う回路のことをエンコーダという.
-    中でも, 複数の入力があった場合に最も添字が大きいものを優先させるものを
+    情報を保存したり伝送したりする際には, なるべく使用する記憶素子や伝送路を少なくするのが望ましい.
+    そこで用いられるのが符号化(エンコード)という手法であり, 符号化を行う回路をエンコーダという.
+    中でも, 複数の入力があった場合に最も添字が大きい入力を優先させる回路を
     プライオリティエンコーダという.
 
     この節では, 4入力のプライオリティエンコーダを設計する.
@@ -117,7 +118,7 @@
       \caption{4入力プライオリティエンコーダの論理回路}
       \label{fig:priority_encoder}
     \end{figure}
-  \subsection{加算器} \label{ssec:FA}
+  \subsection{加算器} \label{subsec:FA}
     論理回路によって桁上がり入力を考慮しない1ビットの加算を行う回路を半加算器(HA: Half Adder)という.
 
     HAは, 入力$A$, $B$に対してその和$(C^+ \ S)_2$を出力する($C^+$は桁上がり).
@@ -126,7 +127,7 @@
     そのため, HAに桁上がり入力$C$を追加することを考える.
     この回路を全加算器(FA: Full Adder)という.
 
-    FAは, $A + B + C$を演算するので, HAを2つ使用して以下のように構成することができる.
+    FAは, $A + B + C$を演算するので, HAを2つ使用して以下のように構成できる.
     ただし, 2つのHAの出力をそれぞれ$(C_1^+ \ S_1)_2$, $(C_2^+ \ S)_2$とする.
     \begin{enumerate}
       \item HAを使用して$A + B$を演算して$S_1$と$C_1^+$を得る.
@@ -151,7 +152,7 @@
       \end{minipage}
     \end{figure}
   \subsection{2ビット加算器}
-    \ref{ssec:FA}節で作成したFAを使用して, $(A_2 \ A_1)_2 + (B_2 \ B_1)_2 = (S_3 \ S_2 \ S_1)_2$
+    \ref{subsec:FA}節で作成したFAを使用して, $(A_2 \ A_1)_2 + (B_2 \ B_1)_2 = (S_3 \ S_2 \ S_1)_2$
     の演算を行う2ビットの加算器を作成する.
 
     筆算と同じ要領で, 先に下位ビットをHAで演算した後, その桁上がりと上位ビットをFAで演算することで構成できる.
@@ -289,9 +290,43 @@
       \caption{8進カウンタの論理回路}
       \label{fig:counter}
     \end{figure}
-\section{調査課題}
+\section{調査課題「SRAMについて」}
+  SRAM(Static Random Access Memory)とは, コンピュータ内でCPUと主記憶の間にあるキャッシュメモリに使われている.
+  RAMとは, 読み書き可能だがコンピュータの電源を切るとデータが消えてしまうメモリであるが,
+  反対に書き込み不可能だが電源を切っていてもデータを保持できるROM(Read Only Memory)もある.
 
-\section{感想 $\cdot$ 意見}
+  また, SRAMと似た装置としてDRAM(Dynamic Random Access Memory)があり,
+  これもSRAMと同様にキャッシュメモリに使用されている.
 
+  特にSRAMは自然放電によるデータ損失がないので,
+  コンピュータの高速処理を実現している.
 
+  この2つのそれぞれの特徴を表\ref{tab:SRAM_and_DRAM}にまとめる.
+
+  \begin{table}[h]
+    \centering
+    \caption{SRAMとDRAM}
+    \label{tab:SRAM_and_DRAM}
+    \begin{tabular}{c|cc}
+      & SRAM & DRAM \\ \hline
+      動作速度 & 速い & 遅い \\
+      消費電力 & 小さい & 大きい \\
+      容量 & 大きくしづらい & 大きくしやすい \\
+      コスト & 高い & 安い \\
+    \end{tabular}
+  \end{table}
+
+  この表からわかるように, 性能はSRAMの方が高い.
+  さらに, 上の表に加えて, DRAMはSRAMに比べて定期的に電流を流さないとデータが消えてしまうので,
+  処理に遅延が発生する.
+  性能だけを見るとSRAMが高いが, コストも高いので
+  キャッシュメモリの中でも特に重要な部分をSRAM, そうでない部分をDRAMと使い分けている.
+\section{感想$\cdot$意見}
+
+\begin{thebibliography}{9}
+  \bibitem{text}{令和元年度電子制御工学実験3年後期テキスト}
+  \bibitem{1}{わわわIT用語辞典 SRAM, https://wa3.i-3-i.info/word17052.html, 2019/12/12}
+  \bibitem{2}{ITポスト.com メモリとは、RAMとROMの違い,
+    \\http://xn--l8jcc0l6q2czg5j.com/2017/10/31/post-1263/, 2019/12/12}
+\end{thebibliography}
 \end{document}
