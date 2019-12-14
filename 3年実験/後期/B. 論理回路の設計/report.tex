@@ -237,7 +237,7 @@
     これは, ($Q_3, Q_2, Q_1$)が(1, 1, 0)のときに$X$に1を出力すればいい.
 
     作成した回路を図\ref{fig:JK-FF_by_D-FF}, \ref{fig:shift_register}に示す.
-    ただし, D-FFの入力, クロック入力をそれぞれ($D$, CLK), 出力を($Q$, $\overline{Q}$)とする.
+    ただし, 擬似D-FFの入力, クロック入力をそれぞれ$D$, CLK, 出力を($Q$, $\overline{Q}$)とする.
 
     \begin{figure}[h]
       \centering
@@ -288,13 +288,21 @@
     \end{eqnarray*}
     となる.
 
-    この式をもとに作成した回路を図\ref{fig:counter}に示す.
+    この式をもとに作成した回路とタイミングチャートを図\ref{fig:counter}, \ref{fig:counter_timing}に示す.
     \begin{figure}[h]
       \centering
       \includegraphics[width=13cm]{images/counter.pdf}
       \caption{8進カウンタの論理回路}
       \label{fig:counter}
     \end{figure}
+
+    \begin{figure}
+      \centering
+      \includegraphics[width=8cm]{images/counter_timing.pdf}
+      \caption{8進カウンタのタイミングチャート}
+      \label{fig:counter_timing}
+    \end{figure}
+
 \section{調査課題「SRAMについて」}
   SRAM(Static Random Access Memory)とは, コンピュータ内でCPUと主記憶の間にあるキャッシュメモリに使われている.
   RAMとは, 読み書き可能だがコンピュータの電源を切るとデータが消えてしまうメモリであるが,
@@ -329,7 +337,7 @@
 \section{感想$\cdot$意見}
   今回の実験では, 動作をもとに回路を設計することを中心に行った.
   今までの授業などでは, 真理値表とカルノー図などから論理的に式を起こして回路を実装していたが,
-  今回の実験を通して直感的に回路を組むことを覚えた.
+  今回の回路の設計を通して直感的に回路を組むことを覚えた.
 
   今回学んだ内容を次回以降の実験や, 今後の授業に生かしていきたい.
 \section*{参考文献}

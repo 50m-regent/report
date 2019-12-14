@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2019.8.3)  15 DEC 2019 01:36
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2019.8.3)  15 DEC 2019 01:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -459,24 +459,23 @@ File: images/counter.pdf Graphic file (type pdf)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[5]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+File: images/counter_timing.pdf Graphic file (type pdf)
+<images/counter_timing.pdf>
+[5] [6]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 329.
-[6] [7] (./report.aux)
+(Font)              <14.4> on input line 337.
+ [7] (./report.aux)
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 9163 strings out of 493216
- 158754 string characters out of 6143983
- 591952 words of memory out of 5000000
- 13085 multiletter control sequences out of 15000+600000
+ 9167 strings out of 493216
+ 158855 string characters out of 6143983
+ 591961 words of memory out of 5000000
+ 13088 multiletter control sequences out of 15000+600000
  15921 words of font info for 69 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  35i,12n,32p,803b,745s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.dvi (8 pages, 22940 bytes).
+Output written on report.dvi (8 pages, 23184 bytes).
