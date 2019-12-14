@@ -81,23 +81,25 @@
 
     次に, この表からカルノー図を作成して各出力の式を導出する.
     カルノー図を以下に示す.
-    \begin{figure}[h]
-      \begin{minipage}{0.33\hsize}
-        \centering
-        \includegraphics[width=5cm]{images/Z2Karnaugh.pdf}
-        \caption{$Z_2$についてのカルノー図}
-      \end{minipage}
-      \begin{minipage}{0.33\hsize}
-        \centering
-        \includegraphics[width=5cm]{images/Z1karnaugh.pdf}
-        \caption{$Z_1$についてのカルノー図}
-      \end{minipage}
-      \begin{minipage}{0.33\hsize}
-        \centering
-        \includegraphics[width=5cm]{images/Ekarnaugh.pdf}
-        \caption{$E$についてのカルノー図}
-      \end{minipage}
-    \end{figure}
+    \begin{center}
+      \begin{figure}[h]
+        \begin{minipage}{0.33\hsize}
+          \centering
+          \includegraphics[width=5cm]{images/Z2Karnaugh.pdf}
+          \caption{$Z_2$についてのカルノー図}
+        \end{minipage}
+        \begin{minipage}{0.33\hsize}
+          \centering
+          \includegraphics[width=5cm]{images/Z1karnaugh.pdf}
+          \caption{$Z_1$についてのカルノー図}
+        \end{minipage}
+        \begin{minipage}{0.33\hsize}
+          \centering
+          \includegraphics[width=5cm]{images/Ekarnaugh.pdf}
+          \caption{$E$についてのカルノー図}
+        \end{minipage}
+      \end{figure}
+    \end{center}
 
     また, これらの式は以下のように真理値表から直接求めることもできる.
     \begin{eqnarray*}
@@ -120,11 +122,10 @@
     \end{figure}
   \subsection{加算器} \label{subsec:FA}
     論理回路によって桁上がり入力を考慮しない1ビットの加算を行う回路を半加算器(HA: Half Adder)という.
-
     HAは, 入力$A$, $B$に対してその和$(C^+ \ S)_2$を出力する($C^+$は桁上がり).
-    HAは下位ビットからの桁上がりを考慮していないので複数桁の演算をできない.
 
-    そのため, HAに桁上がり入力$C$を追加することを考える.
+    HAは下位ビットからの桁上がりを考慮していないので複数桁の演算をできないため,
+    桁上がり入力$C$を追加することを考える.
     この回路を全加算器(FA: Full Adder)という.
 
     FAは, $A + B + C$を演算するので, HAを2つ使用して以下のように構成できる.
@@ -137,16 +138,17 @@
     \end{enumerate}
     このように構成した回路とFAのタイミングチャートをを図\ref{fig:full_adder},
     \ref{fig:full_adder_timing}に示す.
+
     \begin{figure}[h]
-      \begin{minipage}{0.45\hsize}
+      \begin{minipage}{0.495\hsize}
         \centering
-        \includegraphics[width=5cm]{images/haisen.pdf}
+        \includegraphics[width=7cm]{images/fa.pdf}
         \caption{FAの論理回路}
         \label{fig:full_adder}
       \end{minipage}
-      \begin{minipage}{0.45\hsize}
+      \begin{minipage}{0.495\hsize}
         \centering
-        \includegraphics[width=5cm]{images/haisen.pdf}
+        \includegraphics[width=7cm]{images/fa_timing.pdf}
         \caption{FAのタイミングチャート}
         \label{fig:full_adder_timing}
       \end{minipage}
@@ -159,7 +161,7 @@
     図\ref{fig:2bit_adder}に作成した回路示す.
     \begin{figure}[h]
       \centering
-      \includegraphics[width=5cm]{images/haisen.pdf}
+      \includegraphics[width=10cm]{images/2bit.pdf}
       \caption{2ビット加算器の論理回路}
       \label{fig:2bit_adder}
     \end{figure}
@@ -172,20 +174,20 @@
 
   順序回路を構成する際に, 1ビットの記憶素子としてフリップフロップ(FF: Flip Flop)を使用する.
   FFはその特徴によって様々な種類が存在するが, 本節ではJK-FFとD-FFに触れる.
-  \subsection{JK-FFとD-FF}
+  \subsection{JK-FFとD-FF} \label{subsec:jk_and_d}
     JK-FF, D-FFの入力をそれぞれ$(J, K), D$, 両FFのクロック入力,
     内部状態, 次の内部状態をそれぞれCLK, $Q$, $Q^+$とする.
     両FFのタイミングチャート, 状態遷移表を以下に示す.
     状態遷移表の$\times$はドントケア入力を表す.
     \begin{figure}[h]
-      \begin{minipage}{0.49\hsize}
+      \begin{minipage}{0.495\hsize}
         \centering
-        \includegraphics[width=5cm]{images/haisen.pdf}
+        \includegraphics[width=7cm]{images/jk_timing.pdf}
         \caption{JK-FFのタイミングチャート}
       \end{minipage}
-      \begin{minipage}{0.49\hsize}
+      \begin{minipage}{0.495\hsize}
         \centering
-        \includegraphics[width=5cm]{images/haisen.pdf}
+        \includegraphics[width=5cm]{images/d_timing.pdf}
         \caption{D-FFのタイミングチャート}
       \end{minipage}
     \end{figure}
@@ -232,27 +234,28 @@
     このシフトレジスタの内部状態を$Q_3$, $Q_2$, $Q_1$とする.
     $Q_3$が最上位ビットである.
     また, 直近の入力$A$が$1 \rightarrow 1 \rightarrow 0$だった時に出力$X$が1になるようにする.
-    これは, ($Q_3, Q_2, Q_1$)が(1, 1, 0)のときにXに1を出力すればいい.
+    これは, ($Q_3, Q_2, Q_1$)が(1, 1, 0)のときに$X$に1を出力すればいい.
 
     作成した回路を図\ref{fig:JK-FF_by_D-FF}, \ref{fig:shift_register}に示す.
+    ただし, D-FFの入力, クロック入力をそれぞれ($D$, CLK), 出力を($Q$, $\overline{Q}$)とする.
 
     \begin{figure}[h]
       \centering
-      \includegraphics[width=5cm]{images/haisen.pdf}
+      \includegraphics[width=8cm]{images/d_w_jk.pdf}
       \caption{JK-FFによるD-FF}
       \label{fig:JK-FF_by_D-FF}
     \end{figure}
     \begin{figure}[h]
       \centering
-      \includegraphics[width=10cm]{images/haisen.pdf}
+      \includegraphics[width=15cm]{images/shift.pdf}
       \caption{3ビットシフトレジスタの論理回路}
       \label{fig:shift_register}
     \end{figure}
   \subsection{カウンタの作成}
     カウンタはクロック入力の回数を数える順序回路である.
-    今回は3ビットの8進カウンタを考える.
+    今回は3ビットの8進カウンタを設計する.
     始めに, 現在の内部状態を$(Q_3 \ Q_2 \ Q_1)_2$, 次の内部状態を$(Q_3^+ \ Q_2^+ \ Q_1^+)_2$として
-    状態遷移表を考える.
+    状態遷移表を表\ref{tab:counter}に示す.
     \begin{table}[h]
       \caption{8進カウンタの状態遷移表}
       \label{tab:counter}
@@ -271,9 +274,11 @@
       \end{tabular}
     \end{table}
 
-    表\ref{tab:counter}に示したこの表から$Q_3^+$, $Q_2^+$, $Q_1^+$の論理式を導く.
+    次に, この表から$Q_3^+$, $Q_2^+$, $Q_1^+$の論理式を導く.
     各フリップフロップは, 自身より下位のビットが全て1になった時に反転すれば良いので,
-    下位ビット全ての論理積を取り, JK-FFの両方の入力端子に入力するように設計する.
+    下位ビット全ての論理積を取り,
+    JK-FFの両方の入力端子に入力\footnote{\ref{subsec:jk_and_d}より,
+    $J$, $K$両方に1を入力をすると反転する}するように設計する.
     $Q_3$, $Q_2$, $Q_1$それぞれの入力を($J_3, K_3$), ($J_2, K_2$), ($J_1, K_1$)として
     求めた論理式をまとめると,
     \begin{eqnarray*}
@@ -286,7 +291,7 @@
     この式をもとに作成した回路を図\ref{fig:counter}に示す.
     \begin{figure}[h]
       \centering
-      \includegraphics[width=10cm]{images/haisen.pdf}
+      \includegraphics[width=13cm]{images/counter.pdf}
       \caption{8進カウンタの論理回路}
       \label{fig:counter}
     \end{figure}
