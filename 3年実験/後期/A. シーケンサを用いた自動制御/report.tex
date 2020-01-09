@@ -1,0 +1,70 @@
+\documentclass[titlepage]{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{listings}
+\usepackage{h31ec-exp}
+\usepackage{biblatex}
+\lstset{
+  basicstyle={\ttfamily},
+  identifierstyle={\small},
+  commentstyle={\smallitshape},
+  keywordstyle={\small\bfseries},
+  ndkeywordstyle={\small},
+  stringstyle={\small\ttfamily},
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,
+  xrightmargin=0zw,
+  xleftmargin=3zw,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1zw,
+  lineskip=-0.5ex
+}
+\renewcommand{\lstlistingname}{ソースコード}
+\makeatletter
+\newcommand{\figcaption}[1]{\def\@captype{figure}\caption{#1}}
+\newcommand{\tblcaption}[1]{\def\@captype{table}\caption{#1}}
+\makeatother
+\title{シーケンサによる自動制御}
+\grade{3年32番}
+\author{平田 蓮}
+\team{第4班}
+\date{2019年12月17日}
+\expdate{2019年12月23日, 1月6日, 1月20日}
+\coauthor{}
+
+\begin{document}
+\maketitle
+\section{目的}
+  プログラマブルコントローラ(シーケンサ)による自動制御法(リレーラダー方式, ステップラダー方式)を学び, 課題実験のシステムの設計, 確認実習を行うことで理解を深める.
+\section{クイズの解答表示システムの設計}
+  次節に述べる仕様を満たす回路を作成する.
+  \subsection{制御仕様}
+    \begin{itemize}
+      \item 司会者の出題するクイズに対して, もっとも早くボタンを押したデスクのランプを点灯させる.
+        点灯後は司会者が押しボタン$PB_4$を押すまで点灯している.
+        ただし, 子供チームの押しボタン$PB_{11}$と$PB_{12}$はどちらも押してもランプ$L_1$を点灯させることができるよう,
+        有利になっている. また, 博士チームの押しボタン$PB_{31}$と$PB_{32}$は両方とも押さなければランプ$L_3$は
+        点灯しないよう, 不利になっている.
+      \item 司会者がスイッチSWをONにしたときに, 10秒以内に回答者のランプがついた場合, 電磁石SOLが働いてくす玉が
+        割れるようなラッキーチャンスとなっている.
+        割れたくす玉はラッキーチャンスが終わった後もその状態を保持し, 押しボタン$PB_4$を押すともとに戻る.
+    \end{itemize}
+  表\ref{tab:taiou}に上で示したボタン等とシーケンサのゲート番号との対応表を示す.
+  \begin{table}[h]
+    \caption{入出力接続対応表}
+    \label{tab:taiou}
+    \centering
+    \begin{tabular}{c|c}
+      記号 & シーケンサ \\ \hline \hline
+    \end{tabular}
+  \end{table}
+\section{押しボタン式横断歩道の設計}
+\section{課題}
+\section{感想}
+\section*{参考文献}
+  \begin{enumerate}
+    \item 令和元年度電子制御工学実験 $\cdot$ 3年後期テキスト
+  \end{enumerate}
+\end{document}
