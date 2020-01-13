@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2019.8.3)  13 JAN 2020 13:09
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2019.8.3)  13 JAN 2020 13:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -432,18 +432,21 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[2] [3] (./report.aux)
+[2] [3]
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 6.72699pt on input line 181.
+ [4] (./report.aux)
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 9106 strings out of 493216
- 157703 string characters out of 6143983
- 608877 words of memory out of 5000000
- 13046 multiletter control sequences out of 15000+600000
- 14315 words of font info for 63 fonts, out of 8000000 for 9000
+ 9107 strings out of 493216
+ 157717 string characters out of 6143983
+ 607885 words of memory out of 5000000
+ 13047 multiletter control sequences out of 15000+600000
+ 14504 words of font info for 64 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  35i,10n,32p,803b,745s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.dvi (4 pages, 17356 bytes).
+Output written on report.dvi (5 pages, 19452 bytes).
