@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2019.8.3)  9 JAN 2020 11:34
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2019.8.3)  13 JAN 2020 13:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -415,21 +415,35 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 45.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 56.
+(Font)              scaled to size 8.64899pt on input line 58.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 56.
- [1] (./report.aux)
+(Font)              scaled to size 8.64899pt on input line 58.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[1]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2] [3] (./report.aux)
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 9103 strings out of 493216
- 157661 string characters out of 6143983
- 586853 words of memory out of 5000000
- 13043 multiletter control sequences out of 15000+600000
+ 9106 strings out of 493216
+ 157703 string characters out of 6143983
+ 608877 words of memory out of 5000000
+ 13046 multiletter control sequences out of 15000+600000
  14315 words of font info for 63 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  35i,10n,32p,803b,745s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.dvi (2 pages, 4748 bytes).
+Output written on report.dvi (4 pages, 17356 bytes).
