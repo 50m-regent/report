@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2019.8.3)  15 JAN 2020 01:16
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.1.19)  20 JAN 2020 12:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,7 +6,7 @@ entering extended mode
 (./report.tex
 pLaTeX2e <2019-04-06> (based on LaTeX2e <2018-12-01>)
 (/usr/local/texlive/2019/texmf-dist/tex/platex/jsclasses/jsarticle.cls
-Document Class: jsarticle 2019/07/25 jsclasses (okumura, texjporg)
+Document Class: jsarticle 2019/04/06 jsclasses (okumura, texjporg)
 \jsc@mpt=\dimen118
 \jsc@mmm=\dimen119
 \jsc@smallskipamount=\skip41
@@ -42,7 +42,7 @@ LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 \@lnumwidth=\dimen122
 \bibindent=\dimen123
 (/usr/local/texlive/2019/texmf-dist/tex/platex/jsclasses/jslogo.sty
-Package: jslogo 2019/07/25 okumura, texjporg
+Package: jslogo 2017/02/24 okumura, texjporg
 LaTeX Info: Redefining \TeX on input line 94.
 LaTeX Info: Redefining \LaTeX on input line 147.
 LaTeX Info: Redefining \LaTeXe on input line 200.
@@ -100,7 +100,7 @@ Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
 )) (/usr/local/texlive/2019/texmf-dist/tex/latex/biblatex/biblatex.sty
 Package: biblatex 2018/11/02 v3.12 programmable bibliographies (PK/MW)
  (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2019/07/25 v0.30 Utility functions of pdfTeX for LuaTeX (HO)
+Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO)
  (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 ) (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/ifluatex.sty
@@ -361,8 +361,9 @@ Package biblatex Info: Automatic encoding selection.
 \openout3 = `report.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'report.bbl' found.
- (./report.bbl)
+Package biblatex Info: ... file 'report.bbl' not found.
+
+No file report.bbl.
 Package biblatex Info: Reference section=0 on input line 37.
 Package biblatex Info: Reference segment=0 on input line 37.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
@@ -405,7 +406,7 @@ LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 6.72699pt on input line 38.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 4.805pt on input line 38.
- [1
+[1
 
 ]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 45.
@@ -428,23 +429,27 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [1] [2]
+File: images/timing.pdf Graphic file (type pdf)
+<images/timing.pdf>
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[3]
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 6.72699pt on input line 178.
-[3] [4] (./report.aux)
+ [4] [5] (./report.aux)
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 9114 strings out of 493216
- 157829 string characters out of 6143983
- 600885 words of memory out of 5000000
- 13049 multiletter control sequences out of 15000+600000
+ 9116 strings out of 493223
+ 157867 string characters out of 6144415
+ 599853 words of memory out of 5000000
+ 13051 multiletter control sequences out of 15000+600000
  14504 words of font info for 64 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  35i,10n,32p,803b,745s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.dvi (5 pages, 19300 bytes).
+Output written on report.dvi (6 pages, 19484 bytes).
