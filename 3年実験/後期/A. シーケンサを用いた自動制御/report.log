@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.1.19)  20 JAN 2020 14:47
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.1.19)  20 JAN 2020 23:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -456,10 +456,10 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 Here is how much of TeX's memory you used:
  9122 strings out of 493223
  157981 string characters out of 6144415
- 599853 words of memory out of 5000000
+ 599857 words of memory out of 5000000
  13055 multiletter control sequences out of 15000+600000
  14504 words of font info for 64 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  35i,10n,32p,803b,745s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.dvi (7 pages, 19768 bytes).
+Output written on report.dvi (7 pages, 19776 bytes).
