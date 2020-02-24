@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.1.19)  16 FEB 2020 03:07
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.1.19)  24 FEB 2020 19:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -101,35 +101,34 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 9.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 5.76599pt on input line 9.
+LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
+(Font)              scaled to size 13.83836pt on input line 10.
+LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
+(Font)              scaled to size 13.83836pt on input line 10.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 13.83836pt on input line 10.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 13.83836pt on input line 10.
+ [1
+
+]
 File: heli.jpg Graphic file (type bmp)
 <heli.jpg>
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 66.
+(Font)              scaled to size 8.64899pt on input line 72.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 66.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[1
-
-]
-LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 81.
-LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 81.
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 81.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 13.83836pt on input line 81.
- [2] (./report.aux) ) 
+(Font)              scaled to size 8.64899pt on input line 72.
+ [2]
+File: graph.pdf Graphic file (type pdf)
+<graph.pdf>
+ [3] [4] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 842 strings out of 493223
- 10007 string characters out of 6144415
+ 851 strings out of 493223
+ 10123 string characters out of 6144415
  78406 words of memory out of 5000000
- 4879 multiletter control sequences out of 15000+600000
+ 4885 multiletter control sequences out of 15000+600000
  13509 words of font info for 59 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  25i,6n,21p,183b,297s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.dvi (2 pages, 7760 bytes).
+Output written on report.dvi (4 pages, 12064 bytes).
