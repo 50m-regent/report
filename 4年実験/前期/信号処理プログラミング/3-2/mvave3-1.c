@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
         }
 
         vout = ROUND((__amp + _amp + amp) / 3.0);
-        printf("%4d, %4d\n", tm, (int)vout);
+        printf("%4d, %4d\n", tm - 1, (int)vout);
 
         __amp = _amp;
         _amp  = amp;
