@@ -5,11 +5,12 @@
 #include <math.h>
 
 #define BUFSIZE 80
+#define DATANUM 100
 #define ROUND(x) ((x > 0) ? (x + 0.5) : (x - 0.5))
 #define INF 1e9
 
 int main(int argc, char **argv) {
-    int tm, amp;
+    int tm[DATANUM], amp[DATANUM];
     char buf[BUFSIZE];
     double min_val = INF, max_val = -INF, sum = 0, mean, sum_squ = 0, std_dev, data_num = 0, max_amp, rms;
     FILE *fp;
@@ -24,22 +25,22 @@ int main(int argc, char **argv) {
 
     srand((unsigned)time(NULL));
 
-    while (fgets(buf, sizeof(buf), fp) != NULL) {
+    for (int n = 0; n <= DATANUM; n++) {
+        if (fgets(buf, sizeof(buf), fp) == NULL) break;
         if (buf[0] == '#') continue;
-
-        data_num += 1;
-        
-        tm  = atoi(strtok(buf, ","));
-        amp = atoi(strtok(NULL, "\r\n\0"));
-
-        if (min_val > amp) min_val = amp;
-        if (max_val < amp) max_val = amp;
-
-        sum += amp;
-
-        sum_squ += amp * amp;
+        tm[n]  = atoi(strtok(buf, ","));
+        amp[n] = atoi(strtok(NULL, "\r\n\0"));
     }
     fclose(fp);
+
+    for (int n = 0; n <= DATANUM; n++) {
+        if (min_val > amp[n]) min_val = amp[n];
+        if (max_val < amp[n]) max_val = amp[n];
+
+        sum += amp[n];
+
+        sum_squ += amp[n] * amp[n];
+    }
 
     mean = sum / data_num;
     std_dev = sqrt(sum_squ / data_num -  mean * mean);
