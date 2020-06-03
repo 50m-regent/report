@@ -24,11 +24,12 @@ int main(int argc, char **argv) {
     nmax = atoi(argv[2]);
     srand((unsigned)time(NULL));
     
-    for (int n = 0; n <= DATANUM; n++) {
+    for (int n = 0; n <= DATANUM; ) {
         if (fgets(buf, sizeof(buf), fp) == NULL) break;
         if (buf[0] == '#') continue;
         tm[n]  = atoi(strtok(buf, ","));
         amp[n] = atoi(strtok(NULL, "\r\n\0"));
+        n++;
     }
     fclose(fp);
 
