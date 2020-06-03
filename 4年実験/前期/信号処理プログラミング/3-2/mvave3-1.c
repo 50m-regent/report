@@ -7,7 +7,7 @@
 #define ROUND(x) ((x > 0) ? (x + 0.5) : (x - 0.5))
 
 int main(int argc, char **argv) {
-    int tm, __amp = 0, _amp = 0, amp;
+    int tm, __amp = 0, _amp = 0, amp, _tm;
     char buf[BUFSIZE];
     double vout;
     FILE *fp;
@@ -34,14 +34,16 @@ int main(int argc, char **argv) {
         }
         if (__amp == 0) {
             __amp = _amp;
+            _tm = tm;
             continue;
         }
 
         vout = ROUND((__amp + _amp + amp) / 3.0);
-        printf("%4d, %4d\n", tm - 1, (int)vout);
+        printf("%4d, %4d\n", _tm, (int)vout);
 
         __amp = _amp;
         _amp  = amp;
+        _tm   = tm;
     }
     fclose(fp);
 
