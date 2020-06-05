@@ -1,5 +1,5 @@
 \documentclass[titlepage]{jsarticle}
-\usepackage[dvips]{graphicx}
+\usepackage[dvipdfmx]{graphicx}
 \usepackage{listings}
 \usepackage{cprotect}
 \usepackage{h31ec-exp}
@@ -31,7 +31,7 @@
 \author{平田 蓮}
 \team{}
 \date{2020年6月18日}
-\expdate{2020年5月21日, 5月28日, 6月4日, 6月11}
+\expdate{2020年5月21日, 5月28日, 6月4日, 6月11日}
 \coauthor{
 }
 
@@ -109,8 +109,12 @@ double saw(double r) {
         まず, 完成させたリスト2のコード, sin10af1.cを出力部分を抜粋して掲載する.
 
         \begin{lstlisting}[caption=sin10af1.c, label=src:sin10af1]
+int t;
+double amp, frq, rad, vin;
+unsigned char vout;
+
 for (t = 0; t <= TEND; t += DT) {
-    r = 2 * PI * frq * t / 1000.0;
+    rad = 2 * PI * frq * t / 1000.0;
     vin = amp * sin(r) + BIAS;
     if (vin > 255) {
         vout = 255;
@@ -143,25 +147,168 @@ for (t = 0; t <= TEND; t += DT) {
         今回は振幅が150なので, char型に収まらない数値をサンプリングすることになる.
         そこで, 演習2-1で実装したクリッピングが働く.
 
-        図\ref{fig:sin150f4_1}, \ref{fig:sin150f_2}にクリッピングを施した前と後の波形を示す.
+        図\ref{fig:sin150f4_1}, \ref{fig:sin150f4_2}にクリッピングを施した前と後の波形を示す.
         この図からクリッピングの効果がみて取れる.
         クリッピングをしていない波形では, オーバーフローした値が波形の逆側に飛んでしまい,
         波形が崩れているが, クリッピングを施した方ではオーバーフローした値が切り捨てられ, 波形が維持できている.
         
         \begin{figure}[ht]
-            \begin{minipage}{0.45\hsize}
-                \centering
-                \includegraphics[width=9cm]{images/sin150f4_1.eps}
-                \caption{振幅150, 周波数4Hzの正弦波(クリッピングなし)}
-                \label{fig:sin150f4_1}
-            \end{minipage}
-            \begin{minipage}{0.45\hsize}
-                \centering
-                \includegraphics[width=9cm]{images/sin150f4_2.eps}
-                \caption{振幅150, 周波数4Hzの正弦波(クリッピングあり)}
-                \label{fig:sin150f4_2}
-            \end{minipage}
+            \centering
+            \includegraphics[width=12cm]{images/sin150f4_1.eps}
+            \caption{振幅150, 周波数4Hzの正弦波(クリッピングなし)}
+            \label{fig:sin150f4_1}
         \end{figure}
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=12cm]{images/sin150f4_2.eps}
+            \caption{振幅150, 周波数4Hzの正弦波(クリッピングあり)}
+            \label{fig:sin150f4_2}
+        \end{figure}
+
+    \paragraph{演習2-5} サンプリング定理を満たさないような高い周波数の正弦波をPCMによりディジタルデータ化すると,
+    周波数や位相が全く異なる波形に見えることがある. この現象を実際に観察せよ.
+
+        今回はサンプリング周波数が100Hzであるので, 50Hzを超える周波数の波はうまくサンプリングをすることができない.
+
+        図\ref{fig:sin98}に98Hzの正弦波をサンプリングしたものを示す.
+        実際には98Hzであるはずが, 2Hzの波形のように見える.
+        
+        参考に, 上の波形にサンプリング周波数を上げて計測した本来の98Hzの波形を重ねたものを図\ref{fig:sin98_2}に示す.
+
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=12cm]{images/sin98.eps}
+            \caption{周波数98Hzの正弦波(サンプリング周波数:100Hz)}
+            \label{fig:sin98}
+        \end{figure}
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=12cm]{images/sin98_2.eps}
+            \caption{周波数98Hzの正弦波(サンプリング周波数:100Hz, 1000Hz)}
+            \label{fig:sin98_2}
+        \end{figure}
+
+\section{信号処理プログラムの分類}
+    信号処理プログラムは, オンライン型をオフライン型の二種類に分類することができる.
+    データを一つ取り込むたびに逐次処理を行うオンライン型に対して,
+    オフライン型はデータを一定数取り込んだの後に一括処理を行う.
+
+\section{雑音除去}
+    信号に重畳された雑音を取り除く処理は, 極めて基本的な信号処理である.
+    演習3では雑音の処理に関する演習を行う.
+
+    \paragraph{演習3-1} リスト3を参考に, コマンドライン引数で元信号のCSVファイルと,
+    白色雑音の最大振幅を与えたとき, 白色雑音を加えるオフライン型のプログラムadd-wn2.cを作成せよ.
+
+        作成したプログラムの信号処理部分を抜粋してソースコード\ref{src:wn}に示す.
+
+        \begin{lstlisting}[caption=add-wn2.c, label=src:wn]
+double tm[DATANUM];
+int amp[DATANUM], nmax;
+double err;
+
+for (int n = 0; n <= DATANUM; n++) {
+    err = nmax * (2.0 * rand() / RAND_MAX - 1.0);
+    amp[n] += ROUND(err);
+
+    printf("%4d, %4d\n", tm[n], amp[n]);
+}
+        \end{lstlisting}
+
+        通常のsin波に最大振幅10の白色雑音を加えたものを図\ref{fig:sin_wn}に示す.
+        図から, 適当な雑音が加えられていることがわかる.
+
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=12cm]{images/sin_wn.eps}
+            \caption{最大振幅10の正弦波を加えたsin波}
+            \label{fig:sin_wn}
+        \end{figure}
+
+    \paragraph{演習3-2} 3点単純移動平均プログラムmvave3-?.cを作成せよ(?はオンライン型は1,
+    オフライン型は2).
+
+        図\ref{src:mvave_1}, \ref{src:mvave_2}にそれぞれオンライン型とオフライン型のソースコードを抜粋して示す.
+
+        \begin{lstlisting}[caption=mvave3-1.c, label=src:mvave_1]
+int tm, __amp = 0, _amp = 0, amp, _tm;
+
+while (fgets(buf, sizeof(buf), fp) != NULL) {
+    if (buf[0] == '#') continue;
+    
+    tm  = atoi(strtok(buf, ","));
+    amp = atoi(strtok(NULL, "\r\n\0"));
+
+    if (_amp == 0) {
+        _amp = amp;
+        continue;
+    }
+    if (__amp == 0) {
+        __amp = _amp;
+        _tm = tm;
+        continue;
+    }
+
+    vout = ROUND((__amp + _amp + amp) / 3.0);
+    printf("%4d, %4d\n", _tm, (int)vout);
+
+    __amp = _amp;
+    _amp  = amp;
+    _tm   = tm;
+}
+        \end{lstlisting}
+        \begin{lstlisting}[caption=mvave3-2.c, label=src:mvave_2]
+for (int n = 1; n < DATANUM; n++) {
+    vout = ROUND((amp[n - 1] + amp[n] + amp[n + 1]) / 3.0);
+
+    printf("%4d, %4d\n", tm[n], (int)vout);
+}
+        \end{lstlisting}
+
+        オンライン型のソースコードでは, 3点平均を計算するために2個前までのデータ,
+        また, 出力用に一個前のtを毎回更新している.
+
+        これらのプログラムで図\ref{fig:sin_wn}から雑音を取り除いた波形を図\ref{fig:mvave}に示す.
+
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=12cm]{images/mvave.eps}
+            \caption{雑音を取り除いた波形}
+            \label{fig:mvave}
+        \end{figure}
+
+        3点平均を取る過程で始点と終点のデータが一つずつ欠けてしまっているが,
+        波形は概ね元のものに近づいている.
+
+\section{時系列データの解析}
+    周期的なアナログ信号$x(t)$に由来する時系列データ$x_i;i=1,2,\dots,N$が与えられたとき,
+    元の信号の基本周波数, 振幅, 位相などを求めることを信号解析を呼ぶ.
+    本実験では信号の\textbf{最小値}, \textbf{最大値}, \textbf{平均値}, \textbf{標準偏差}, \textbf{最大振幅}, \textbf{実効値}を求める.
+
+    \paragraph{平均値と標準偏差} 時系列データ$x_i;i=1,2,\dots,N$の平均値$\bar{x}$は次式で定義される:
+        
+        \begin{equation}
+            \bar{x} = \frac{1}{N} \sum_{i=1}^{N} x_i
+        \end{equation}
+
+        標準偏差$\sigma$は分散$\sigma^2$の正の平方根として定義される:
+        
+        \begin{equation} \label{equ:dev1}
+            \sigma^2 = \frac{1}{N} \sum_{i=1}^{N} (x_i - \bar{x})^2
+        \end{equation}
+
+        この式では平均値が既知である必要があり, オンライン処理に適用することができない.
+        オンライン処理で標準偏差や分散を計算したい場合は, 変形した次式を用いる:
+
+        \begin{equation} \label{equ:dev2}
+            \sigma^2 = \frac{1}{N} \sum_{i=1}^{N} x_i^2 - \bar{x}^2
+        \end{equation}
+
+    \paragraph{演習4-1} 式(\ref{equ:dev1})を式(\ref{equ:dev2})に変形する過程を示せ.
+        
+        \begin{equation}
+            
+        \end{equation}
 
 \begin{thebibliography}{99}
     \bibitem{Electro} Electro-ワンチップマイコン http://laboratory.sub.jp/ele/13.html/

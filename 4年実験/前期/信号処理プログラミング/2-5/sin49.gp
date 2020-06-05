@@ -4,5 +4,5 @@ set key off
 set terminal postscript eps
 set output 'sin49.eps'
 set datafile separator ","
-plot [][] 'sin1f49.csv' w l ls 5
+plot [][] 'sin49.csv' w l ls 5
 reset

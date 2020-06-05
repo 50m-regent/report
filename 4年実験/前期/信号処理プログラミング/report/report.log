@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.1.19)  4 JUN 2020 13:58
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.1.19)  6 JUN 2020 08:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -60,9 +60,9 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: dvips.def on input line 99.
- (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-def/dvips.def
-File: dvips.def 2017/06/20 v3.1d Graphics/color driver for dvips
+Package graphics Info: Driver file: dvipdfmx.def on input line 99.
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+File: dvipdfmx.def 2017/06/24 v5.0g Graphics/color driver for dvipdfmx
 ))
 \Gin@req@height=\dimen124
 \Gin@req@width=\dimen125
@@ -190,44 +190,53 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 8.64899pt on input line 55.
 File: images/rad.eps Graphic file (type eps)
- <images/rad.eps>
+<images/rad.eps>
 \openout3 = `report-1.cpt'.
 
  (./report-1.cpt) (./report-1.cpt)
 File: images/saw.eps Graphic file (type eps)
- <images/saw.eps>
+<images/saw.eps>
 \openout3 = `report-2.cpt'.
 
  (./report-2.cpt) (./report-2.cpt) [1] [2]
 File: images/sin100f4.eps Graphic file (type eps)
- <images/sin100f4.eps> [3]
-
-LaTeX Warning: Reference `fig:sin150f_2' on page 4 undefined on input line 146.
-
+<images/sin100f4.eps>
+ [3]
 File: images/sin150f4_1.eps Graphic file (type eps)
 <images/sin150f4_1.eps>
-Overfull \hbox (38.4127pt too wide) in paragraph at lines 154--155
- [][] 
- []
-
 File: images/sin150f4_2.eps Graphic file (type eps)
 <images/sin150f4_2.eps>
-Overfull \hbox (38.4127pt too wide) in paragraph at lines 160--161
- [][] 
- []
+File: images/sin98.eps Graphic file (type eps)
+<images/sin98.eps>
+File: images/sin98_2.eps Graphic file (type eps)
+<images/sin98_2.eps>
+ [4] [5]
+File: images/sin_wn.eps Graphic file (type eps)
+<images/sin_wn.eps>
+ [6] [7]
+File: images/mvave.eps Graphic file (type eps)
+<images/mvave.eps>
+ [8]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.310 
+      
+? 
+! Emergency stop.
+<inserted text> 
+                $
+l.310 
+      
+End of file on the terminal!
 
-[4] (./report.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+ 
 Here is how much of TeX's memory you used:
- 2686 strings out of 493223
- 34459 string characters out of 6144415
- 134247 words of memory out of 5000000
- 6677 multiletter control sequences out of 15000+600000
+ 2725 strings out of 493223
+ 35031 string characters out of 6144415
+ 161948 words of memory out of 5000000
+ 6714 multiletter control sequences out of 15000+600000
  15540 words of font info for 70 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 26i,10n,32p,204b,1160s stack positions out of 5000i,500n,10000p,200000b,80000s
-
-Output written on report.dvi (5 pages, 10592 bytes).
+ 26i,10n,32p,204b,1706s stack positions out of 5000i,500n,10000p,200000b,80000s
+Output written on report.dvi (9 pages, 19868 bytes).
