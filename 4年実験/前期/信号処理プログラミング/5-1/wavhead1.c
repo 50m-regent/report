@@ -18,15 +18,15 @@ uLong read_head(FILE *fp, uShort *ch, uShort *qbit) {
 	printf("# RIFF size: %1lu\n", riffsize);
 
 	fread(str, sizeof(char), H_LEN, fp);
-	// if(memcmp("WAVE", str, H_LEN) != 0) return 0;
-	// fread(str, sizeof(char), H_LEN, fp);
+	if(memcmp("WAVE", str, H_LEN) != 0) return 0;
+	fread(str, sizeof(char), H_LEN, fp);
 	if(memcmp("fmt ", str, H_LEN) != 0) return 0;
 	fread(&fmtsize, sizeof(uLong), 1, fp);
 	printf("# fmt size: %1lu\n", fmtsize);
 	fread(&fid, sizeof(uShort), 1, fp);
 	printf("# fmt ID: %d\n", fid);
 	
-	// if(fid != ID_LPCM) return 0;
+	if(fid != ID_LPCM) return 0;
 	fread(ch, sizeof(uShort), 1, fp);
 	printf("# CH: %d\n", *ch);
 	fread(&smprate, sizeof(uLong), 1, fp);
@@ -38,8 +38,8 @@ uLong read_head(FILE *fp, uShort *ch, uShort *qbit) {
 	fread(qbit, sizeof(uShort), 1, fp);
 	printf("# Q bit: %d\n", *qbit);
 
-	// fread(str, sizeof(char), H_LEN, fp);
-	// if(memcmp("data", str, H_LEN) != 0) return 0;
+	fread(str, sizeof(char), H_LEN, fp);
+	if(memcmp("data", str, H_LEN) != 0) return 0;
 	fread(&datasize, sizeof(uLong), 1, fp);
 	printf("# datasize: %1lu\n", datasize);
 	return smprate;

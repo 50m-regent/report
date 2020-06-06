@@ -147,22 +147,16 @@ for (t = 0; t <= TEND; t += DT) {
         今回は振幅が150なので, char型に収まらない数値をサンプリングすることになる.
         そこで, 演習2-1で実装したクリッピングが働く.
 
-        図\ref{fig:sin150f4_1}, \ref{fig:sin150f4_2}にクリッピングを施した前と後の波形を示す.
+        図\ref{fig:sin150f4}にクリッピングを施した前と後の波形を示す.
         この図からクリッピングの効果がみて取れる.
-        クリッピングをしていない波形では, オーバーフローした値が波形の逆側に飛んでしまい,
-        波形が崩れているが, クリッピングを施した方ではオーバーフローした値が切り捨てられ, 波形が維持できている.
+        点線のクリッピングをしていない波形では, オーバーフローした値が波形の逆側に飛んでしまい,
+        波形が崩れているが, 実線のクリッピングを施した方ではオーバーフローした値が切り捨てられ, 波形が維持できている.
         
         \begin{figure}[ht]
             \centering
-            \includegraphics[width=12cm]{images/sin150f4_1.eps}
-            \caption{振幅150, 周波数4Hzの正弦波(クリッピングなし)}
-            \label{fig:sin150f4_1}
-        \end{figure}
-        \begin{figure}[ht]
-            \centering
-            \includegraphics[width=12cm]{images/sin150f4_2.eps}
-            \caption{振幅150, 周波数4Hzの正弦波(クリッピングあり)}
-            \label{fig:sin150f4_2}
+            \includegraphics[width=12cm]{images/sin150f4.eps}
+            \caption{振幅150, 周波数4Hzの正弦波}
+            \label{fig:sin150f4}
         \end{figure}
 
     \paragraph{演習2-5} サンプリング定理を満たさないような高い周波数の正弦波をPCMによりディジタルデータ化すると,
@@ -170,22 +164,16 @@ for (t = 0; t <= TEND; t += DT) {
 
         今回はサンプリング周波数が100Hzであるので, 50Hzを超える周波数の波はうまくサンプリングをすることができない.
 
-        図\ref{fig:sin98}に98Hzの正弦波をサンプリングしたものを示す.
-        実際には98Hzであるはずが, 2Hzの波形のように見える.
+        試しに98Hzの波形をサンプリングしてみると実際には98Hzであるはずが, 2Hzの波形のように見える.
+        これは, 実際には一周期以上波形が進んでいるが, サンプリングするときは少しの変化として認識しまっているためである.
         
-        参考に, 上の波形にサンプリング周波数を上げて計測した本来の98Hzの波形を重ねたものを図\ref{fig:sin98_2}に示す.
+        参考に, 上の波形にサンプリング周波数を上げて計測した本来の98Hzの波形を重ねたものを図\ref{fig:sin98}に示す.
 
         \begin{figure}[ht]
             \centering
             \includegraphics[width=12cm]{images/sin98.eps}
-            \caption{周波数98Hzの正弦波(サンプリング周波数:100Hz)}
+            \caption{周波数98Hzの正弦波}
             \label{fig:sin98}
-        \end{figure}
-        \begin{figure}[ht]
-            \centering
-            \includegraphics[width=12cm]{images/sin98_2.eps}
-            \caption{周波数98Hzの正弦波(サンプリング周波数:100Hz, 1000Hz)}
-            \label{fig:sin98_2}
         \end{figure}
 
 \section{信号処理プログラムの分類}
@@ -216,6 +204,7 @@ for (int n = 0; n <= DATANUM; n++) {
         \end{lstlisting}
 
         通常のsin波に最大振幅10の白色雑音を加えたものを図\ref{fig:sin_wn}に示す.
+        点線が元の正弦波で, 雑音が加えられたものが実線で描いてある.
         図から, 適当な雑音が加えられていることがわかる.
 
         \begin{figure}[ht]
