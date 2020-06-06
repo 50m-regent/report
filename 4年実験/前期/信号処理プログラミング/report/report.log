@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.1.19)  6 JUN 2020 08:42
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.1.19)  6 JUN 2020 16:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -216,27 +216,17 @@ File: images/sin_wn.eps Graphic file (type eps)
  [6] [7]
 File: images/mvave.eps Graphic file (type eps)
 <images/mvave.eps>
- [8]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.310 
-      
-? 
-! Emergency stop.
-<inserted text> 
-                $
-l.310 
-      
-End of file on the terminal!
-
- 
+ [8] [9] [10]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 410.
+ [11] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 2725 strings out of 493223
- 35031 string characters out of 6144415
- 161948 words of memory out of 5000000
- 6714 multiletter control sequences out of 15000+600000
- 15540 words of font info for 70 fonts, out of 8000000 for 9000
+ 2733 strings out of 493223
+ 35136 string characters out of 6144415
+ 214973 words of memory out of 5000000
+ 6720 multiletter control sequences out of 15000+600000
+ 16155 words of font info for 72 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  26i,10n,32p,204b,1706s stack positions out of 5000i,500n,10000p,200000b,80000s
-Output written on report.dvi (9 pages, 19868 bytes).
+
+Output written on report.dvi (12 pages, 30224 bytes).

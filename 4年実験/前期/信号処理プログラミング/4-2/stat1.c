@@ -5,6 +5,7 @@
 #include <math.h>
 
 #define BUFSIZE 80
+#define BIAS 0x80
 #define ROUND(x) ((x > 0) ? (x + 0.5) : (x - 0.5))
 #define INF 1e9
 
@@ -43,8 +44,14 @@ int main(int argc, char **argv) {
 
     mean = sum / data_num;
     std_dev = sqrt(sum_squ / data_num -  mean * mean);
-    max_amp = max_val - (max_val + min_val) / 2.0;
-    rms = max_amp / sqrt(2);
+
+    if (BIAS - min_val > max_val - BIAS) {
+        max_amp = BIAS - min_val;
+    } else {
+        max_amp = max_val - BIAS;
+    }
+
+    rms = sqrt(sum_squ / data_num - 2 * mean * max_amp + max_amp * max_amp);
 
     printf(
         "Min: %f, Max: %f, Mean: %f, Std Deviation: %f, Max Amplitude: %f, RMS: %f\n",

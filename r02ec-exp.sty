@@ -1,0 +1,89 @@
+﻿%
+% 電子制御工学実験報告書スタイルファイル
+% <2009/04/06, ataka@nagaoka-ct.ac.jp>
+% <2012/03/26, takebe@nagaoka-ct.ac.jp> modified
+%
+\RequirePackage{array}
+%
+\def\grade#1{\gdef\@grade{#1}}% 学年・出席番号
+\def\team#1{\gdef\@team{#1}}% 班
+\def\expdate#1{\gdef\@expdate{#1}}% 実験日
+\def\coauthor#1{\gdef\@coauthor{#1}}% 共同実験者
+\if@titlepage
+  \renewcommand{\maketitle}{%
+    \begin{titlepage}%
+      \let\footnotesize\small
+      \let\footnoterule\relax
+      \let\footnote\thanks
+      \vskip 30\p@
+      \centerline{\Large\bfseries 電子制御工学実験報告書}%
+      \vskip 2em%
+      \def\arraystretchOrg{\arraystretch}
+      {\large\begin{tabular}{>{\bfseries}l@{\hskip.5zw ：\hskip.5zw}l}
+        実験題目 & {\bfseries\@title}\\
+        報告者 & \@grade \hskip1zw \@author\\
+        提出日 & \@date\\
+        実験日 & \@expdate\\
+        実験班 & \@team\\
+        共同実験者
+        & {\def\arraystretch{.6}%
+           \begin{tabular}[t]{rl}\@coauthor\end{tabular}%
+           \def\arraystretch{\arraystretchOrg}}%
+        \end{tabular}\par}%
+      \vfill%
+      {\large\bfseries ※指導教員記入欄 \par}%
+       \vskip 1em%
+       \centerline{\def\arraystretch{1.2}\begin{tabular}{|l|c|c|c|}
+       \hline
+       \multicolumn{1}{|c|}{評価項目} & 　配点　
+        & \shortstack{一次チェック\\　・　・　}
+        & \shortstack{二次チェック\\　・　・　}\\\hline\hline
+       記載量 & 20 & & \\\hline
+       図・表・グラフ & 20 & & \\\hline
+       見出し，ページ番号，その他体裁 & 10 & & \\\hline
+       その他の減点 & -- & & \\\hline\hline
+       合計 & 50 & & \\\hline
+      \end{tabular}%
+      \def\arraystetch{\arraystretchOrg}}
+      \vskip 1.5em%
+      {\large\bfseries 　コメント： \par}%
+      \vspace*{3cm}
+      \par
+      \@thanks\vfil\null
+    \end{titlepage}%
+    \setcounter{footnote}{0}%
+    \global\let\thanks\relax
+    \global\let\maketitle\relax
+    \global\let\@thanks\@empty
+    \global\let\@author\@empty
+    \global\let\@date\@empty
+    \global\let\@title\@empty
+    \global\let\title\relax
+    \global\let\author\relax
+    \global\let\date\relax
+    \global\let\and\relax
+    \global\let\@grade\relax
+    \global\let\@team\relax
+    \global\let\@expdate\relax
+    \global\let\@coauthor\lelax
+    \global\let\grade\relax
+    \global\let\team\relax
+    \global\let\expdate\relax
+    \global\let\coauthor\relax
+  }%
+\fi
+%
+\setlength{\textwidth}{\paperwidth}
+\setlength{\oddsidemargin}{-5.4mm}
+\setlength{\evensidemargin}{\oddsidemargin}
+\setlength{\columnsep}{10mm}
+\addtolength{\textwidth}{-40mm}
+\setlength{\textheight}{\paperheight}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\footskip}{10mm}
+\addtolength{\textheight}{-60mm}
+%
+\renewcommand{\baselinestretch}{1.25}
+%
+% end of file

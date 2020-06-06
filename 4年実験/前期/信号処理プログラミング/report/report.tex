@@ -287,28 +287,129 @@ for (int n = 1; n < DATANUM; n++) {
 
     \paragraph{平均値と標準偏差} 時系列データ$x_i;i=1,2,\dots,N$の平均値$\bar{x}$は次式で定義される:
         
-        \begin{equation}
+        \begin{equation} \label{eqn:mean}
             \bar{x} = \frac{1}{N} \sum_{i=1}^{N} x_i
         \end{equation}
 
         標準偏差$\sigma$は分散$\sigma^2$の正の平方根として定義される:
         
-        \begin{equation} \label{equ:dev1}
+        \begin{equation} \label{eqn:dev1}
             \sigma^2 = \frac{1}{N} \sum_{i=1}^{N} (x_i - \bar{x})^2
         \end{equation}
 
         この式では平均値が既知である必要があり, オンライン処理に適用することができない.
         オンライン処理で標準偏差や分散を計算したい場合は, 変形した次式を用いる:
 
-        \begin{equation} \label{equ:dev2}
+        \begin{equation} \label{eqn:dev2}
             \sigma^2 = \frac{1}{N} \sum_{i=1}^{N} x_i^2 - \bar{x}^2
         \end{equation}
 
-    \paragraph{演習4-1} 式(\ref{equ:dev1})を式(\ref{equ:dev2})に変形する過程を示せ.
+    \paragraph{演習4-1} 式(\ref{eqn:dev1})を式(\ref{eqn:dev2})に変形する過程を示せ.
         
-        \begin{equation}
-            
-        \end{equation}
+        \begin{eqnarray*}
+            \sigma^2 &=& \frac{1}{N} \sum_{i=1}^{N} (x_i - \bar{x})^2 \\
+            &=& \frac{1}{N} \sum_{i=1}^{N} (x_i^2 - 2x_i \bar{x} + \bar{x}^2) \\
+            &=& \frac{1}{N} \sum_{i=1}^{N} x_i^2 - \frac{2}{N} \bar{x} \sum_{i=1}^{N} x_i + \frac{\bar{x}^2}{N} \sum_{i=1}^{N} 1 \\
+        \end{eqnarray*}
+
+        式(\ref{eqn:mean})より, $\frac{2}{N} \bar{x} \sum_{i=1}^{N} x_i = 2 \bar{x}^2$なので,
+
+        \begin{eqnarray*}
+            \sigma^2 &=& \frac{1}{N} \sum_{i=1}^{N} x_i^2 - \frac{2}{N} \bar{x} \sum_{i=1}^{N} x_i + \frac{\bar{x}^2}{N} \sum_{i=1}^{N} 1 \\
+            &=& \frac{1}{N} \sum_{i=1}^{N} x_i^2 - 2 \bar{x}^2 + \bar{x}^2 \\
+            &=& \frac{1}{N} \sum_{i=1}^{N} x_i^2 - \bar{x}^2 \\
+        \end{eqnarray*}
+
+    \paragraph{演習4-2} コマンドライン引数で与えられたCSVファイルについて, 最小値, 最大値, 平均値,
+    標準偏差, 最大振幅, 実効値を求めるプログラムstat?.cを作成せよ(?はオンライン型は1,
+    オフライン型は2).
+
+        作成したプログラムをソースコード\ref{src:stat1}, \ref{src:stat2}に示す.
+
+        \begin{lstlisting}[caption=stat1.c, label=src:stat1]
+int tm, amp;
+char buf[BUFSIZE];
+double
+    min_val = INF, max_val = -INF,
+    sum = 0, mean, sum_squ = 0,
+    std_dev, data_num = 0, max_amp, rms = 0;
+FILE *fp;
+
+while (fgets(buf, sizeof(buf), fp) != NULL) {
+    if (buf[0] == '#') continue;
+
+    data_num += 1;
+    
+    tm  = atoi(strtok(buf, ","));
+    amp = atoi(strtok(NULL, "\r\n\0"));
+
+    if (min_val > amp) min_val = amp;
+    if (max_val < amp) max_val = amp;
+
+    sum += amp;
+
+    sum_squ += amp * amp;
+
+    rms += amp - BIAS;
+}
+fclose(fp);
+
+mean = sum / data_num;
+std_dev = sqrt(sum_squ / data_num -  mean * mean);
+
+if (BIAS - min_val > max_val - BIAS) {
+    max_amp = BIAS - min_val;
+} else {
+    max_amp = max_val - BIAS;
+}
+
+rms = sqrt(sum_squ / data_num - 2 * mean * max_amp + max_amp * max_amp);
+
+printf(
+    "Min: %f, Max: %f, Mean: %f, Std Deviation: %f, Max Amplitude: %f, RMS: %f\n",
+        min_val, max_val, mean,     std_dev,           max_amp,           rms
+);
+        \end{lstlisting}
+        \begin{lstlisting}[caption=stat2.c, label=src:stat2]
+int tm[DATANUM], amp[DATANUM];
+char buf[BUFSIZE];
+double
+    min_val = INF, max_val = -INF,
+    sum = 0, mean, sum_squ = 0, std_dev,
+    data_num = 0, max_amp, rms;
+FILE *fp;
+
+for (int n = 0; n <= DATANUM; n++) {
+    if (min_val > amp[n]) min_val = amp[n];
+    if (max_val < amp[n]) max_val = amp[n];
+
+    sum += amp[n];
+
+    sum_squ += amp[n] * amp[n];
+
+    rms += amp - BIAS;
+}
+
+mean = sum / data_num;
+std_dev = sqrt(sum_squ / data_num -  mean * mean);
+
+if (BIAS - min_val > max_val - BIAS) {
+    max_amp = BIAS - min_val;
+} else {
+    max_amp = max_val - BIAS;
+}
+
+rms = sqrt(sum_squ / data_num - 2 * mean * max_amp + max_amp * max_amp);
+
+printf(
+    "Min: %f, Max: %f, Mean: %f, Std Deviation: %f, Max Amplitude: %f, RMS: %f\n",
+        min_val, max_val, mean,     std_dev,           max_amp,           rms
+);
+        \end{lstlisting}
+
+\section{Windows WAVEファイルの解析$\cdot$加工}
+    この節では, Windows標準のサウンドフォーマットであるWAVEファイルを,
+    自作のCプログラムで読み書きをする.
 
 \begin{thebibliography}{99}
     \bibitem{Electro} Electro-ワンチップマイコン http://laboratory.sub.jp/ele/13.html/
