@@ -402,14 +402,14 @@ printf(
             \centering
             \caption{sin波の解析}
             \label{tab:stat}
-            \begin{tabular}{c|c|c}
-                項目 & 測定値 & 理論値 \\ \hline \hline
-                最小値 & 28 & 28 \\ \hline
-                最大値 & 227 & 228 \\ \hline
-                平均値 & 127.5 & 128 \\ \hline
-                標準偏差 & 70.42 & 70.71 \\ \hline
-                最大振幅 & 100 & 100 \\ \hline
-                実効値 & 75.61 & 70.71
+            \begin{tabular}{l||c|c} \hline
+                & 測定値 & 理論値 \\ \hline
+                最小値 & 28 & 28 \\
+                最大値 & 227 & 228 \\
+                平均値 & 127.5 & 128 \\
+                標準偏差 & 70.42 & 70.71 \\
+                最大振幅 & 100 & 100 \\
+                実効値 & 75.61 & 70.71 \\ \hline
             \end{tabular}
         \end{table}
 
@@ -420,8 +420,38 @@ printf(
     この節では, Windows標準のサウンドフォーマットであるWAVEファイルを,
     自作のCプログラムで読み書きをする.
 
+    \paragraph{演習5-1} リスト6を完成させ, もよりのWAVEファイルのいくつかについてヘッダ情報を調べ,
+    表に整理せよ.
+
+        今回はサポートページ\cite{Support Page}で配布されている音源を使用した.
+        ヘッダ情報と音源の再生時間を表\ref{tab:header}にまとめる.
+
+        \begin{table}[ht]
+            \centering
+            \caption{WAVEファイルのヘッダ情報}
+            \label{tab:header}
+            \begin{tabular}{l||c|c|c|c} \hline
+                                       & ringout.wav   & ringin.wav & chimes.wav & timetone.wav \\ \hline
+                RIFF 情報サイズ[byte]    & 5204  & 10018 & 55768 & 77609 \\
+                fmt チャンクサイズ       & 16    & 16 & 16 & 16 \\
+                Format ID              & 1     & 1   & 1 & 1 \\
+                チャンネル数             & 1     & 1 & 2 & 1 \\
+                サンプリングレート[Hz]    & 11025 & 11025 & 22050 & 32000 \\
+                データ速度[byte/s]       & 11025 & 11025 & 88200 & 32000 \\
+                ブロックサイズ[byte]      & 1     & 1 & 4 & 1 \\
+                量子化ビット数[bit]       & 8     & 8 & 16 & 8 \\
+                データチャンクサイズ[byte] & 5167  & 9981 & 55684 & 77573 \\
+                時間[s] & 0.469 & 0.905 & 0.631 & 2.424 \\ \hline
+            \end{tabular}
+        \end{table}
+
+        表から, 量子化ビットやサンプリングレートが増えるほどデータサイズが増えることがわかる. 
+
+    \paragraph{演習5-2} モノラル音声$\cdot$量子化ビット数8のWAVEファイルの波形データをCSVファイルに吐き出すダンププログラム
+    wav2txt-m8.cを作成せよ.
+
 \begin{thebibliography}{99}
-    \bibitem{Electro} Electro-ワンチップマイコン http://laboratory.sub.jp/ele/13.html/
+    \bibitem{Support Page} Ec4電子制御工学実験 https://www2.st.nagaoka-ct.ac.jp/
 \end{thebibliography}
 
 \end{document}
