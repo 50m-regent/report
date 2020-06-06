@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.1.19)  6 JUN 2020 23:24
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.1.19)  6 JUN 2020 23:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -214,15 +214,15 @@ File: images/mvave.eps Graphic file (type eps)
 <images/mvave.eps>
  [7] [8] [9]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 399.
- [10] (./report.aux) ) 
+(Font)              <14.4> on input line 419.
+ [10] [11] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 2725 strings out of 493223
- 34970 string characters out of 6144415
- 213956 words of memory out of 5000000
- 6714 multiletter control sequences out of 15000+600000
+ 2726 strings out of 493223
+ 34980 string characters out of 6144415
+ 213965 words of memory out of 5000000
+ 6715 multiletter control sequences out of 15000+600000
  16155 words of font info for 72 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  26i,10n,32p,204b,1708s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.dvi (11 pages, 29972 bytes).
+Output written on report.dvi (12 pages, 31156 bytes).

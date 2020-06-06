@@ -396,6 +396,26 @@ printf(
 );
         \end{lstlisting}
 
+        試しに, 図\ref{fig:sin100f4}のデータを入力した時のデータを表\ref{tab:stat}にまとめる.
+
+        \begin{table}[ht]
+            \centering
+            \caption{sin波の解析}
+            \label{tab:stat}
+            \begin{tabular}{c|c|c}
+                項目 & 測定値 & 理論値 \\ \hline \hline
+                最小値 & 28 & 28 \\ \hline
+                最大値 & 227 & 228 \\ \hline
+                平均値 & 127.5 & 128 \\ \hline
+                標準偏差 & 70.42 & 70.71 \\ \hline
+                最大振幅 & 100 & 100 \\ \hline
+                実効値 & 75.61 & 70.71
+            \end{tabular}
+        \end{table}
+
+        若干の誤差が見受けられるものの, ある程度の精度の値が出ている.
+        誤差の原因として考えられるのは, サンプリング周波数の関係で最大値が測定できていないことなどがある.
+
 \section{Windows WAVEファイルの解析$\cdot$加工}
     この節では, Windows標準のサウンドフォーマットであるWAVEファイルを,
     自作のCプログラムで読み書きをする.
