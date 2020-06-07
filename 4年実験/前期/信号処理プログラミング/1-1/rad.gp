@@ -1,9 +1,9 @@
 set xtics pi/2
 set format x "%2.1P{/Symbol p}"
-set xlabel "t [rad]"
+set xlabel "r [rad]"
 set ytics pi/2
 set format y "%2.1P{/Symbol p}"
-set ylabel "rad(t)"
+set ylabel "rad(r)"
 set key off
 set terminal postscript eps
 set output 'rad.eps'
