@@ -19,7 +19,8 @@
   numberstyle={\scriptsize},
   stepnumber=1,
   numbersep=1zw,
-  lineskip=-0.5ex
+  lineskip=-0.5ex,
+  keepspaces=true
 }
 \renewcommand{\lstlistingname}{ソースコード}
 \makeatletter
@@ -214,7 +215,7 @@ for (int n = 0; n <= DATANUM; n++) {
             \label{fig:sin_wn}
         \end{figure}
 
-    \paragraph{演習3-2} 3点単純移動平均プログラムmvave3-?.cを作成せよ(?はオンライン型は1,
+    \paragraph{演習3-2} 三点単純移動平均プログラムmvave3-?.cを作成せよ(?はオンライン型は1,
     オフライン型は2).
 
         図\ref{src:mvave_1}, \ref{src:mvave_2}にそれぞれオンライン型とオフライン型のソースコードを抜粋して示す.
@@ -247,6 +248,9 @@ while (fgets(buf, sizeof(buf), fp) != NULL) {
 }
         \end{lstlisting}
         \begin{lstlisting}[caption=mvave3-2.c, label=src:mvave_2]
+double tm[DATANUM], vout;
+int amp[DATANUM];
+
 for (int n = 1; n < DATANUM; n++) {
     vout = ROUND((amp[n - 1] + amp[n] + amp[n + 1]) / 3.0);
 
@@ -254,7 +258,7 @@ for (int n = 1; n < DATANUM; n++) {
 }
         \end{lstlisting}
 
-        オンライン型のソースコードでは, 3点平均を計算するために2個前までのデータ,
+        オンライン型のソースコードでは, 三点平均を計算するために二個前までのデータ,
         また, 出力用に一個前のtを毎回更新している.
 
         これらのプログラムで図\ref{fig:sin_wn}から雑音を取り除いた波形を図\ref{fig:mvave}に示す.
@@ -266,7 +270,7 @@ for (int n = 1; n < DATANUM; n++) {
             \label{fig:mvave}
         \end{figure}
 
-        3点平均を取る過程で始点と終点のデータが一つずつ欠けてしまっているが,
+        三点平均を取る過程で始点と終点のデータが一つずつ欠けてしまっているが,
         波形は概ね元のものに近づいている.
 
 \section{時系列データの解析}
@@ -356,7 +360,7 @@ rms = sqrt(sum_squ / data_num - 2 * mean * max_amp + max_amp * max_amp);
 
 printf(
     "Min: %f, Max: %f, Mean: %f, Std Deviation: %f, Max Amplitude: %f, RMS: %f\n",
-        min_val, max_val, mean,     std_dev,           max_amp,           rms
+     min_val, max_val, mean,     std_dev,           max_amp,           rms
 );
         \end{lstlisting}
         \begin{lstlisting}[caption=stat2.c, label=src:stat2]
@@ -392,7 +396,7 @@ rms = sqrt(sum_squ / data_num - 2 * mean * max_amp + max_amp * max_amp);
 
 printf(
     "Min: %f, Max: %f, Mean: %f, Std Deviation: %f, Max Amplitude: %f, RMS: %f\n",
-        min_val, max_val, mean,     std_dev,           max_amp,           rms
+     min_val, max_val, mean,     std_dev,           max_amp,           rms
 );
         \end{lstlisting}
 
@@ -449,6 +453,138 @@ printf(
 
     \paragraph{演習5-2} モノラル音声$\cdot$量子化ビット数8のWAVEファイルの波形データをCSVファイルに吐き出すダンププログラム
     wav2txt-m8.cを作成せよ.
+
+        作成した関数\verb|read_data|と一部抜粋したwav2txt-m8.cをソースコード\ref{src:read},
+        \ref{src:wav2txt}に示す.
+        また, リスト6にて作成した関数\verb|read_head|の戻り値をデータのサンプリングレートに変更してある.
+
+            \begin{lstlisting}[caption=read\_data.c, label=src:read]
+void read_data(FILE *fp, uLong smprate, int start, int end) {
+    int amp;
+    double now = 0;
+    while ((amp = fgetc(fp)) != EOF) {
+        if (now > end) break;
+        if (now >= start) printf("%f, %d\n", now, amp);
+        now += 1000.0 / smprate;
+    }
+}
+            \end{lstlisting}
+            \begin{lstlisting}[caption=wav2txt-m8.c, label=src:wav2txt]
+uShort ch, qbit;
+FILE *fp;
+
+read_data(fp, read_head(fp, &ch, &qbit), atoi(argv[2]), atoi(argv[3]));
+            \end{lstlisting}
+
+        引数の\verb|fp|にはヘッダを読み取った後のファイルポインタ,
+        \verb|start|と\verb|end|にはミリ秒単位の開始秒数と終了秒数を指定する.
+
+        実際にダンプした3つのデータを以下に示す.
+
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=12cm]{images/ringout.eps}
+            \caption{ringout.wav}
+            \label{fig:ringout}
+        \end{figure}
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=12cm]{images/ringin.eps}
+            \caption{ringin.wav}
+            \label{fig:ringin}
+        \end{figure}
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=12cm]{images/timetone.eps}
+            \caption{timetone.wav}
+            \label{fig:timetone}
+        \end{figure}
+
+    \paragraph{演習5-4} ユーザが指定した周波数と振幅の正弦波を, モノラル音声で量子化ビット数8,
+    サンプリング周波数11025Hzで1秒の長さだけ記録するプログラムrec-m8.cを作成し, 動作を確かめよ.
+
+        作成したrec-m8.cをソースコード\ref{src:rec}に示す.
+
+        \begin{lstlisting}[caption=rec-m8.c, label=src:rec]
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include "pi.h"
+
+#define BIAS 0x80
+#define RIFF_SIZE 11061
+#define FMT_SIZE 16
+#define FORMAT_ID 1
+#define SAMPLING_RATE 11025
+#define CHANNEL_N 1
+#define BLOCK_SIZE 1
+#define Q_BIT 8
+
+void write_header(FILE *fp) {
+    int
+        riff_size     = RIFF_SIZE,
+        fmt_size      = FMT_SIZE,
+        format_id     = FORMAT_ID,
+        channel_n     = CHANNEL_N,
+        sampling_rate = SAMPLING_RATE,
+        block_size    = BLOCK_SIZE,
+        q_bit         = Q_BIT;
+
+    fwrite("RIFF",         sizeof(char),  4, fp);
+    fwrite(&riff_size,     sizeof(int),   1, fp);
+    fwrite("WAVE",         sizeof(char),  4, fp);
+    fwrite("fmt ",         sizeof(char),  4, fp);
+    fwrite(&fmt_size,      sizeof(int),   1, fp);
+    fwrite(&format_id,     sizeof(short), 1, fp);
+    fwrite(&channel_n,     sizeof(short), 1, fp);
+    fwrite(&sampling_rate, sizeof(int),   1, fp);
+    fwrite(&sampling_rate, sizeof(int),   1, fp);
+    fwrite(&block_size,    sizeof(short), 1, fp);
+    fwrite(&q_bit,         sizeof(short), 1, fp);
+    fwrite("data",         sizeof(char),  4, fp);
+    fwrite(&sampling_rate, sizeof(int),   1, fp);
+}
+
+int main(int argc, char **argv) {
+    int t;
+    double rad, frq, amp;
+    unsigned char vout;
+    FILE *fp;
+
+    if (argc != 4) {
+        return EXIT_FAILURE;
+    }
+    amp = atof(argv[1]);
+    frq = atof(argv[2]);
+
+    if ((fp = fopen(argv[3], "a+b")) == NULL) {
+        return EXIT_FAILURE;
+    }
+
+    write_header(fp);
+
+    for (t = 0; t <= SAMPLING_RATE; t++) {
+        rad = 2 * PI * frq * t / (double)SAMPLING_RATE;
+        vout = amp * sin(rad) + BIAS;
+        fwrite(&vout, 1, 1, fp);
+    }
+}
+            \end{lstlisting}
+
+            コマンドライン引数には順番に, 振幅, 周波数, WAVEファイル名を与える.
+            \verb|write_header|でWAVEファイルにヘッダを書き込む.
+            その後, 1秒間分正弦波のデータをサンプリングしつつファイルに書き込む処理を行っている.
+
+            試しに書き込まれた440Hzのデータをサンプリングし直してグラフに表示してみる.
+
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[width=12cm]{images/440.eps}
+                \caption{440Hzの正弦波}
+                \label{fig:440}
+            \end{figure}
+
+            440Hzでは1周期が約2.27msなので, 正しくWAVEファイルに書き込めていることがわかる.
 
 \begin{thebibliography}{99}
     \bibitem{Support Page} Ec4電子制御工学実験 https://www2.st.nagaoka-ct.ac.jp/
