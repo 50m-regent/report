@@ -4,23 +4,24 @@
 \usepackage{cprotect}
 \usepackage{h31ec-exp}
 \lstset{
-  basicstyle={\ttfamily},
-  identifierstyle={\small},
-  commentstyle={\smallitshape},
-  keywordstyle={\small\bfseries},
-  ndkeywordstyle={\small},
-  stringstyle={\small\ttfamily},
-  frame={tb},
-  breaklines=true,
-  columns=[l]{fullflexible},
-  numbers=left,
-  xrightmargin=0zw,
-  xleftmargin=3zw,
-  numberstyle={\scriptsize},
-  stepnumber=1,
-  numbersep=1zw,
-  lineskip=-0.5ex,
-  keepspaces=true
+    basicstyle={\ttfamily},
+    identifierstyle={\small},
+    commentstyle={\smallitshape},
+    keywordstyle={\small\bfseries},
+    ndkeywordstyle={\small},
+    stringstyle={\small\ttfamily},
+    frame={tb},
+    breaklines=true,
+    columns=[l]{fullflexible},
+    numbers=left,
+    xrightmargin=0zw,
+    xleftmargin=3zw,
+    numberstyle={\scriptsize},
+    stepnumber=1,
+    numbersep=1zw,
+    lineskip=-0.5ex,
+    keepspaces=true,
+    language=c
 }
 \renewcommand{\lstlistingname}{ソースコード}
 \makeatletter
@@ -33,8 +34,7 @@
 \team{}
 \date{2020年6月18日}
 \expdate{2020年5月21日, 5月28日, 6月4日, 6月11日}
-\coauthor{
-}
+\coauthor{}
 
 \begin{document}
 \maketitle
@@ -306,7 +306,7 @@ for (int n = 1; n < DATANUM; n++) {
             &=& \frac{1}{N} \sum_{i=1}^{N} x_i^2 - \frac{2}{N} \bar{x} \sum_{i=1}^{N} x_i + \frac{\bar{x}^2}{N} \sum_{i=1}^{N} 1 \\
         \end{eqnarray*}
 
-        式(\ref{eqn:mean})より, $\frac{2}{N} \bar{x} \sum_{i=1}^{N} x_i = 2 \bar{x}^2$なので,
+        式(\ref{eqn:mean})より, $\displaystyle\frac{2}{N} \bar{x} \sum_{i=1}^{N} x_i = 2 \bar{x}^2$なので,
 
         \begin{eqnarray*}
             \sigma^2 &=& \frac{1}{N} \sum_{i=1}^{N} x_i^2 - \frac{2}{N} \bar{x} \sum_{i=1}^{N} x_i + \frac{\bar{x}^2}{N} \sum_{i=1}^{N} 1 \\
@@ -528,8 +528,10 @@ void write_header(FILE *fp) {
         format_id     = FORMAT_ID,
         channel_n     = CHANNEL_N,
         sampling_rate = SAMPLING_RATE,
+        bytes_per_sec = SAMPLING_RATE,
         block_size    = BLOCK_SIZE,
-        q_bit         = Q_BIT;
+        q_bit         = Q_BIT,
+        data_length   = SAMPLING_RATE * 1;
 
     fwrite("RIFF",         sizeof(char),  4, fp);
     fwrite(&riff_size,     sizeof(int),   1, fp);
@@ -539,11 +541,11 @@ void write_header(FILE *fp) {
     fwrite(&format_id,     sizeof(short), 1, fp);
     fwrite(&channel_n,     sizeof(short), 1, fp);
     fwrite(&sampling_rate, sizeof(int),   1, fp);
-    fwrite(&sampling_rate, sizeof(int),   1, fp);
+    fwrite(&bytes_per_sec, sizeof(int),   1, fp);
     fwrite(&block_size,    sizeof(short), 1, fp);
     fwrite(&q_bit,         sizeof(short), 1, fp);
     fwrite("data",         sizeof(char),  4, fp);
-    fwrite(&sampling_rate, sizeof(int),   1, fp);
+    fwrite(&data_length,   sizeof(int),   1, fp);
 }
 
 int main(int argc, char **argv) {

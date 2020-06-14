@@ -45,6 +45,10 @@ INPUT h31ec-exp.sty
 INPUT h31ec-exp.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/tools/array.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/tools/array.sty
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstmisc.sty
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstmisc.sty
 INPUT out/report.aux
 INPUT out/report.aux
 OUTPUT out/report.aux
