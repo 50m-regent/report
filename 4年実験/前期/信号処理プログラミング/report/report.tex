@@ -28,8 +28,6 @@
 \newcommand{\figcaption}[1]{\def\@captype{figure}\caption{#1}}
 \newcommand{\tblcaption}[1]{\def\@captype{table}\caption{#1}}
 \makeatother
-\newenvironment{NoFloat}{}
-\def\@listoflistenv{[NoFloat][listings]}
 
 \title{信号処理プログラミング}
 \grade{4年32番}
@@ -169,7 +167,7 @@ for (t = 0; t <= TEND; t += DT) {
         試しに98Hzの波形をサンプリングしてみると実際には98Hzであるはずが, 2Hzの波形のように見える.
         これは, 実際には一周期以上波形が進んでいるが, サンプリングするときは少しの変化として認識しまっているためである.
         
-        参考に, 上の波形にサンプリング周波数を上げて計測した本来の98Hzの波形を重ねたものを図\ref{fig:sin98}に示す.
+        参考に, 上記の波形にサンプリング周波数を上げて計測した本来の98Hzの波形を重ねたものを図\ref{fig:sin98}に示す.
 
         \begin{figure}[ht]
             \centering
