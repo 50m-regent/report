@@ -28,6 +28,9 @@
 \newcommand{\figcaption}[1]{\def\@captype{figure}\caption{#1}}
 \newcommand{\tblcaption}[1]{\def\@captype{table}\caption{#1}}
 \makeatother
+\newenvironment{NoFloat}{}
+\def\@listoflistenv{[NoFloat][listings]}
+
 \title{信号処理プログラミング}
 \grade{4年32番}
 \author{平田 蓮}
@@ -59,8 +62,7 @@ double rad(double r) {
     } else {
         return 2 * PI - fmod(-r, 2 * PI);
     }
-}
-        \end{lstlisting}
+}\end{lstlisting}
 
         $r$が正のときは$2\pi$との剰余を取る.
         $r$が負のときは, $r$を正数に変換し, $2\pi$と剰余をとったものを$2\pi$から引くことで変換している.
@@ -82,8 +84,7 @@ double rad(double r) {
         \begin{lstlisting}[caption=saw.c, label=src:saw]
 double saw(double r) {
     return 1 - rad(r) / PI;
-}
-        \end{lstlisting}
+}\end{lstlisting}
 
         まず与えられた孤度$r$を演習1-1で実装した\verb|rad|を使い$[0:2\pi]$の範囲に変換する.
 
@@ -125,8 +126,7 @@ for (t = 0; t <= TEND; t += DT) {
         vout = vin;
     }
     printf("%4f, %4d\n", t / 1000.0, vout);
-}
-        \end{lstlisting}
+}\end{lstlisting}
 
         8行目から14行目に渡って, クリッピングという処理を施してある.
         クリッピングをすることで, 出力用の変数(今回は8bitのunsigned char型)に収まらない値を切り捨て,
@@ -202,8 +202,7 @@ for (int n = 0; n <= DATANUM; n++) {
     amp[n] += ROUND(err);
 
     printf("%4d, %4d\n", tm[n], amp[n]);
-}
-        \end{lstlisting}
+}\end{lstlisting}
 
         通常のsin波に最大振幅10の白色雑音を加えたものを図\ref{fig:sin_wn}に示す.
         点線が元の正弦波で, 雑音が加えられたものが実線で描いてある.
@@ -246,8 +245,7 @@ while (fgets(buf, sizeof(buf), fp) != NULL) {
     __amp = _amp;
     _amp  = amp;
     _tm   = tm;
-}
-        \end{lstlisting}
+}\end{lstlisting}
         \begin{lstlisting}[caption=mvave3-2.c, label=src:mvave_2]
 double tm[DATANUM], vout;
 int amp[DATANUM];
@@ -256,8 +254,7 @@ for (int n = 1; n < DATANUM; n++) {
     vout = ROUND((amp[n - 1] + amp[n] + amp[n + 1]) / 3.0);
 
     printf("%4d, %4d\n", tm[n], (int)vout);
-}
-        \end{lstlisting}
+}\end{lstlisting}
 
         オンライン型のソースコードでは, 三点平均を計算するために二個前までのデータ,
         また, 出力用に一個前のtを毎回更新している.
@@ -362,8 +359,7 @@ rms = sqrt(sum_squ / data_num - 2 * mean * max_amp + max_amp * max_amp);
 printf(
     "Min: %f, Max: %f, Mean: %f, Std Deviation: %f, Max Amplitude: %f, RMS: %f\n",
      min_val, max_val, mean,     std_dev,           max_amp,           rms
-);
-        \end{lstlisting}
+);\end{lstlisting}
         \begin{lstlisting}[caption=stat2.c, label=src:stat2]
 int tm[DATANUM], amp[DATANUM];
 char buf[BUFSIZE];
@@ -398,8 +394,7 @@ rms = sqrt(sum_squ / data_num - 2 * mean * max_amp + max_amp * max_amp);
 printf(
     "Min: %f, Max: %f, Mean: %f, Std Deviation: %f, Max Amplitude: %f, RMS: %f\n",
      min_val, max_val, mean,     std_dev,           max_amp,           rms
-);
-        \end{lstlisting}
+);\end{lstlisting}
 
         試しに, 図\ref{fig:sin100f4}のデータを入力した時のデータを表\ref{tab:stat}にまとめる.
 
@@ -468,14 +463,12 @@ void read_data(FILE *fp, uLong smprate, int start, int end) {
         if (now >= start) printf("%f, %d\n", now, amp);
         now += 1000.0 / smprate;
     }
-}
-            \end{lstlisting}
+}\end{lstlisting}
             \begin{lstlisting}[caption=wav2txt-m8.c, label=src:wav2txt]
 uShort ch, qbit;
 FILE *fp;
 
-read_data(fp, read_head(fp, &ch, &qbit), atoi(argv[2]), atoi(argv[3]));
-            \end{lstlisting}
+read_data(fp, read_head(fp, &ch, &qbit), atoi(argv[2]), atoi(argv[3]));\end{lstlisting}
 
         引数の\verb|fp|にはヘッダを読み取った後のファイルポインタ,
         \verb|start|と\verb|end|にはミリ秒単位の開始秒数と終了秒数を指定する.
@@ -571,8 +564,7 @@ int main(int argc, char **argv) {
         vout = amp * sin(rad) + BIAS;
         fwrite(&vout, 1, 1, fp);
     }
-}
-            \end{lstlisting}
+}\end{lstlisting}
 
             コマンドライン引数には順番に, 振幅, 周波数, WAVEファイル名を与える.
             \verb|write_header|でWAVEファイルにヘッダを書き込む.
