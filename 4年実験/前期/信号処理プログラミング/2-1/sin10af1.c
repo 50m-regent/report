@@ -34,7 +34,7 @@ int main(int argc, char **argv) {
         } else {
             vout = vin;
         }
-        printf("%4f, %4d\n", t / 1000.0, vout);
+        printf("%4f, %4d\n", t, vout);
     }
     // printf("#E %g\n", esum);
     return EXIT_SUCCESS;

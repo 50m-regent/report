@@ -1,10 +1,7 @@
 set xlabel "t [s]"
 set ylabel "Amplitude"
-set key off
 set terminal postscript eps
-set output 'mvave.eps'
+set output 'mvave3-1.eps'
 set datafile separator ","
-set multiplot
-plot [][0:260] 'mvave.csv' w l ls 5
-plot [][0:260] 'sin.csv' w l ls 2
+plot 'mvave3-1.csv' w l ls 5, 'sin_wn.csv' w l ls 2, 'sin.csv' w l ls 3
 reset
