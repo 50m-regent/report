@@ -106,7 +106,7 @@ double tri(double r) {
     \paragraph{演習2-3} 量子化誤差を評価するため, sin10af1.cに量子化における
     2乗平均平方根誤差を計算する機能を追加せよ.
 
-        sin10af1.cに追加した部分を抜粋してリスト\ref{src:rms}に示す.
+        sin10af1.cに追加した部分を一部抜粋してリスト\ref{src:rms}に示す.
         
 
         \begin{lstlisting}[caption=sin10af1.c, label=src:rms]
@@ -345,7 +345,7 @@ int main(int argc, char **argv) {
 
     \paragraph{演習3-3} 5点単純移動平均プログラムmvave5-?.cを作成せよ　(?はオンライン型は1,　オフライン型は2).
 
-        作成したプログラムをリスト\ref{src:mvave5-1}, \ref{src:mvave5-2}に抜粋して示す.
+        作成したプログラムをリスト\ref{src:mvave5-1}, \ref{src:mvave5-2}に一部抜粋して示す.
 
         \begin{lstlisting}[caption=mvave5-1.c, label=src:mvave5-1]
 #define BUFSIZE 80
@@ -398,7 +398,6 @@ int main(int argc, char **argv) {
         tm[n]  = atoi(strtok(buf, ","));
         amp[n] = atoi(strtok(NULL, "\r\n\0"));
     }
-    fclose(fp);
 
     data_num = n;
 
@@ -465,7 +464,6 @@ int main(int argc, char **argv) {
         tm1[n]  = atoi(strtok(buf, ","));
         amp1[n] = atof(strtok(NULL, "\r\n\0"));
     }
-    fclose(fp1);
 
     for (n = 0; n <= DATANUM; n++) {
         if (fgets(buf, sizeof(buf), fp2) == NULL) break;
@@ -473,7 +471,6 @@ int main(int argc, char **argv) {
         tm2[n]  = atoi(strtok(buf, ","));
         amp2[n] = atoi(strtok(NULL, "\r\n\0"));
     }
-    fclose(fp2);
 
     for (n = m = 0; n < DATANUM; n++) {
         while (tm2[m] < tm1[n]) m++;
@@ -525,7 +522,6 @@ int main(int argc, char **argv) {
 
         sum1 += (amp1[n] - BIAS) * (amp1[n] - BIAS);
     }
-    fclose(fp1);
 
     for (n = 0; n <= DATANUM; n++) {
         if (fgets(buf, sizeof(buf), fp2) == NULL) break;
@@ -535,7 +531,6 @@ int main(int argc, char **argv) {
 
         sum2 += (amp2 - amp1[n]) * (amp2 - amp1[n]);
     }
-    fclose(fp2);
 
     printf("SNR[dB]: %f\n", 10 * log10(sum1 / (double)sum2));
 }\end{lstlisting}
@@ -610,7 +605,6 @@ int main(int argc, char **argv) {
     FILE *fp;
     
     read_data(fp, read_head(fp, &ch, &qbit), atoi(argv[2]), atoi(argv[3]));
-    fclose(fp);
 }\end{lstlisting}
         
         このプログラムを使用して, 参考文献\cite{Support Page}にあるchimes.wavを区間[200 : 210] ms
@@ -759,6 +753,115 @@ int main(int argc, char **argv) {
     これらの結果から, 演習4-4の結果と合わせて, 5点移動平均の方が雑音除去性能が優れているといえる.
 
 \section{発展課題}
+    今回は, モノラル音声・量子化ビット数8のWAVEファイルの波形データを入力した時に,
+    それをステレオ音声に変換し, さらに一定周期で音が周りを回っているように感じるように信号処理を行う.
+
+    元データのファイル, 出力先のファイル, 回転の周波数をコマンドライン引数で入力するようにし,
+    時間によって角度を増加させ, 左右の出力を調節する.
+
+    作成したプログラムrevolute.cを一部抜粋してリスト\ref{src:rev}に示す.
+    
+    \begin{lstlisting}[caption=revolute.c, label=src:rev]
+#define BIAS 0x80
+
+int copy_header(FILE *fp1, FILE *fp2) {
+    char str[H_LEN];
+    int
+        riff_size, fmt_size, format_id, channel_n, sampling_rate, byte_per_sec, block_size, q_bit, data_size;
+
+    fread(str, 1, H_LEN, fp1);
+    fread(&riff_size, 4, 1, fp1);
+    fwrite("RIFF",         sizeof(char),  4, fp2);
+    fwrite(&riff_size,     sizeof(int),   1, fp2);
+
+    fread(str, 1, H_LEN, fp1);
+    fread(str, 1, H_LEN, fp1);
+    fread(&fmt_size, 4, 1, fp1);
+    fwrite("WAVE",         sizeof(char),  4, fp2);
+    fwrite("fmt ",         sizeof(char),  4, fp2);
+    fwrite(&fmt_size,      sizeof(int),   1, fp2);
+
+
+    fread(&format_id, 2, 1, fp1);
+    fwrite(&format_id,     sizeof(short), 1, fp2);
+
+    fread(&channel_n, 2, 1, fp1);
+    channel_n = 2;
+    fwrite(&channel_n,     sizeof(short), 1, fp2);
+
+    fread(&sampling_rate, 4, 1, fp1);
+    fwrite(&sampling_rate, sizeof(int),   1, fp2);
+
+    fread(&byte_per_sec, 4, 1, fp1);
+    fwrite(&byte_per_sec,  sizeof(int),   1, fp2);
+
+    fread(&block_size, 2, 1, fp1);
+    block_size = 2;
+    fwrite(&block_size,    sizeof(short), 1, fp2);
+
+    fread(&q_bit, 2, 1, fp1);
+    fwrite(&q_bit,         sizeof(short), 1, fp2);
+
+    fwrite("data",         sizeof(char),  4, fp2);
+
+    fread(&data_size, 4, 1, fp1);
+    data_size *= 2;
+    fwrite(&data_size, sizeof(int),   1, fp2);
+
+    return sampling_rate;
+}
+
+void revolute(FILE *fp1, FILE *fp2, int sampling_rate, double frq) {
+    int amp, ampl, ampr;
+    double theta = 0;
+    while ((amp = fgetc(fp1)) != EOF) {
+        ampl = (amp - BIAS) * (cos(theta / 180.0 * PI) / 2.0 + 0.5) + BIAS;
+        ampr = (amp - BIAS) * (0.5 - cos(theta / 180.0 * PI) / 2.0) + BIAS;
+
+        fwrite(&ampl, 1, 1, fp2);
+        fwrite(&ampr, 1, 1, fp2);
+        theta += 360.0 * frq / sampling_rate;
+    }
+}
+
+int main(int argc, char **argv) {
+    double frq;
+    FILE *fp1, *fp2;
+
+    revolute(fp1, fp2, copy_header(fp1, fp2), frq);
+}\end{lstlisting}
+
+    このプログラムを使用して, 参考文献\cite{Support Page}にあるtimetone.wavに信号処理を施し,
+    左右に分けて波形を出力したものを図\ref{fig:revl}, \ref{fig:revr}に示す.
+    また, 参考までにtimetone.wavの波形を図\ref{fig:timetone}に示す.
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\hsize]{images/left.eps}
+        \caption{処理を施したデータの左の波形}
+        \label{fig:revl}
+    \end{figure}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\hsize]{images/right.eps}
+        \caption{処理を施したデータの右の波形}
+        \label{fig:revr}
+    \end{figure}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\hsize]{images/timetone.eps}
+        \caption{timetone.wav}
+        \label{fig:timetone}
+    \end{figure}
+
+    図より, 左右から交互に音が出力できていることがわかる.
+    実際に音を聞いてみると, 音が回って聞こえる.
+
+    元ファイルのヘッダを詳しく解析することで,
+    モノラル音声・量子化ビット数8以外のデータにも対応させられることが予想される.
+    また機会があれば挑戦したい.
 
 \section{感想および改善案}
     6月末に, 「まだ最終レポートまでは時間がたくさんあるな」などと思っていたが,

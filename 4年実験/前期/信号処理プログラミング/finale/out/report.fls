@@ -133,4 +133,10 @@ INPUT images/f2mv.eps
 INPUT images/f2mv.eps
 INPUT images/f3mv.eps
 INPUT images/f3mv.eps
+INPUT images/left.eps
+INPUT images/left.eps
+INPUT images/right.eps
+INPUT images/right.eps
+INPUT images/timetone.eps
+INPUT images/timetone.eps
 INPUT out/report.aux
