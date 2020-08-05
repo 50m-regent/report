@@ -59,10 +59,10 @@ double squ(double r) {
     return rad(r) < PI ? 1 : -1;
 }\end{lstlisting}
 
-        与えられた孤度$r$を演習1-1で実装した\verb|rad|を使い$[0:2\pi]$の範囲に変換する.
+        与えられた孤度$r$を演習1-1で実装した\verb|rad|を使い$[0:2\pi)$の範囲に変換する.
         その孤度が$\pi$未満の場合に1を返し, それ以外の場合は-1を返すことで矩形波を出力できた.
 
-        図\ref{fig:squ}に横軸に$r$, 縦軸に\verb|rad(r)|を取ったグラフを示す.
+        図\ref{fig:squ}に横軸に$r$, 縦軸に\verb|squ(r)|を取ったグラフを示す.
         図より, 矩形波が正しく出力できていることがわかる.
 
         \begin{figure}[h]
@@ -82,7 +82,7 @@ double tri(double r) {
     if (rad(r) < PI) {
         return 2.0 * rad(r) / PI - 1.0;
     } else {
-        return 2.0 - 2.0 * (rad(r) - PI / 2.0) / PI;
+        return 3.0 - 2.0 * rad(r) / PI;
     }
 }\end{lstlisting}
 
@@ -110,20 +110,16 @@ double tri(double r) {
         
 
         \begin{lstlisting}[caption=sin10af1.c, label=src:rms]
-#define DT 10
-#define TEND 1000
+int t;
+double vin, esum = 0, rms;
+unsigned char vout;
 
-int main(int argc, char **argv) {
-    int t;
-    double vin, esum = 0, rms;
-    unsigned char vout;
+for (t = 0; t <= TEND; t += DT) {
+    esum += (vin - vout) * (vin - vout);
+}
 
-    for (t = 0; t <= TEND; t += DT) {
-        esum += (vin - vout) * (vin - vout);
-    }
-
-    rms = sqrt(esum / (TEND / DT + 1));
-    printf("#E_RMS: %f\n", rms);
+rms = sqrt(esum / (TEND / DT + 1));
+printf("#E_RMS: %f\n", rms);
 }\end{lstlisting}
 
         上のプログラムを使用して振幅100, 周波数4 Hzの正弦波をサンプリングしたときのRMS誤差を求めると,
@@ -162,10 +158,9 @@ int main(int argc, char **argv) {
         15行目で, sin10af1.cでは\verb|vout = vin|としていたところを,
         0.5を足すことで整数値に直されるときに四捨五入されることになる.
 
-        このプログラムを使用して演習2-3を同じように振幅100, 周波数4 Hzの正弦波をサンプリングした時のRMS誤差を求めると,
+        このプログラムを使用して演習2-3と同じように振幅100, 周波数4 Hzの正弦波をサンプリングした時のRMS誤差を求めると,
         約0.293であった.
-
-        四捨五入をしなかった場合と比べると,約0.266の差があることがわかり,
+        四捨五入をしなかった場合と比べると,約0.266の差があり,
         四捨五入をすることにRMS誤差の軽減効果が大きくあることがわかる.
 
     \paragraph{演習2-6} 正弦波の振幅, 周波数, 位相, 標本化間隔をコマンドライン引数で指定した時,
@@ -199,7 +194,7 @@ int main(int argc, char **argv) {
 }\end{lstlisting}
 
         このプログラムを使用して, 振幅100, 周波数5 Hz,
-        位相1.57 rad ($\displaystyle\approx \frac{\pi}{2}$ [rad]),
+        位相+1.57 rad ($\displaystyle\approx \frac{\pi}{2}$ [rad]),
         標本化間隔5 msの正弦波をサンプリングした結果を図\ref{fig:sinafpt}に示す.
         図より, 正しくサンプリングされていることがわかる.
 
@@ -215,97 +210,39 @@ int main(int argc, char **argv) {
     (XXXはのこぎり波はsaw, 矩形波はsqu, 三角波はtri)
 
         作成したプログラムを一部抜粋してリスト\ref{src:sawaft}, \ref{src:squaft}, \ref{src:triaft}に示す.
+        なお, \verb|rad|, \verb|saw|, \verb|squ|, \verb|tri|は演習1で実装した物を使用している.
 
         \begin{lstlisting}[caption=sawaft.c, label=src:sawaft]
-double rad(double r) {
-    if (r >= 0) {
-        return fmod(r, 2 * PI);
-    } else {
-        return 2 * PI - fmod(-r, 2 * PI);
-    }
-}
+int t;
+double r, amp, frq, smp, vin, vout;
 
-double saw(double r) {
-    return 1 - rad(r) / PI;
-}
-
-int main(int argc, char **argv) {
-    int t;
-    double r, amp, frq, smp, vin, vout;
-
-    amp = atof(argv[1]);
-    frq = atof(argv[2]);
-    smp = atof(argv[3]);
-
-    for (t = 0; t <= 1000; t += smp) {
-        r = t / 1000.0 * 2.0 * PI * frq;
-        vin = amp * saw(r);
-        vout = vin;
-        printf("%d, %4f\n", t, vout);
-    }
+for (t = 0; t <= 1000; t += smp) {
+    r = t / 1000.0 * 2.0 * PI * frq;
+    vin = amp * saw(r);
+    vout = vin;
+    printf("%d, %4f\n", t, vout);
 }\end{lstlisting}
 
         \begin{lstlisting}[caption=squaft.c, label=src:squaft]
-double rad(double r) {
-    if (r >= 0) {
-        return fmod(r, 2 * PI);
-    } else {
-        return 2 * PI - fmod(-r, 2 * PI);
-    }
-}
+int t;
+double r, amp, frq, smp, vin, vout;
 
-double squ(double r) {
-    return rad(r) < PI ? 1 : -1;
-}
-
-int main(int argc, char **argv) {
-    int t;
-    double r, amp, frq, smp, vin, vout;
-
-    amp = atof(argv[1]);
-    frq = atof(argv[2]);
-    smp = atof(argv[3]);
-
-    for (t = 0; t <= 1000; t += smp) {
-        r = t / 1000.0 * 2.0 * PI * frq;
-        vin = amp * squ(r);
-        vout = vin;
-        printf("%d, %4f\n", t, vout);
-    }
+for (t = 0; t <= 1000; t += smp) {
+    r = t / 1000.0 * 2.0 * PI * frq;
+    vin = amp * squ(r);
+    vout = vin;
+    printf("%d, %4f\n", t, vout);
 }\end{lstlisting}
 
         \begin{lstlisting}[caption=triaft.c, label=src:triaft]
-double rad(double r) {
-    if (r >= 0) {
-        return fmod(r, 2 * PI);
-    } else {
-        return 2 * PI - fmod(-r, 2 * PI);
-    }
-}
+int t;
+double r, amp, frq, smp, vin, vout;
 
-double tri(double r) {
-    r += PI / 2.0;
-    if (rad(r) < PI) {
-        return 2.0 * rad(r) / PI - 1.0;
-    } else {
-        return 2.0 - 2.0 * (rad(r) - PI / 2.0) / PI;
-    }
-}
-
-int main(int argc, char **argv) {
-    int t;
-    double r, amp, frq, smp, vin, vout;
-
-    amp = atof(argv[1]);
-    frq = atof(argv[2]);
-    smp = atof(argv[3]);
-
-    for (t = 0; t <= 1000; t += smp) {
-        r = t / 1000.0 * 2.0 * PI * frq;
-        vin = amp * tri(r);
-        vout = vin;
-        printf("%d, %4f\n", t, vout);
-    }
+for (t = 0; t <= 1000; t += smp) {
+    r = t / 1000.0 * 2.0 * PI * frq;
+    vin = amp * tri(r);
+    vout = vin;
+    printf("%d, %4f\n", t, vout);
 }\end{lstlisting}
 
         これらのプログラムを使って振幅2.5, 周波数3 Hz, 標本化間隔5 msののこぎり波, 矩形波, 三角波を
@@ -414,7 +351,7 @@ int main(int argc, char **argv) {
 }\end{lstlisting}
 
         それぞれ, \verb|POINTS|の値を$N$にすることで$N$点単純移動平均プログラムとすることができる.
-        直近5つのデータと2つの時刻を利用することで平均を求める際の計算量を軽減することができた.
+        直近5つの振幅値と直近2つの時刻を利用することで平均を求める際の計算量を軽減することができた.
 
         これらのプログラムで, 振幅100, 周波数4 Hzの正弦波に演習3-1で実装したadd-wn2.cを使用して最大振幅10の
         白色雑音を加えた波形に雑音除去を行った波形を図\ref{fig:mvave1}, \ref{fig:mvave2}に示す.
@@ -422,14 +359,14 @@ int main(int argc, char **argv) {
         \begin{figure}[h]
             \centering
             \includegraphics[width=0.8\hsize]{images/mvave5-1.eps}
-            \caption{オンライン型プログラムを利用して雑音を取り除いた波形}
+            \caption{振幅100, 周波数4 Hzの正弦波, それに最大振幅10の白色雑音を加えた波形, さらにオンライン型プログラムを使用して雑音除去をした波形}
             \label{fig:mvave1}
         \end{figure}
 
         \begin{figure}[h]
             \centering
             \includegraphics[width=0.8\hsize]{images/mvave5-2.eps}
-            \caption{オフライン型プログラムを利用して雑音を取り除いた波形}
+            \caption{振幅100, 周波数4 Hzの正弦波, それに最大振幅10の白色雑音を加えた波形, さらにオフライン型プログラムを使用して雑音除去をした波形}
             \label{fig:mvave2}
         \end{figure}
 
@@ -439,11 +376,13 @@ int main(int argc, char **argv) {
 \section{時系列データの解析}
     周期的なアナログ信号$x(t)$に由来する時系列データ$x_i;i=1,2,\dots,N$が与えられたとき,
     元の信号の基本周波数, 振幅, 位相などを求めることを信号解析を呼ぶ.
-    本実験では信号の\textbf{最小値}, \textbf{最大値}, \textbf{平均値}, \textbf{標準偏差}, \textbf{最大振幅}, \textbf{実効値}を求める.
+    
+    また, 各種信号処理の性能を評価するためには, 定量的な指標を用いるべきである.
+    本実験では, 雑音除去性能を信号対雑音比(SNR)により評価する.
 
     \paragraph{演習4-3} 参考文献\cite{Text}のリスト5を完成させよ.
     次に, コマンドライン引数として指定された2つのCSVファイルについてファイルについて,
-    時系列データの差を取るオフライン型プログラムdiff2.cを作成せよ.
+    時系列データの同時刻のデータ間の差を取るオフライン型プログラムdiff2.cを作成せよ.
 
         作成したプログラムを一部抜粋してリスト\ref{src:diff}に示す.
         
@@ -491,7 +430,7 @@ int main(int argc, char **argv) {
         \begin{figure}[h]
             \centering
             \includegraphics[width=0.8\hsize]{images/diff.eps}
-            \caption{最大振幅10の白色雑音}
+            \caption{白色雑音が加わっているデータと, 加わっていないデータの差}
             \label{fig:diff}
         \end{figure}
 
@@ -539,7 +478,7 @@ int main(int argc, char **argv) {
 
         \begin{table}[h]
             \centering
-            \caption{正弦波と雑音が加わった正弦波のSNR [dB]}
+            \caption{雑音が加わった正弦波と加わっていない正弦波のSNR [dB]}
             \label{tab:snr1}
             \begin{tabular}{c|c||cc|cc|cc} \hline
                 \multicolumn{2}{c||}{元の正弦波の振幅} & \multicolumn{2}{c|}{25} & \multicolumn{2}{c|}{50} & \multicolumn{2}{c}{100} \\ \hline
@@ -559,7 +498,7 @@ int main(int argc, char **argv) {
 
         \begin{table}[h]
             \centering
-            \caption{正弦波と雑音を除去した正弦波のSNR [dB]}
+            \caption{雑音を除去した正弦波としていない正弦波のSNR [dB]}
             \label{tab:snr2}
             \begin{tabular}{c|c||cc|cc|cc|cc} \hline
                 \multicolumn{2}{c||}{雑音除去の手法} & \multicolumn{4}{c|}{3点移動平均} & \multicolumn{4}{c}{5点移動平均} \\ \hline
@@ -573,9 +512,9 @@ int main(int argc, char **argv) {
         
         表から, SNRは表\ref{tab:snr1}と同様に元の正弦波の振幅の増加に伴って増加し,
         白色雑音の最大振幅の増加に伴って減少することがわかる.
-        また, 全体的に5点移動平均の方がSNRが小さく, 雑音除去性能が高いといえる.
+        また, 全体的に3点移動平均の方がSNRが高く, 雑音除去性能が高いといえる.
         さらに, 周波数の増加に伴ってSNRは低下しているため,
-        単純移動平均は高周波の信号に対してより有効であることがわかる.
+        単純移動平均は低周波の信号に対してより有効であることがわかる.
 
 \section{Windows WAVEファイルの解析$\cdot$加工}
     この節では, Windows標準のサウンドフォーマットであるWAVEファイルを,
@@ -630,6 +569,7 @@ int main(int argc, char **argv) {
 
     それぞれの波形を振幅$A$, 周波数$f$ [Hz]の時系列データ$Af_i(t) + A_0$として生成するプログラム
     f1.c, f2.c, f3.cを一部抜粋してリスト\ref{src:f1}, \ref{src:f2}, \ref{src:f3}に示す.
+    なお, 今回は$f = 2$ Hzと固定してプログラムを作成した.
 
     \begin{lstlisting}[caption=f1.c, label=src:f1]
 #define BIAS 0x80
@@ -685,7 +625,7 @@ int main(int argc, char **argv) {
     }
 }\end{lstlisting}
 
-    これらのプログラムを使って, $A = 100, A_0 = 128, f = 2$ Hzとし, $M = 1, 10, 100$について波形を出力したものを
+    これらのプログラムを使って, $A = 100, A_0 = 128$とし, $M = 1, 10, 100$について波形を出力したものを
     図\ref{fig:f1}, \ref{fig:f2}, \ref{fig:f3}に示す.
 
     \begin{figure}[h]
@@ -718,21 +658,21 @@ int main(int argc, char **argv) {
     \begin{figure}[h]
         \centering
         \includegraphics[width=0.8\hsize]{images/f1mv.eps}
-        \caption{雑音を加え, 除去した$f_1$の波形}
+        \caption{白色雑音を加え, その後除去処理を施した$f_1$の波形}
         \label{fig:f1mv}
     \end{figure}
 
     \begin{figure}[h]
         \centering
         \includegraphics[width=0.8\hsize]{images/f2mv.eps}
-        \caption{雑音を加え, 除去した$f_2$の波形}
+        \caption{白色雑音を加え, その後除去処理を施した$f_2$の波形}
         \label{fig:f2mv}
     \end{figure}
 
     \begin{figure}[h]
         \centering
         \includegraphics[width=0.8\hsize]{images/f3mv.eps}
-        \caption{雑音を加え, 除去した$f_3$の波形}
+        \caption{白色雑音を加え, その後除去処理を施した$f_3$の波形}
         \label{fig:f3mv}
     \end{figure}
 
@@ -750,14 +690,14 @@ int main(int argc, char **argv) {
         \end{tabular}
     \end{table}
 
-    これらの結果から, 演習4-4の結果と合わせて, 5点移動平均の方が雑音除去性能が優れているといえる.
+    これらの結果から, 演習4-4の結果と合わせて, 3点移動平均の方がSNRが高く, 雑音除去性能が優れているといえる.
 
 \section{発展課題}
     今回は, モノラル音声・量子化ビット数8のWAVEファイルの波形データを入力した時に,
     それをステレオ音声に変換し, さらに一定周期で音が周りを回っているように感じるように信号処理を行う.
 
     元データのファイル, 出力先のファイル, 回転の周波数をコマンドライン引数で入力するようにし,
-    時間によって角度を増加させ, 左右の出力を調節する.
+    時間によって自分から音源への角度を変化させ, 左右の出力を調節する.
 
     作成したプログラムrevolute.cを一部抜粋してリスト\ref{src:rev}に示す.
     
@@ -769,44 +709,44 @@ int copy_header(FILE *fp1, FILE *fp2) {
     int
         riff_size, fmt_size, format_id, channel_n, sampling_rate, byte_per_sec, block_size, q_bit, data_size;
 
-    fread(str, 1, H_LEN, fp1);
-    fread(&riff_size, 4, 1, fp1);
-    fwrite("RIFF",         sizeof(char),  4, fp2);
-    fwrite(&riff_size,     sizeof(int),   1, fp2);
+    fread(str,         sizeof(char), H_LEN, fp1);
+    fread(&riff_size,  sizeof(int),  1, fp1);
+    fwrite("RIFF",     sizeof(char), 4, fp2);
+    fwrite(&riff_size, sizeof(int),  1, fp2);
 
-    fread(str, 1, H_LEN, fp1);
-    fread(str, 1, H_LEN, fp1);
-    fread(&fmt_size, 4, 1, fp1);
-    fwrite("WAVE",         sizeof(char),  4, fp2);
-    fwrite("fmt ",         sizeof(char),  4, fp2);
-    fwrite(&fmt_size,      sizeof(int),   1, fp2);
+    fread(str,        sizeif(char), H_LEN, fp1);
+    fread(str,        sizeof(char), H_LEN, fp1);
+    fread(&fmt_size,  sizeof(int),  1, fp1);
+    fwrite("WAVE",    sizeof(char), 4, fp2);
+    fwrite("fmt ",    sizeof(char), 4, fp2);
+    fwrite(&fmt_size, sizeof(int),  1, fp2);
 
 
-    fread(&format_id, 2, 1, fp1);
-    fwrite(&format_id,     sizeof(short), 1, fp2);
+    fread(&format_id,  sizeof(short), 1, fp1);
+    fwrite(&format_id, sizeof(short), 1, fp2);
 
-    fread(&channel_n, 2, 1, fp1);
+    fread(&channel_n,  sizeof(short), 1, fp1);
     channel_n = 2;
-    fwrite(&channel_n,     sizeof(short), 1, fp2);
+    fwrite(&channel_n, sizeof(short), 1, fp2);
 
-    fread(&sampling_rate, 4, 1, fp1);
-    fwrite(&sampling_rate, sizeof(int),   1, fp2);
+    fread(&sampling_rate,  sizeof(int), 1, fp1);
+    fwrite(&sampling_rate, sizeof(int), 1, fp2);
 
-    fread(&byte_per_sec, 4, 1, fp1);
-    fwrite(&byte_per_sec,  sizeof(int),   1, fp2);
+    fread(&byte_per_sec,  sizeof(int), 1, fp1);
+    fwrite(&byte_per_sec, sizeof(int), 1, fp2);
 
-    fread(&block_size, 2, 1, fp1);
+    fread(&block_size,  sizeof(short), 1, fp1);
     block_size = 2;
-    fwrite(&block_size,    sizeof(short), 1, fp2);
+    fwrite(&block_size, sizeof(short), 1, fp2);
 
-    fread(&q_bit, 2, 1, fp1);
-    fwrite(&q_bit,         sizeof(short), 1, fp2);
+    fread(&q_bit,  sizeof(short), 1, fp1);
+    fwrite(&q_bit, sizeof(short), 1, fp2);
 
-    fwrite("data",         sizeof(char),  4, fp2);
+    fwrite("data", sizeof(char),  4, fp2);
 
-    fread(&data_size, 4, 1, fp1);
+    fread(&data_size,  sizeof(int), 1, fp1);
     data_size *= 2;
-    fwrite(&data_size, sizeof(int),   1, fp2);
+    fwrite(&data_size, sizeof(int), 1, fp2);
 
     return sampling_rate;
 }

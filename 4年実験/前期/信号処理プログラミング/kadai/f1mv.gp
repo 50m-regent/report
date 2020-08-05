@@ -1,4 +1,4 @@
-set xlabel "t [ms]"
+set xlabel "time [ms]"
 set ylabel "Amplitude"
 set terminal postscript eps
 set output 'f1mv.eps'

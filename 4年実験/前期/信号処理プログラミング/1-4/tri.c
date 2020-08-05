@@ -15,7 +15,7 @@ double tri(double r) {
     if (rad(r) < PI) {
         return 2.0 * rad(r) / PI - 1.0;
     } else {
-        return 2.0 - 2.0 * (rad(r) - PI / 2.0) / PI;
+        return 3.0 - 2.0 * rad(r) / PI;
     }
 }
 
