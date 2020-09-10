@@ -29,6 +29,8 @@ INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/comment/comment.sty
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/comment/comment.sty
 INPUT out/report.aux
 INPUT out/report.aux
 OUTPUT out/report.aux
