@@ -3,8 +3,18 @@
 
 #define BUF 80
 
-double **matrix_p(double **x, double **y, int xrow, int xcol, int yrow, int ycol) {
+void print_matrix(double **a, int row, int col) {
     int i, j;
+    for (i = 0; i < row; i++) {
+        for (j = 0; j < col; j++) {
+            printf("%lf ", a[i][j]);
+        }
+        puts("");
+    }
+}
+
+double **matrix_p(double **x, double **y, int xrow, int xcol, int yrow, int ycol) {
+    int i, j, k;
     double **ret = allocMatrix(xrow, ycol);
 
     if (xrow != ycol || xcol != yrow) {
@@ -13,8 +23,10 @@ double **matrix_p(double **x, double **y, int xrow, int xcol, int yrow, int ycol
     }
 
     for (i = 0; i < xrow; i++) {
-        for (j = 0; j < xcol; j++) {
-            ret[i][i] += x[i][j] * y[j][i];
+        for (j = 0; j < ycol; j++) {
+            for (k = 0; k < xcol; k++) {
+                ret[i][j] += x[i][k] * y[k][j];
+            }
         }
     }
 
@@ -67,11 +79,18 @@ int main() {
 
     y = csvRead(&yrow, &ycol, fp);
 
+    puts("Vector1");
+    print_matrix(x, xrow, xcol);
+    puts("\nVector2");
+    print_matrix(y, yrow, ycol);
+
     prod = matrix_p(x, y, xrow, xcol, yrow, ycol);
 
     printf("Inner product: %lf\n", prod[0][0]);
 
-    printf("Angle: %lf [rad]\n", calc_angle(x, y, xrow, xcol, yrow, ycol));
+    double angle = calc_angle(x, y, xrow, xcol, yrow, ycol);
+    printf("Angle: %lf [rad]\n", angle);
+    printf("       %lf [°]\n", angle / M_PI * 180);
 
     return EXIT_SUCCESS;
 }

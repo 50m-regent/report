@@ -1,5 +1,6 @@
 \documentclass{jsarticle}
 \usepackage[dvipdfmx]{graphicx}
+\usepackage{bm}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}
@@ -37,5 +38,203 @@
 
 \begin{document}
 \maketitle
-    
+    \section{任意の行列の2行を交換する}
+        作成した行列の任意の2行を交換する関数\verb|swap_row()|をリスト\ref{src:swap}に示す.
+
+        \begin{lstlisting}[caption=swap.c, label=src:swap]
+void swap_row(double **a, int row, int col, int x, int y) {
+    if (x < 0 || x >= row || y < 0 || y >= row) {
+        puts("Defective Input (swap_row())");
+        return;
+    }
+
+    double *tmp = a[x];
+    a[x] = a[y];
+    a[y] = tmp;
+}\end{lstlisting}
+
+        引数の\verb|a|にはNAbasic.cの\verb|csvRead()|から得られる
+        行列を渡す.
+        \verb|row|, \verb|col|, \verb|x|, \verb|y|はそれぞれ
+        行列の行数, 列数, 交換する行である.
+        正方行列を掛け合わせることで行を交換することも可能だが,
+        それだと正方行列以外の行列に対応できないため,
+        リスト\ref{src:swap}のように
+        2行のポインタを入れ替えることで実装した.
+
+        この関数を使って課題4の
+        $
+            A = \left(
+                \begin{array}{ccc}
+                  2 & -1 & 5 \\
+                  -4 & 2 & 1 \\
+                  8 & 2 & -1
+                \end{array}
+            \right)
+        $
+        の1, 3行目を交換した際の出力を下に示す.
+
+        \begin{verbatim}
+Before swapping
+2.000000 -1.000000 5.000000 
+-4.000000 2.000000 1.000000 
+8.000000 2.000000 -1.000000 
+
+After swapping
+8.000000 2.000000 -1.000000 
+-4.000000 2.000000 1.000000 
+2.000000 -1.000000 5.000000 
+        \end{verbatim}
+
+        正しく交換できていることがわかる.
+
+    \section{行列積を利用して内積を求める}
+        2つのベクトル
+        $
+            \left(
+                \begin{array}{c}
+                x_1 \\
+                x_2 \\
+                x_3
+                \end{array}
+            \right),
+            \left(
+                \begin{array}{c}
+                y_1 \\
+                y_2 \\
+                y_3
+                \end{array}
+            \right)
+        $
+        の内積は
+        $
+            \left(
+                \begin{array}{c}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{array}
+            \right) \cdot
+            \left(
+                \begin{array}{c}
+                    y_1 \\
+                    y_2 \\
+                    y_3
+                \end{array}
+            \right) =
+            x_1y_1+x_2y_2+x_3y_3
+        $と表される.
+        これは次の行列積
+        $
+            \left(
+                \begin{array}{ccc}
+                    x_1 & x_2 & x_3
+                \end{array}
+            \right)
+            \left(
+                \begin{array}{c}
+                    y_1 \\
+                    y_2 \\
+                    y_3
+                \end{array}
+            \right)
+        $
+        で表すことができる.
+
+        行列積を計算する関数\verb|matrix_p()|をリスト\ref{src:prod}に示す.
+
+        \begin{lstlisting}[caption=prod.c, label=src:prod]
+double **matrix_p(
+    double **x, int xrow, int xcol,
+    double **y, int yrow, int ycol
+) {
+    int i, j, k;
+    double **ret = allocMatrix(xrow, ycol);
+
+    if (xrow != ycol || xcol != yrow) {
+        puts("Defective data! (matrix_p())");
+        return ret;
+    }
+
+    for (i = 0; i < xrow; i++) {
+        for (j = 0; j < ycol; j++) {
+            for (k = 0; k < xcol; k++) {
+                ret[i][j] += x[i][k] * y[k][j];
+            }
+        }
+    }
+
+    return ret;
+}\end{lstlisting}
+        
+        引数は計算をする2つの行列とそれぞれの行数と列数である.
+        
+        2つのベクトルを読み込む際に,
+        行ベクトルと列ベクトルとして読み込まなければ計算ができない.
+
+        この関数を使用して課題2の2つのベクトルの内積を求めた結果を下に示す.
+
+        \begin{verbatim}
+Vector1
+1.000000 5.000000 8.000000 
+
+Vector2
+3.000000 
+7.000000 
+-2.000000 
+
+Inner product: 22.000000
+        \end{verbatim}
+
+        正しく計算できていることがわかる.
+
+    \section{2つのベクトルの成す角を求める}
+        2つのベクトル$\bm{v_1}, \bm{v_2}$
+        の内積は2つの成す角を$\theta$としたとき,
+        $\bm{v_1} \cdot \bm{v_2} = v_1v_2\cos{\theta}$
+        と定義される.
+        よって, 2つの成す角は,
+        $\displaystyle \theta = \arccos{\frac{\bm{v_1} \cdot \bm{v_2}}{v_1 v_2}}$
+        として求めることができる.
+        これを求める関数\verb|calc_angle()|をリスト\ref{src:calc}に示す.
+
+        \begin{lstlisting}[caption=calc\_angle.c, label=src:calc]
+double calc_angle(
+    double **x, int xrow, int xcol, 
+    double **y, int yrow, int ycol
+) {
+    if (xrow != 1 || ycol != 1 || xcol != yrow) {
+        puts("Defective data! (calc_angle())");
+        return -1;
+    }
+
+    double p = matrix_p(x, y, xrow, xcol, yrow, ycol)[0][0];
+    return acosf(
+        p /
+        norm(matrix2colVector(x, xrow, xcol), xrow * xcol) /
+        norm(matrix2colVector(y, yrow, ycol), yrow * ycol)
+    );
+}\end{lstlisting}
+
+        引数は\verb|matrix_p()|と同様である.
+
+        これを使用して課題2の2つのベクトルの成す角を求めた結果を下に示す.
+
+        \begin{verbatim}
+Vector1
+1.000000 5.000000 8.000000 
+
+Vector2
+3.000000 
+7.000000 
+-2.000000 
+
+Inner product: 22.000000
+
+Angle:  1.271850 [rad]
+       72.871616 [°]
+        \end{verbatim}
+
+        わかりやすいように孤度法と度数法2通りで出力するようにした.
+
 \end{document}

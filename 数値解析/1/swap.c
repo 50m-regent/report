@@ -19,7 +19,7 @@ void print_matrix(double **a, int row, int col) {
 
 void swap_row(double **a, int row, int col, int x, int y) {
     if (x < 0 || x >= row || y < 0 || y >= row) {
-        puts("Defective Input (swap())");
+        puts("Defective Input (swap_row())");
         return;
     }
 
