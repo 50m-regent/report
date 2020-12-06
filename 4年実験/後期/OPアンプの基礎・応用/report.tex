@@ -68,7 +68,14 @@
 \section{反転増幅回路}
     図\ref{fig:inv-amp}に反転増幅回路を示す.
 
-    この回路について, 閉ループ利得$G \ [倍]$, $A \ [\rm{dB}]$を求める.
+    \begin{figure}[h]
+        \centering
+        % \includegraphics[0.7\hsize]{img/inv-amp.eps}
+        \caption{反転増幅回路}
+        \label{fig:inv-amp}
+    \end{figure}
+
+    この回路について, 閉ループ利得$A \ [倍]$, $G \ [\rm{dB}]$を求める.
     OPアンプの性質より, 二つの入力電圧を$v_s$とするとこれらは等しくなるので,
     二つの抵抗を流れる電流$i_i, i_f$について以下の式が成り立つ.
 
@@ -76,30 +83,85 @@
         i_i = \frac{v_i - v_s}{R_i} = i_f = \frac{v_s - v_o}{R_f}
     \end{equation*}
 
-    ここで, 理想的なOPアンプでの閉ループ利得を$A_0 \rightarrow \infty$とすると,
+    ここで, 理想的なOPアンプでの開ループ利得を$A_0 \rightarrow \infty$とすると,
     $\displaystyle v_s = \frac{v_o}{A_0} = 0$となるので,
 
     \begin{equation}
-        \frac{v_i}{R_i} = -\frac{v_o}{R_f}
+        \frac{v_i}{R_i} = -\frac{v_o}{R_f} \label{equ:inv-amp}
     \end{equation}
 
     となる. よって, 閉ループ利得は,
 
     \begin{eqnarray}
-        G &=& \left|\frac{v_o}{v_i}\right| = \frac{R_f}{R_i} \\
-        A &=& 20 \log_{10}G
+        A &=& \left|\frac{v_o}{v_i}\right| = \frac{R_f}{R_i} \\
+        G &=& 20 \log_{10}A
     \end{eqnarray}
 
     と表せる.
 
-    \subsection{周波数特性の測定}
+    \subsection{周波数特性の測定} \label{sec:ex1}
+        図\ref{fig:inv-amp}の回路に振幅2V,
+        周波数$f = 100 \rm{Hz} \ 〜 \ 500 \rm{kHz}$の正弦波を入力し,
+        出力波形のピークピーク値$V_o \ [\rm{V}]$及び
+        入力波形に対する出力波形の遅れ$t \ [\mu\rm{s}]$を測定する.
+
+        次に,測定結果をもとに, 閉ループ利得$G \ [\rm{dB}]$及び,
+        出力波形の位相の遅れ$\displaystyle\phi = 360ft \ [^\circ]$を計算する.
+        
+        表\ref{tab:inv-amp}に測定結果及び計算結果を示す.
+
+        \begin{table}[h]
+            \caption{各周波数に対する出力波形の振幅と, 入力に対する遅れ}
+            \label{tab:inv-amp}
+            \centering
+            \begin{tabular}{r|rr|rr||r|rr|rr}
+                $f \ [\rm{kHz}]$ & $V_o \ [\rm{V]}$ & $G \ [\rm{dB}]$ & $t \ [\mu\rm{s}]$ & $\phi \ [^\circ]$ & $f \ [\rm{kHz}]$ & $V_o \ [\rm{V]}$ & $G \ [\rm{dB}]$ & $t \ [\mu\rm{s}]$ & $\phi \ [^\circ]$ \\ \hline \hline
+                0.1 & 8.0 & 6.0 & 0 & 0 & 20 & 5.4 & 2.6 & 7.5 & -54 \\
+                0.2 & 8.0 & 6.0 & 0 & 0 & 30 & 3.8 & -0.4 & 6.3 & -68 \\
+                0.5 & 8.0 & 6.0 & 0 & 0 & 50 & 2.3 & -4.8 & 4.5 & -81 \\
+                1 & 8.0 & 6.0 & 0 & 0 & 100 & 1.1 & -11.2 & 2.5 & -90 \\
+                2 & 8.0 & 6.0 & 0 & 0 & 200 & 0.5 & -18.1 & 1.4 & -101 \\
+                5 & 8.0 & 6.0 & 0 & 0 & 300 & 0.3 & -21.4 & 1.1 & -119 \\
+                10 & 8.0 & 6.0 & 0 & 0 & 500 & 0.2 & -26.0 & 0.8 & -135 \\
+            \end{tabular}
+        \end{table}
+
+        この結果を片対数グラフにプロットしたものを図\ref{fig:inv-amp-graph1}に示す.
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.8\hsize]{img/inv-amp-graph1.eps}
+            \caption{反転増幅回路の周波数特性}
+            \label{fig:inv-amp-graph1}
+        \end{figure}
+
+        グラフより,
+        ある周波数を境に増幅率が下がりはじめ,
+        位相も遅れていることがわかる.
+        理論上はどんな周波数においてもOPアンプの利得は減衰しないが,
+        実際の回路では高周波入力に対してOPアンプの出力が間に合わず,
+        遅延が発生しているため増幅率が低下してしまうと考えられる.
+        これは利得の低下とともに出力が遅延していることからもわかる.
 
     \subsection{課題1}
-        \paragraph{}
+        \paragraph{
+            式\ref{equ:inv-amp}の導出において,
+            $A_0 \rightarrow \infty$の仮定を設けたが,
+            $A_0$を有限値とした場合の式を求めよ.
+        }
 
-        \paragraph{}
+        \paragraph{
+            式\ref{equ:inv-amp-ex}を用いて,
+            $A_0$が20\%低下した場合の閉ループ利得$G$の変化を計算せよ.
+            ただし, 使用するOPアンプの開ループ利得を$A_0 = 200000$とする.
+        }
 
-        \paragraph{}
+        \paragraph{
+            十分高い周波数領域ではOPアンプの利得は-20dB/decで減衰する.
+            \ref{sec:ex1}節で求めた閉ループ利得の特性線図において,
+            高周波数領域の利得の現象を-20dB/decの直線で近似し,
+            利得一定の直線との交点の周波数を求めよ.
+        }
 
 \section{微分回路}
     

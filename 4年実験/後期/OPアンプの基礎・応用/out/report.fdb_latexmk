@@ -1,10 +1,10 @@
 # Fdb version 3
-["dvipdf"] 1607173012 "out/report.dvi" "out/report.pdf" "out/report" 1607173013
-  "out/report.dvi" 1607173012 6632 a58cfdbfd07127645b929dac4b3271f9 "latex"
+["dvipdf"] 1607259531 "out/report.dvi" "out/report.pdf" "out/report" 1607259533
+  "out/report.dvi" 1607259531 11120 ae90dcc745a04aa2ce02c84d2ee16ece "latex"
   (generated)
   "out/report.pdf"
-["latex"] 1607173012 "/Users/len/Documents/report/4年実験/後期/OPアンプの基礎・応用/report.tex" "out/report.dvi" "report" 1607173013
-  "/Users/len/Documents/report/4年実験/後期/OPアンプの基礎・応用/report.tex" 1607173012 4194 96e7ba920e47398a94ca8922c5a7902a ""
+["latex"] 1607259531 "/Users/len/Documents/report/4年実験/後期/OPアンプの基礎・応用/report.tex" "out/report.dvi" "report" 1607259533
+  "/Users/len/Documents/report/4年実験/後期/OPアンプの基礎・応用/report.tex" 1607259531 7611 823e29e6cf75d7856ce815b83591a137 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/ptex-fonts/jis/jis.tfm" 1463434352 468 53f854284f6afa6c36aaa2d1090ecc12 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/ptex-fonts/jis/jisg.tfm" 1463434352 468 53f854284f6afa6c36aaa2d1090ecc12 ""
@@ -27,6 +27,7 @@
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr6.tfm" 1136768653 1300 b62933e007d01cfd073f79b963c01526 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr8.tfm" 1136768653 1292 21c1c5bfeaebccffdb478fd231a0997d ""
+  "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr9.tfm" 1136768653 1292 6b21b9c2c7bebb38aa2273f7ca0fb3af ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1136768653 1316 b636689f1933f24d1294acdf6041daaa ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmss12.tfm" 1136768653 1324 37b971caf729d7edd9cbb9f9b0ea76eb ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1136768653 1124 6c73e740cf17375f03eec0ee63599741 ""
@@ -60,8 +61,9 @@
   "/usr/local/texlive/2019/texmf-var/web2c/eptex/platex.fmt" 1579363523 4524395 17d0da8b3348086cc3bbed0a510ba2e7 ""
   "/usr/local/texlive/2019/texmf.cnf" 1557341546 577 d150fef99ac436ad1156e86b0892f6ef ""
   "h31ec-exp.sty" 1607169167 2964 7bdc68fd0ab91fbcd1abeda687a05de4 ""
-  "out/report.aux" 1607173012 2544 052138e7a2815e8a4de9d6f0e60f8b14 "latex"
+  "img/inv-amp-graph1.eps" 1607257522 217982 f6d9a5460aa30b2ddae6c7fd71208dc8 ""
+  "out/report.aux" 1607259531 3900 3fba25bc104e01d87437113f62840679 "latex"
   (generated)
+  "out/report.dvi"
   "out/report.aux"
   "out/report.log"
-  "out/report.dvi"
