@@ -55,6 +55,8 @@ INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstmisc.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstmisc.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/listings/listings.cfg
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/listings/listings.cfg
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/cases/cases.sty
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/cases/cases.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstmisc.sty
@@ -109,14 +111,53 @@ OUTPUT out/report.dvi
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmss12.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth10.tfm
+INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/ptex-fonts/jis/jisg.tfm
+INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmss10.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin10.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/ptex-fonts/jis/jis.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmss12.tfm
-INPUT img/inv-amp-graph1.eps
-INPUT img/inv-amp-graph1.eps
-INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth10.tfm
-INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/ptex-fonts/jis/jisg.tfm
-INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmss10.tfm
-INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+INPUT img/inv-amp-graph.eps
+INPUT img/inv-amp-graph.eps
+INPUT img/inv-amp-ex-graph.eps
+INPUT img/inv-amp-ex-graph.eps
+INPUT img/dif-graph1.jpg
+INPUT extractbb -B cropbox -O img/dif-graph1.jpg
+INPUT img/dif-graph2.jpg
+INPUT extractbb -B cropbox -O img/dif-graph2.jpg
+INPUT img/dif-graph3.jpg
+INPUT extractbb -B cropbox -O img/dif-graph3.jpg
+INPUT img/difex-graph1.eps
+INPUT img/difex-graph1.eps
+INPUT img/nice-dif-graph.eps
+INPUT img/nice-dif-graph.eps
+INPUT img/dif-com-graph1.eps
+INPUT img/dif-com-graph1.eps
+INPUT img/dif-com-graph2.eps
+INPUT img/dif-com-graph2.eps
+INPUT img/ex2-1.eps
+INPUT img/ex2-1.eps
+INPUT img/ex2-2.eps
+INPUT img/ex2-2.eps
+INPUT img/int-graph1.jpg
+INPUT extractbb -B cropbox -O img/int-graph1.jpg
+INPUT img/int-graph2.jpg
+INPUT extractbb -B cropbox -O img/int-graph2.jpg
+INPUT img/intex-graph1.eps
+INPUT img/intex-graph1.eps
+INPUT img/nice-int-graph.eps
+INPUT img/nice-int-graph.eps
+INPUT img/int-com-graph1.eps
+INPUT img/int-com-graph1.eps
+INPUT img/int-com-graph2.eps
+INPUT img/int-com-graph2.eps
+INPUT img/intex2-1.eps
+INPUT img/intex2-1.eps
+INPUT img/intex2-2.eps
+INPUT img/intex2-2.eps
+INPUT img/band-1.eps
+INPUT img/band-1.eps
+INPUT img/band-2.eps
+INPUT img/band-2.eps
 INPUT out/report.aux
