@@ -3,41 +3,50 @@ import numpy as np
 import random as rand
 import csv
 
-def dft(f):
+def dft(f, s):
     N = len(f)
-    X = []
+    X = np.array([0j for i in range(N)])
     for l in range(N):
-        x = 0
         for k in range(N):
-            x += f[k] * np.e ** (-1j * 2 * np.pi * k * l / N)
-        X.append(x)
-    return np.array(X)
+            X[l] += f[k] * np.e ** (-1j * 2 * np.pi * k * l / N)
+    return X * s / N
 
-def idft(F):
+def idft(F, s):
     N = len(F)
-    x = []
+    x = np.array([0j for i in range(N)])
     for l in range(N):
-        X = 0
         for k in range(N):
-            X += F[k] * np.e ** (1j * 2 * np.pi * k * l / N)
-        x.append(X)
-    return np.array(x) / N
+            x[l] += F[k] * np.e ** (1j * 2 * np.pi * k * l / N)
+    return x / s
+
+def load_from_csv(filename):
+    with open(filename) as f:
+        reader = csv.reader(f)
+        return np.array([float(row[0]) for row in reader])
 
 if __name__ == '__main__':
-    with open('data/sample.csv') as f:
-        reader = csv.reader(f)
-        y = np.array([float(row[0]) for row in reader])
+    N = 2000
+    fm = 10
+    s = 2
+    
+    y = np.zeros(N)
+    t = np.linspace(0, s, N)
+    for f in range(1, fm + 1):
+        y += np.sin(2 * np.pi * f * t)
+
+    fy = dft(y, s)
+    y = idft(fy, s)
 
     plt.subplot2grid((2, 2), (0, 0), colspan=2)
-    plt.plot(y)
+    plt.plot(t, y)
 
     plt.subplot2grid((2, 2), (1, 0))
-    plt.bar(np.arange(0, 15), abs(dft(y))[1:16])
-    plt.xticks(np.arange(0, 15, 2))
+    plt.bar(np.arange(1, fm + 13), abs(fy)[1:fm + 13])
+    plt.xticks(np.arange(1, fm + 13, 2))
 
     plt.subplot2grid((2, 2), (1, 1))
-    plt.bar(np.arange(985, 1000), abs(dft(y))[-15:])
-    plt.xticks(np.arange(985, 1000, 2))
+    plt.bar(np.arange(N - fm - 5, N), abs(fy)[-fm - 5:])
+    plt.xticks(np.arange(N - fm - 5, N, 2))
     plt.yticks([])
 
     plt.subplots_adjust(wspace=0)
