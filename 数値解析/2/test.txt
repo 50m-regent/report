@@ -1,0 +1,135 @@
+// 行列を出力
+// 処理は省略
+void print_matrix(double **a, int row, int col);
+
+// 行列積
+// 処理は省略
+double **matrix\_p(double **x, double **y, int xrow, int xcol, int yrow, int ycol);
+
+// 行列の行交換
+// 処理は省略
+void swap_row(double **a, int row, int x, int y);
+
+// LU分解 成功したら0を返す
+int lu(
+    double **A,
+    double **L,
+    double **U,
+    double **P,
+    int Arow
+) {
+    int i, j, k, pivot;
+    double q;
+
+    for (i = 0; i < Arow; i++) {
+        for (pivot = j = i; j < Arow; j++) {
+            if (fabs(A[j][i]) > fabs(A[pivot][i])) {
+                pivot = j;
+            }
+        }
+
+        swap_row(A, Arow, i, pivot);
+        swap_row(L, Arow, i, pivot);
+        swap_row(U, Arow, i, pivot);
+        swap_row(P, Arow, i, pivot);
+
+        q = A[i][i];
+        if (0 == q) {
+            print_matrix(A, Arow, Arow);
+            puts("Defective A Data!");
+            return EXIT_FAILURE;
+        }
+        for (j = i; j < Arow; j++) {
+            L[j][i] = A[j][i];
+            A[i][j] /= q;
+        }
+        
+        for (k = i + 1; k < Arow; k++) {
+            q = A[k][i];
+            for (j = i; j < Arow; j++) {
+                A[k][j] -= A[i][j] * q;
+            }
+        }
+
+        for (j = i; j < Arow; j++) {
+            U[i][j] = A[i][j];
+        }
+    }
+
+    return EXIT_SUCCESS;
+}
+
+// LU行列の逆行列を求める
+void LUinv(double **L, double **Li, double **U, double **Ui, int row) {
+    int i, j, k;
+    for (i = 0; i < row; i++) {
+        Ui[i][i] = 1.0 / U[i][i];
+        Li[i][i] = 1.0 / L[i][i];
+    }
+
+    for (i = 1; i < row; i++) {
+        for (j = 0; j < row - i; j++) {
+            for (k = 0; k < i; k++) {
+                Ui[j][j + i] -= U[j][j + k + 1] * Ui[j][j] * Ui[j + k + 1][j + i];
+                Li[j + i][j] -= L[j + k + 1][j] * Li[j][j] * Li[j + i][j + k + 1];
+            }
+        }
+    }
+}
+
+int main() {
+    FILE *fin;
+    double **A, **b, **L, **Li, **U, **Ui, **P;
+    int i, Arow, Acol;
+    char file_name[BUF];
+
+    printf("A CSV File Name<< ");
+    scanf("%s", file_name);
+    puts("");
+
+    // Aのcsvファイル読み込み
+    if (NULL == (fin = fopen(file_name, "r"))) {
+        fprintf(stderr, "ファイルが存在しません.\n");
+        return EXIT_FAILURE;
+    }
+    // csvからデータを読み込み
+    A = csvRead(&Arow, &Acol, fin);
+
+    if (Arow != Acol) {
+        puts("Defective A Input!");
+        return EXIT_FAILURE;
+    }
+
+    // 各変数のメモリ確保
+    L = allocMatrix(Arow, Acol);
+    Li = allocMatrix(Arow, Acol);
+    U = allocMatrix(Arow, Acol);
+    Ui = allocMatrix(Arow, Acol);
+    P = allocMatrix(Arow, Acol);
+    x = allocVector(Arow);
+    y = allocVector(Arow);
+
+    // Pは単位行列にしておく
+    for (i = 0; i < Arow; i++) {
+        P[i][i] = 1;
+    }
+
+    // LU分解が失敗したら終了
+    if (lu(A, L, U, P, Arow)) {
+        return EXIT_FAILURE;
+    }
+
+    LUinv(L, Li, U, Ui, Arow);
+
+    puts("Inversed matrix is:");
+    print_matrix(matrix_p(matrix_p(Ui, Li, Arow, Arow, Arow, Arow), P, Arow, Arow, Arow, Arow), Arow, Arow);
+
+    return EXIT_SUCCESS;
+}
+
+
+
+    
+
+    
+    

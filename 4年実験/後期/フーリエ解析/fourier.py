@@ -15,8 +15,10 @@ def idft(F, s):
     N = len(F)
     x = np.array([0j for i in range(N)])
     for l in range(N):
+        X = 0
         for k in range(N):
             x[l] += F[k] * np.e ** (1j * 2 * np.pi * k * l / N)
+        
     return x / s
 
 def load_from_csv(filename):
@@ -25,7 +27,7 @@ def load_from_csv(filename):
         return np.array([float(row[0]) for row in reader])
 
 if __name__ == '__main__':
-    N = 2000
+    N = 1000
     fm = 10
     s = 2
     
@@ -35,7 +37,7 @@ if __name__ == '__main__':
         y += np.sin(2 * np.pi * f * t)
 
     fy = dft(y, s)
-    y = idft(fy, s)
+    y = idft(fy, s).real
 
     plt.subplot2grid((2, 2), (0, 0), colspan=2)
     plt.plot(t, y)

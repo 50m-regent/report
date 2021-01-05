@@ -1,0 +1,369 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{comment}
+\usepackage{listings}
+\usepackage{cases}
+\lstset{
+    basicstyle={\ttfamily},
+    identifierstyle={\small},
+    commentstyle={\smallitshape},
+    keywordstyle={\small\bfseries},
+    ndkeywordstyle={\small},
+    stringstyle={\small\ttfamily},
+    frame={tb},
+    breaklines=true,
+    columns=[l]{fullflexible},
+    numbers=left,
+    xrightmargin=0zw,
+    xleftmargin=3zw,
+    numberstyle={\scriptsize},
+    stepnumber=1,
+    numbersep=1zw,
+    lineskip=-0.5ex,
+    keepspaces=true,
+    language=c
+}
+\renewcommand{\lstlistingname}{リスト}
+\makeatletter
+\newcommand{\figcaption}[1]{\def\@captype{figure}\caption{#1}}
+\newcommand{\tblcaption}[1]{\def\@captype{table}\caption{#1}}
+\makeatother
+
+\title{数値解析レポートNo.2}
+\author{32番 平田 蓮}
+\date{}
+
+\begin{document}
+\maketitle
+    \section{LU分解を用いて逆行列を求める}
+            $C=LU$とLU分解をしたとき、$C^{-1}=U^{-1}L^{-1}P$となる。
+            上三角行列であるU、下三角行列であるLの逆行列を求めることができれば元の行列の逆行列を求めることができる。
+
+            \subsubsection{上三角行列について}
+                $U$は上三角行列であるので、$U^{-1}$も上三角行列である。
+                この二つの行列を以下のように定める。
+
+                \begin{equation*}
+                    U = \left(
+                        \begin{array}{ccc}
+                            a_{11} & a_{12} & a_{13} \\
+                            0 & a_{22} & a_{23} \\
+                            0 & 0 & a_{33}
+                        \end{array}
+                    \right), \
+                    U^{-1} = \left(
+                        \begin{array}{ccc}
+                            a_{11}^{\prime} & a_{12}^{\prime} & a_{13}^{\prime} \\
+                            0 & a_{22}^{\prime} & a_{23}^{\prime} \\
+                            0 & 0 & a_{33}^{\prime}
+                        \end{array}
+                    \right)
+                \end{equation*}
+
+                $UU^{-1}=E$であるので、
+
+                \begin{equation*}
+                    UU^{-1} = \left(
+                        \begin{array}{ccc}
+                            a_{11}a_{11}^{\prime} & a_{11}a_{12}^{\prime} + a_{12}a_{22}^{\prime} & a_{11}a_{13}^{\prime} + a_{12}a_{23}^{\prime} + a_{13}a_{33}^{\prime} \\
+                            0 & a_{22}a_{22}^{\prime} & a_{22}a_{23}^{\prime} + a_{23}a_{33}^{\prime} \\
+                            0 & 0 & a_{33}a_{33}^{\prime}
+                        \end{array}
+                    \right) = \left(
+                        \begin{array}{ccc}
+                            1 & 0 & 0 \\
+                            0 & 1 & 0 \\
+                            0 & 0 & 1
+                        \end{array}
+                    \right)
+                \end{equation*}
+
+                となる。これを解くと、
+
+                \begin{equation*}
+                    U^{-1} = \left(
+                        \begin{array}{ccc}
+                            a_{11}^{\prime} & -a_{12}a_{11}^{\prime}a_{22}^{\prime} & -a_{12}a_{11}^{\prime}a_{23}^{\prime} - a_{13}a_{11}^{\prime}a_{33}^{\prime} \\
+                            0 & a_{22}^{\prime} & -a_{23}a_{22}^{\prime}a_{33}^{\prime} \\
+                            0 & 0 & a_{33}^{\prime}
+                        \end{array}
+                    \right)
+                \end{equation*}
+                \begin{numcases}
+                    {}
+                    a_{11}^{\prime} = \frac{1}{a_{11}} & \nonumber \\
+                    a_{22}^{\prime} = \frac{1}{a_{22}} & \nonumber \\
+                    a_{33}^{\prime} = \frac{1}{a_{33}} & \nonumber
+                \end{numcases}
+
+                を得れる。
+
+            \subsubsection{下三角行列について}
+                下三角行列と同様に以下のように定める。
+
+                \begin{equation*}
+                    L = \left(
+                        \begin{array}{ccc}
+                            b_{11} & 0 & 0 \\
+                            b_{21} & b_{22} & 0 \\
+                            b_{31} & b_{32} & b_{33}
+                        \end{array}
+                    \right), \
+                    L^{-1} = \left(
+                        \begin{array}{ccc}
+                            b_{11}^{\prime} & 0 & 0 \\
+                            b_{21}^{\prime} & b_{22}^{\prime} & 0 \\
+                            b_{31}^{\prime} & b_{32}^{\prime} & b_{33}^{\prime}
+                        \end{array}
+                    \right)
+                \end{equation*}
+
+                $LL^{-1}=E$であるので、
+                
+                \begin{equation*}
+                    LL^{-1} = \left(
+                        \begin{array}{ccc}
+                            b_{11}b_{11}^{\prime} & 0 & 0 \\
+                            b_{21}b_{11}^{\prime} + b_{22}b_{21}^{\prime} & b_{22}b_{22}^{\prime} & 0 \\
+                            b_{31}b_{11}^{\prime} + b_{32}b_{21}^{\prime} + b_{33}b_{31}^{\prime} & b_{32}b_{22}^{\prime} + b_{33}b_{32}^{\prime} & a_{33}a_{33}^{\prime}
+                        \end{array}
+                    \right) = \left(
+                        \begin{array}{ccc}
+                            1 & 0 & 0 \\
+                            0 & 1 & 0 \\
+                            0 & 0 & 1
+                        \end{array}
+                    \right)
+                \end{equation*}
+
+                となる。これを解くと、
+
+                \begin{equation*}
+                    L^{-1} = \left(
+                        \begin{array}{ccc}
+                            b_{11}^{\prime} & 0 & 0 \\
+                            -b_{21}b_{11}^{\prime}b_{22}^{\prime} & b_{22}^{\prime} & 0 \\
+                            -b_{31}b_{11}^{\prime}b_{33}^{\prime} - b_{32}b_{21}^{\prime}b_{33}^{\prime} & -b_{32}b_{22}^{\prime}b_{33}^{\prime} & b_{33}^{\prime}
+                        \end{array}
+                    \right)
+                \end{equation*}
+                \begin{numcases}
+                    {}
+                    b_{11}^{\prime} = \frac{1}{b_{11}} & \nonumber \\
+                    b_{22}^{\prime} = \frac{1}{b_{22}} & \nonumber \\
+                    b_{33}^{\prime} = \frac{1}{b_{33}} & \nonumber
+                \end{numcases}
+
+                を得れる。
+
+            これらの結果を用いて$L, U$の逆行列を求める関数\verb|LUinv()|をリスト\ref{src:inv}に示す。
+
+            \begin{lstlisting}[caption=LUinv, label=src:inv]
+void LUinv(double **L, double **Li, double **U, double **Ui, int row) {
+    int i, j, k;
+    for (i = 0; i < row; i++) {
+        Ui[i][i] = 1.0 / U[i][i];
+        Li[i][i] = 1.0 / L[i][i];
+    }
+
+    for (i = 1; i < row; i++) {
+        for (j = 0; j < row - i; j++) {
+            for (k = 0; k < i; k++) {
+                Ui[j][j + i] -= U[j][j + k + 1] * Ui[j][j] * Ui[j + k + 1][j + i];
+                Li[j + i][j] -= L[j + k + 1][j] * Li[j][j] * Li[j + i][j + k + 1];
+            }
+        }
+    }
+}
+\end{lstlisting}
+
+            このプログラムは、3次元だけでなく任意の大きさの行列に対して計算が行えるようにしてある。
+
+            このプログラムを使用して$C$の逆行列を求めると、
+
+            \begin{equation*}
+                C^{-1} = \left(
+                    \begin{array}{ccc}
+                        0.030303 & -0.068182 & 0.083333 \\
+                        -0.030303 & 0.318182 & 0.166667 \\
+                        0.181818 & 0.090909 & 0
+                    \end{array}
+                \right)
+            \end{equation*}
+
+            となった。計算すると、正しいことがわかる。
+
+    \section{はさみうち法}
+        はさみうち法は、二分法を改良したものである。
+        改良点として、二分法は次の端点を二端点の中点とするが、
+        はさみうち法はに端点を結んだ直線がx軸と交わる点とする。
+
+        はさみうち法を行う関数\verb|false_pos()|をリスト\ref{src:fp}に示す。
+
+        \begin{lstlisting}[caption=false\_pos, label=src:fp]
+void false_pos(
+    double a1,
+    double a2,
+    double (*f)(double x)
+){
+    int i;
+    double next;
+
+    puts("はさみうち法");
+
+    for (i = 1; EPOCHS >= i; ++i) {
+        next = (a1 * f(a2) - a2 * f(a1)) / (f(a2) - f(a1));
+
+        printf("Epoch: %2d, x=%lf\n", i, next);
+
+        if (0 > f(a1) * f(next)) {
+            a2 = next;
+        } else {
+            a1 = next;
+        }
+    }
+}
+        \end{lstlisting}
+
+        このプログラムを使用して課題3の二分法、ニュートン法と比較してみる。
+
+        \begin{verbatim}
+二分法
+Epoch:  1, x=2.000000
+Epoch:  2, x=1.500000
+Epoch:  3, x=1.750000
+Epoch:  4, x=1.875000
+Epoch:  5, x=1.812500
+Epoch:  6, x=1.781250
+Epoch:  7, x=1.765625
+Epoch:  8, x=1.757812
+Epoch:  9, x=1.753906
+Epoch: 10, x=1.751953
+
+はさみうち法
+Epoch:  1, x=1.181818
+Epoch:  2, x=1.330162
+Epoch:  3, x=1.447304
+Epoch:  4, x=1.536569
+Epoch:  5, x=1.602391
+Epoch:  6, x=1.649613
+Epoch:  7, x=1.682775
+Epoch:  8, x=1.705697
+Epoch:  9, x=1.721363
+Epoch: 10, x=1.731984
+
+ニュートン法
+Epoch:  1, x=1.800000
+Epoch:  2, x=1.755637
+Epoch:  3, x=1.753667
+Epoch:  4, x=1.753664
+Epoch:  5, x=1.753664
+Epoch:  6, x=1.753664
+Epoch:  7, x=1.753664
+Epoch:  8, x=1.753664
+Epoch:  9, x=1.753664
+Epoch: 10, x=1.753664
+        \end{verbatim}
+
+        真の値は$x \approx 1.753664$である。はさみうち法の方が収束が遅い。
+        
+    \section{ヤコビ法、ガウス・サイデル法が収束しない条件}
+        二つの方法の収束条件として、係数行列の全ての行列について
+        対角成分の絶対値が対角成分以外の絶対値の和より大きいというものがある。
+        これを満たしていない方程式、
+
+        \begin{equation*}
+            \left(
+                \begin{array}{ccc}
+                    1 & 1 & 1 \\
+                    2 & 2 & 2 \\
+                    3 & 3 & 3
+                \end{array}
+            \right)\left(
+                \begin{array}{c}
+                    x \\
+                    y \\
+                    z
+                \end{array}
+            \right) = \left(
+                \begin{array}{c}
+                    6 \\
+                    12 \\
+                    18
+                \end{array}
+            \right)
+        \end{equation*}
+
+        を考える。これの解は、
+
+        \begin{equation*}
+            \left(
+                \begin{array}{c}
+                    1 \\
+                    2 \\
+                    3
+                \end{array}
+            \right)
+        \end{equation*}
+
+        である。まず初期値を
+
+        \begin{equation*}
+            \left(
+                \begin{array}{c}
+                    1 \\
+                    1 \\
+                    1
+                \end{array}
+            \right)
+        \end{equation*}
+
+        としてヤコビ法によって解く。解の遷移は、
+
+        \begin{equation*}
+            \left(
+                \begin{array}{c}
+                    1 \\
+                    1 \\
+                    1
+                \end{array}
+            \right) \rightarrow \left(
+                \begin{array}{c}
+                    4 \\
+                    4 \\
+                    4
+                \end{array}
+            \right) \rightarrow \left(
+                \begin{array}{c}
+                    -2 \\
+                    -2 \\
+                    -2
+                \end{array}
+            \right) \rightarrow \left(
+                \begin{array}{c}
+                    10 \\
+                    10 \\
+                    10
+                \end{array}
+            \right) \rightarrow \left(
+                \begin{array}{c}
+                    -14 \\
+                    -14 \\
+                    -14
+                \end{array}
+            \right)
+        \end{equation*}
+
+        となり、絶対値が発散してしまい、収束しない。
+        同様に、ガウス・サイデル法を用いても収束しない。
+
+    \begin{thebibliography}{99}
+        \bibitem{has} はさみうち法(非線形方程式の数値解法), Qiita, @omu58n, \\
+            "https://qiita.com/omu58n/items/98886614ff92c00e5f05"
+        \bibitem{ga} 反復法, 東京大学, "http://nkl.cc.u-tokyo.ac.jp/13n/SolverIterative.pdf"
+    \end{thebibliography}
+\end{document}
