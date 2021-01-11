@@ -95,7 +95,7 @@ int swap_row(double **a, int row, int x, int y) {
 	引数: (A行列, L行列, U行列, P行列, 行列の行数)
 	戻り値: 成功したら0, 失敗したら0以外
 ---------------------------------------------------*/
-int lu(
+int lu (
 	double **A,
 	double **L,
 	double **U,
