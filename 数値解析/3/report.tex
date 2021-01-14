@@ -150,7 +150,7 @@ double romberg(
     int n / / partition number
     double **T / / 2d array for calculation
 ) {
-    if (a > b) return -romberg(f, a, b, n, T);
+    if (a > b) return -romberg(f, b, a, n, T);
     int k, m;
     double h, x;
 
