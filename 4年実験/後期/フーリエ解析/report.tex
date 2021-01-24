@@ -33,7 +33,7 @@
 \newcommand{\tblcaption}[1]{\def\@captype{table}\caption{#1}}
 \makeatother
 
-\title{OPアンプの基礎・応用}
+\title{フーリエ解析}
 \grade{4年32番}
 \author{平田 蓮}
 \team{}
@@ -50,9 +50,254 @@
 \begin{document}
 \maketitle
 \section{目的}
-    aa
+    \begin{itemize}
+        \item{
+            第4学年の必修科目「工業数学II」で学んだフーリエ級数に関する知識を元に,
+            フーリエ解析によって何がわかるのかを理解する.
+        }
+        \item{離散フーリエ変換のプログラミングを通して, フーリエ変換についての理解を深める.}
+        \item 卒業研究に向けて, 課題の設定から実験計画立案までの流れを学ぶ.
+        
+    \end{itemize}
+    
+\section{Q1〜Q14の回答}
+    \begin{eqnarray}
+        f(t) &=& \frac{b_0}{2} + \sum_{n = 1}^{\infty}\{b_n\cos(n\omega_0 t)+a_n\sin(n\omega_0 t)\} \label{equ:1} \\
+        f(t) &=& \sum_{n=-\infty}^\infty c_n e^{in\omega_0t} \label{equ:3}
+    \end{eqnarray}
+    \begin{numcases}
+        {\int^{\tau + T}_{\tau}e^{i(n-m)\omega_0t}dt =}
+        0 \ (n \neq m) & \nonumber \\
+        T \ (n = m) & \label{equ:4}
+    \end{numcases}
+    \begin{eqnarray}
+        c_m&=&\frac{1}{T}\int_\tau^{\tau+T}f(t)e^{-im\omega_0t}dt \label{equ:5} \\
+        X_l&=&\sum_{k=0}^{N-1}x_k(W_N)^{kl}\Delta t \label{equ:16}
+    \end{eqnarray}
+
+    \subsection{Q1 式\ref{equ:1}中の基本振動, 5倍振動を表す項を書き出せ.}
+        基本振動項: $b_1\cos(\omega_0t)+a_1\sin(\omega_0t)$
+
+        5倍振動項: $b_5\cos(5\omega_0t)+a_5\sin(5\omega_0t)$
+
+    \subsection{Q2 式\ref{equ:1}中の移動項の時間平均はいくらか．また，$\displaystyle\frac{b_0}{2}$の値の意味を答えよ.}
+        振動項は周期関数であるので, 時間平均は0.
+        $\displaystyle\frac{b_0}{2}$は$f(t)$の時間平均.
+
+    \subsection{Q3 式\ref{equ:1}に含まれる$n$倍振動項の振幅と, それを$\cos(\omega_0t)$と比較した時の位相のずれを求めよ.}
+        $n$倍振動項: $b_n\cos(n\omega_0t)+a_n\sin(n\omega_0t)$
+
+        これを$\sin$に合成すると,
+        $\displaystyle\sqrt{a_n^2+b_n^2}\cos\left(n\omega_0t - \arctan\frac{a_n}{b_n}\right)$
+        が得られる.
+        よって,
+
+        振幅: $\sqrt{a_n^2+b_n^2}$
+
+        位相のずれ: $\displaystyle\arctan\frac{a_n}{b_n}$
+
+    \subsection{Q4 式\ref{equ:1}から式\ref{equ:3}に書き換える場合, 係数$c_n$はどのように決められるか. $a_n, b_n$との関係式を答えよ.}
+        $e^{\pm in\omega_0t}=\cos(n\omega_0t)\pm i\sin(n\omega_0t)$より,
+
+        \begin{eqnarray}
+            \cos(n\omega_0t) &=& \frac{e^{in\omega_0t} + e^{-in\omega_0t}}{2} \nonumber \\
+            \sin(n\omega_0t) &=& \frac{e^{in\omega_0t} - e^{-in\omega_0t}}{2i} \nonumber
+        \end{eqnarray}
+        
+        となる.
+        式\ref{equ:1}に代入して,
+
+        \begin{equation*}
+            f(t) = \displaystyle\frac{b_0}{2} + \frac{1}{2}\sum_{n = 1}^{\infty}\{(b_n-ia_n)e^{in\omega_0t}+(b_n+ia_n)e^{-in\omega_0t}\}
+        \end{equation*}
+
+        を得る. これを式\ref{equ:3}と比較して,
+
+        \begin{numcases}
+            {c_n=}
+            \frac{b_n - ia_n}{2} \ (n > 0) & \nonumber \\
+            \frac{b_0}{2} \ (n = 0) & \nonumber \\
+            \frac{b_n + ia_n}{2} \ (n < 0) & \nonumber
+          \end{numcases}
+
+    \subsection{Q5 式\ref{equ:3}の中で, 3倍振動を表す項を書き出せ.}
+        $c_3e^{i3\omega_0t}+c_{-3}e^{-i3\omega_0t}$
+
+    \subsection{Q6 $c_n$と$c_{-n}$の関係を答えよ. ただし, $f(t)$は実関数とする.}
+        $c_n$と$c_{-n}$は互いに共役である.
+
+    \subsection{Q7 $n$倍振動項($n>0$)について考える. 複素数$c_n$を極形式で,
+        $c_n=|c_n|e^{i\delta_n}$
+        のように書いたとする.
+        絶対値$|c_n|$と偏角$\delta_n$は, 何を表しているか. (Q3と比較せよ)}
+
+        $c_ne^{in\omega_0t}=|c_n|e^{i(n\omega_0t+\delta_n)}$となり,
+        これをQ3と比較する.
+        式\ref{equ:1}と\ref{equ:3}の$n$の範囲の違いを考慮すると$|c_n|$は$n$倍振動の振幅の半分,
+        $\delta_n$は位相のずれを表していることがわかる.
+
+    \subsection{Q8 式\ref{equ:4}が成り立つことを確かめよ.}
+        $n \neq m$のとき,
+
+        \begin{eqnarray}
+            \int_\tau^{\tau+T}e^{i(n-m)\omega_0t}dt&=&\frac{1}{i(n-m)\omega_0}\left[e^{i(n-m)\omega_0t}\right]_\tau^{\tau+T}\nonumber\\
+            &=&\frac{e^{i(n-m)\omega_0\tau}}{i(n-m)\omega_0}\left(e^{i(n-m)\omega_0T}-1\right)\nonumber\\
+            &=&0\nonumber
+        \end{eqnarray}
+
+        $n=m$のとき, $n-m=0$なので,
+
+        \begin{equation*}
+            \int_\tau^{\tau+T}e^{i(n-m)\omega_0t}dt=\int_\tau^{\tau+T}dt=T
+        \end{equation*}
+
+    \subsection{Q9 式\ref{equ:5}が成り立つことを確かめよ.}
+        式\ref{equ:4}より,
+        \begin{equation*}
+            \frac{1}{T}\int_\tau^{\tau+T}f(t)e^{-im\omega_0t}dt
+            = \frac{1}{T}\sum^\infty_{n=-\infty}\int^{\tau+T}_{\tau}c_ne^{i(n-m)\omega_0t}dt
+            = \frac{1}{T}c_mT=c_m
+        \end{equation*}
+
+    \subsection{Q10 フーリエ成分$X(\omega)$は何を意味しているのだろうか.}
+        $f(t)$のうち, 角周波数が$\omega$の成分の振幅を表している.
+
+    \subsection{Q11 式\ref{equ:16}から, $X_l=X_{l+N}$を示せ.}
+        \begin{equation*}
+            X_{l+N}=\sum_{k=0}^{N-1}x_k(W_N)^{k(l+N)}\Delta t
+            =\sum_{k=0}^{N-1}x_k(W_N)^{kl}\Delta t(W_N)^{kN}
+        \end{equation*}
+
+        ここで,
+        $(W_N)^{KN}=\left(e^{-i\frac{2\pi}{N}}\right)^{KN}=e^{-i2\pi k}=1$
+        なので,
+
+        \begin{equation*}
+            X_{l+N}=\sum_{k=0}^{N-1}x_k(W_N)^{kl}\Delta t=X_l
+        \end{equation*}
+
+    \subsection{Q12 $X_l=X_{l+N}$ということは,
+        フーリエ成分$X_l$と$X_{l+N}$とが区別できないことを示している.
+        これは, 扱うデータが離散的だからである. この事情を図を用いて説明せよ.}
+
+        $\sin t$上から等間隔で値を取った6点と$\sin t$, $\sin(6t)$を重ねたグラフを図\ref{fig:12}
+        に示す.
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.8\hsize]{img/12.eps}
+            \caption{}
+            \label{fig:12}
+        \end{figure}
+
+        図を見ると,
+        抽出点だけを見たときにそれが$\sin t$を表しているのか$\sin(6t)$を表しているのか
+        区別ができないことがわかる.
+
+    \subsection{Q13 $X_{N-2}$と$X_2$の間にはどんな関係があるか.}
+        \begin{eqnarray}
+            X_{2}&=&\sum_{k=0}^{N-1}x_k(W_N)^{2k}\Delta t\nonumber\\
+            X_{N-2}&=&\sum_{k=0}^{N-1}x_k(W_N)^{N-2}\Delta t\nonumber\\
+                    &=&\sum_{k=0}^{N-1}x_k(W_N)^{-2k}\Delta t(W_N)^{kN}\nonumber
+        \end{eqnarray}
+            
+        $(W_N)^{kN}=1$より,
+
+        \begin{equation*}
+            X_{N-2}=\sum_{k=0}^{N-1}x_k(W_N)^{-2k}\Delta t
+        \end{equation*}
+
+        $W_N=e^{-i\frac{2\pi}{N}}$なので,
+        $X_{N-2}$と$X_2$は共役にある.
+
+    \subsection{Q14 フーリエ成分$\{X_l\}$から, 元の信号列$\{x_k\}$を再現するための式を作れ.}
+        \begin{eqnarray}
+            X_l &=& \sum^{N - 1}_{k = 0}x_k(W_N)^{kl}\Delta t \nonumber \\
+            \leftrightarrow \sum^{N - 1}_{l = 0}X_l(W_N)^{-kl} &=& \sum^{N - 1}_{l = 0}\sum^{N - 1}_{k = 0}x_k(W_N)^{k(l - l)}\Delta t \nonumber
+        \end{eqnarray}
+
+        式\ref{equ:4}より, $\displaystyle\sum^{N - 1}_{k = 0}(W_N)^{k(l-l)}=N$であるので,
+        これを上の式に代入すると,
+
+        \begin{eqnarray}
+            \sum^{N - 1}_{l = 0}X_l(W_N)^{-kl} &=& x_kN\Delta t \nonumber \\
+            \leftrightarrow x_k &=& \frac{1}{N\Delta t}\sum^{N - 1}_{l = 0}X_l(W_N)^{-kl} \nonumber
+        \end{eqnarray}
+
+\section{自作DFTプログラム}
+    自作した離散フーリエ変換を行う関数\verb|dft()|,
+    離散逆フーリエ変換を行う関数\verb|idft()|をリスト\ref{src:dft}示す.
+    今回はpython3を使って実装した.
+
+    \begin{lstlisting}[caption=フーリエ変換, label=src:dft]
+import numpy as np
+
+def dft(f, s):
+    N = len(f)
+    X = np.array([0j for i in range(N)])
+    for l in range(N):
+        for k in range(N):
+            X[l] += f[k] * np.e ** (-1j * 2 * np.pi * k * l / N)
+    return X * s / N
+
+def idft(F, s):
+    N = len(F)
+    x = np.array([0j for i in range(N)])
+    for l in range(N):
+        for k in range(N):
+            x[l] += F[k] * np.e ** (1j * 2 * np.pi * k * l / N)
+        
+    return x / s\end{lstlisting}
+
+    データ数1000, 範囲$[0:2\pi]$の$f(t) = 5\sin(t) + 2\sin(2t) + 3\sin(3t) + 4\sin(4t) + 2\sin(5t)$と,
+    それを上のプログラムを用いて離散フーリエ変換したものを図\ref{fig:fourier}に示す.
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\hsize]{img/fourier1.eps}
+        \caption{離散フーリエ変換}
+        \label{fig:fourier}
+    \end{figure}
+
+    図より, 正しく変換できていることがわかる.
+
+\section{実験計画書}
+    \subsection{研究テーマ名}
+        言語ごとの音韻による音波の違いの分析
+
+    \subsection{課題の設定}
+        第一言語として日本語を話す人々は英語など外国語の発音が難しいとされている.
+        この原因を追求するために,
+        日本語と英語の音韻において周波数特性の違いを分析する.
+
+    \subsection{研究の目的}
+        日本語と英語において発音の違いはどこにあるのかを突き止めて,
+        日本語話者が英語の発音をよりしやすくなるような方法を模索する.
+
+    \subsection{実験方法}
+        \subsubsection{音源}
+            Youtube上にある日本語及び英語の発音をしている動画から音声を抽出して使用する.
+
+        \subsubsection{手順}
+            \begin{itemize}
+                \item{
+                    それぞれの音源についてフーリエ解析により周波数解析をおこなう.
+                    音韻ごとの差異を分析する.
+                }
+                \item{
+                    分析から得られた情報をもとに,
+                    英語の発音に似ている日本語の音韻などを見つけ,
+                    英語の発音方法を追求する.
+                }
+            \end{itemize}
+    \subsection{評価対象と方法}
+        各音韻について, 各周波数成分の比率などを評価する.
+
+    \subsection{予想される結論}
+        人間の耳は各音韻の差異を判別できるため,
+        それぞれの音韻を特徴付ける付けるような周波数の特性があるはずである.
     
 \begin{thebibliography}{99}
-    \bibitem{text} フーリエ変換, 電子制御工学実験$\cdot$ 4年後期テキスト, 2020
+    \bibitem{text} フーリエ解析, 電子制御工学実験$\cdot$ 4年後期テキスト, 2020
 \end{thebibliography}
 \end{document}
