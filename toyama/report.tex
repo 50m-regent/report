@@ -1,0 +1,308 @@
+\documentclass[]{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{comment}
+\usepackage{listings}
+\usepackage{cases}
+\lstset{
+    basicstyle={\ttfamily},
+    identifierstyle={\small},
+    commentstyle={\smallitshape},
+    keywordstyle={\small\bfseries},
+    ndkeywordstyle={\small},
+    stringstyle={\small\ttfamily},
+    frame={tb},
+    breaklines=true,
+    columns=[l]{fullflexible},
+    numbers=left,
+    xrightmargin=0zw,
+    xleftmargin=3zw,
+    numberstyle={\scriptsize},
+    stepnumber=1,
+    numbersep=1zw,
+    lineskip=-0.5ex,
+    keepspaces=true,
+    language=c
+}
+\renewcommand{\lstlistingname}{リスト}
+\makeatletter
+\newcommand{\figcaption}[1]{\def\@captype{figure}\caption{#1}}
+\newcommand{\tblcaption}[1]{\def\@captype{table}\caption{#1}}
+\makeatother
+
+\title{プレ卒レポート}
+\author{Ec4 32 平田蓮}
+\date{}
+
+\begin{document}
+\maketitle
+\section{リサーチリテラシーについて}
+    \subsection{0章 3つのキーワードと学士力}
+        この章では、鍵となる3つのキーワード
+        {\bf メタ認知}、{\bf クリティカルシンキング}、{\bf 心の理論}、
+        が説明されている。
+
+        \paragraph{メタ認知}
+            メタ認知とは、人間の知覚、記憶、思考などの働き自体を理解しようとする心の働きのことである。
+            自分の認知状態に気づき、目標を設定、修正する活動を{\bf メタ認知的活動}という。
+            また、人間の認知の禿頭についての知識を{\bf メタ認知的知識}という。
+
+            メタ認知的知識とメタ認知的活動の二つが噛み合うことが大切である。
+
+        \paragraph{クリティカルシンキング}
+            クリティカルシンキングとは、何事も無批判に信じ込んでしまうのではなく、
+            問題点を探し出して批評し、判断することである。
+
+        \paragraph{心の理論}
+            心の理論とは、相手の行動や言葉を見たり聞いたりして、
+            相手の気持ちや意図をさっすることをいう。
+
+        これら3つのキーワードは深く関連しており、研究を遂行するためにとても大切である。
+
+    \subsection{1章 聞く力}
+        \subsubsection*{講義の聞き方}
+            講義の聞き方として、{\bf マナーを守って聞く}、
+            {\bf 傾聴する}、{\bf 他の人に伝えられるように聞く}、
+            {\bf 批判的に聞く}ことが大切である。
+
+        \subsubsection*{ノートの取り方}
+            ノートの取り方として、
+            {\bf 何のためにノートを取るのか}、
+            {\bf 自分なり取り方を決める}
+            というポイントが大切である。
+
+        \subsubsection*{教員との付き合い方}
+            {\bf メールの書き方}、{\bf 研究室の訪ね方}
+            などに気を使ってマナーのある学生を目指すことが大切である。
+
+    \subsection{2章 課題発見力}
+        \subsubsection*{テーマを見つけるということ}
+            研究テーマを決めることは難しい。
+            これこそが学生として要求される自立的な学びである。
+            これはとてもハードルの高いことであるが、
+            それだけ面白いことでもある。
+
+        \subsubsection*{テーマを探すには}
+            テーマを探すには以下のきっかけが考えられる。
+
+            \begin{itemize}
+                \item 普段の生活の中から探す
+                \item 学校の授業からヒントを得る
+                \item 本を読む
+                \item 人に相談する
+            \end{itemize}
+
+        \subsubsection*{テーマを深めるためには}
+            研究のテーマを深めるためには、
+            {\bf 内容}、{\bf 方法}、{\bf 対象}
+            を具体的にしていけばよい。
+            そのための行動として、
+            {\bf 情報を集める}、
+            {\bf 批判的に読む}、
+            {\bf 批判的に聞く}
+            ことが挙げられる。
+
+    \subsection{3章 情報収集力}
+        \subsubsection*{情報収集の基本}
+            情報収集の基本として{\bf 用語を調べる}、
+            {\bf 複数の情報源にあたる}、
+            {\bf メモを取る}
+            ことが挙げられる。
+
+        \subsubsection*{インターネットを使った情報収集の注意点}
+            理解度を把握しどのサイトで調べれば良いかを判断し、
+            また、情報の質を確認することが大切である。
+
+        \subsubsection*{文献検索と収集}
+            文献は以下の調査の仕方がある。
+
+            \begin{itemize}
+                \item 概説書からテーマの位置付けを確認し、定番の知識を得る。
+                \item 学術雑誌から新しい情報を得る。
+                \item CiNiiなどのデータベースの特徴を知り、活用する。
+                \item 引用文献欄から芋づる式にたどる。
+            \end{itemize}
+
+    \subsection{4章 情報整理力}
+        \subsubsection*{整理の原則は簡潔に}
+            書類を区別なく時間順に並べ、
+            また、置き場所を分散させないことが大切である。
+
+        \subsubsection*{情報整理}
+            メモを取る習慣をつけ、
+            そこに日付や時間、背景情報を併記すると思い出しやすい。
+
+        \subsubsection*{パソコンを使った情報管理の注意点}
+            バックアップを必ず取ること、
+            コンピュータと紙のそれぞれの利点を生かすことが大切である。
+
+        自分に合う方法を探求して、確立することが大切。
+        この過程で{\bf リサーチリテラシーが鍛えられる}。
+
+    \subsection{5章 読む力}
+        \subsubsection*{学術的文章を読むときは、クリティカルシンキングを働かせる}
+            クリティカルシンキングを働かせて、
+            以下のポイントに気をつけることが大切である。
+
+            \begin{itemize}
+                \item 文章を正しく読み取る
+                \item 言葉の曖昧さをチェックする
+                \item 議論を評価する
+            \end{itemize}
+
+    \subsection{6章 書く力}
+        \subsubsection*{学術的文章を書くときも、クリティカルシンキングを働かせる}
+            読むときと同様に、
+            文章を書くときもクリティカルシンキングを働かせることが大切である。
+
+            \begin{itemize}
+                \item 文章を正しく読み取ってもらえるようにする
+                \item 言葉の曖昧さをなくす
+                \item 議論を評価する
+            \end{itemize}
+
+        \subsubsection*{執筆の進め方}
+            以下の順序で執筆を進めればよい。
+
+            \begin{enumerate}
+                \item アウトラインをまとめる
+                \item 下書きをする
+                \item 論理的な文章になるように、下書きを推敲していく
+            \end{enumerate}
+
+    \subsection{7章 データ分析力}
+        \subsubsection*{統計を使った嘘}
+            見せ方にによる嘘、
+            データ選択の嘘、
+            データ収集の嘘など様々な統計を使った嘘に騙されないように気をつけなければならない。
+
+        \subsubsection*{標本調査}
+            マスコミ各社の世論調査の結果のズレなどの
+            標本誤差に気をつけなければならない。
+
+        \subsubsection*{統計的仮説検定の考え方}
+            手元にあるデータはたまたまのものではないかどうかや、
+            データが仮設に整合するものかどうかを確率的に判断することが大切である。
+
+    \subsection{8章 プレゼンテーション力}
+        \subsubsection*{プレゼンは苦手$\dots$と思う前に}
+            プレゼン力は経験によって上達するので、とにかくやることが大切である。
+            また、一生懸命さは技術の未熟さを凌駕することも忘れてはならない。
+
+        \subsubsection*{聞き手を意識してプレゼンする}
+            {\bf 聞いてもらおう}、{\bf 相手に伝えよう}という思いが大切。
+            また、プレゼンではメタ認知を働かせることが大切である。
+
+        \subsubsection{良いプレゼンとは}
+            良いプレゼンを作るには、次のポイントがある。
+
+            \begin{description}
+                \item[話し方] アイコンタクト、相手に語りかけるように
+                \item[話す内容] 具体例、導入で惹きつける
+                \item[事前の準備] ストーリーを作る、予行練習をする
+            \end{description}
+
+    \subsection{自分の能力の分析}
+        今の自分を本の内容をもとに顧みて、
+        足りていない力を考える。
+
+        まず6章で書かれている書く力についてだが、
+        以前技術同人書を書いた際に書く力不足をひしと感じた。
+        自分が考えていることが思うように綴れないことはとてもストレスフルであり、悔しいことなので、
+        次回から文章を書くときは{\bf 執筆の進め方}とあったように段階を踏んで文を書く練習をしたい。
+
+        次に8章のプレゼン力について、
+        私は人生でプレゼンというものをしたことが数える程度しかない。
+        本にもあったようにプレゼンをこなした回数がそのままプレゼン力につながっていると考えるので、
+        場数をこなしていくことを心がけたい。
+        四年になってから、受験対策などでクラスメイト同士プレゼンに似た講義を
+        行って勉強するイベントを行うようになったので、これによる上達も望めれば良い。
+    
+\section{関連分野の研究動向}
+    調査した研究を以下に記す。
+
+    \subsection{腱振動刺激による運動錯覚特性の人間工学的評価}
+        \begin{description}
+            \item[著者] 梅沢侑実
+            \item[出版年] 2016
+            \item[ページ数] 104
+        \end{description}
+
+    \subsection{腱振動刺激による運動錯覚を用いた動作教示法の検討}
+        \begin{description}
+            \item[著者] 仲田佳弘、石黒浩、上田淳
+            \item[収録] 電子情報通信学会技術研究報告:信学技報112(480)
+            \item[出版年] 2013
+            \item[ページ数] 6
+        \end{description}
+
+    \subsection{腱振動刺激による運動錯覚を用いた動かないハプティックインターフェースの予備的検討}
+        \begin{description}
+            \item[著者] 田中叡、牛山奎悟、高橋哲史、梶本裕之
+            \item[収録] 日本バーチャルリアリティ学会大会論文集24巻4号
+            \item[出版年] 2019
+            \item[ページ数] 4
+        \end{description}
+
+    \subsection{物体の視覚的提示に伴う腱振動刺激による運動錯覚時の脳活動}
+        \begin{description}
+            \item[著者] 今井亮太、中野英樹、森岡周
+            \item[収録] 理学療法学Supplement2010(0)
+            \item[出版年] 2012
+            \item[ページ数] 5
+        \end{description}
+
+    \subsection{上腕への腱振動刺激と多動運動による過伸展錯覚の特性}
+        \begin{description}
+            \item[著者] 友田達也、上杉繁、三輪敬之
+            \item[収録] 日本バーチャルリアリティ学会大会論文集14巻3号
+            \item[出版年] 2009
+            \item[ページ数] 9
+        \end{description}
+
+    \subsection{Illusory movement perception improves motor control for prosthetic hands}
+        \begin{description}
+            \item[著者] Paul D. Marasco, Jaqueline S. Hebert, Jon W. Sensinger, Courtney E. Shell, Jonathan S. Schofield, Zachary C. Thumser, Raviraj Nataraj, Dylan T. Beckler, Michael R. Dawson, Dan H. Blustein, Satinder Gill, Brett D. Mensh, Rafael Granja-Vazquez, Madeline D. Newcomb, Jason P. Carey, Beth M. Orzell
+            \item[収録] Science Translational Medicine 10(432)
+            \item[出版年] 2018
+            \item[ページ数] 13
+        \end{description}
+
+    \subsection{Illusory movements induced by tendon vibration in right- and left-handed people}
+        \begin{description}
+            \item[著者] Emmanuele Tidoni, Gabriele Fusco, Daniele Leonardis, Antonio Frisoli, Massimo Bergamasco, Salvatore Maria Aglioti
+            \item[収録] Experimental Brain Research 233
+            \item[出版年] 2012
+            \item[ページ数] 9
+        \end{description}
+
+    \subsection{Temporal features of human tendon vibration illusions}
+        \begin{description}
+            \item[著者] Christina T. Fuentes, 五味裕章, Patrick Haggard
+            \item[収録] Federation of European Neuroscience
+            \item[出版年] 2015
+            \item[ページ数] 25
+        \end{description}
+
+    \subsection{Visual feedback from a virtual body modulates motor illusion induced by tendon vibration}
+        \begin{description}
+            \item[著者] Gabriele Fusco, Gaetano Tieri, Salvatore M. Aglioti
+            \item[収録] Psychological Research 84(4)
+            \item[出版年] 2020
+            \item[ページ数] 5
+        \end{description}
+
+    \subsection{Inducing Any Virtual Two-Dimensional Movement in Humans by Applying Muscle Tendon Vibration}
+        \begin{description}
+            \item[著者] Jean-Pierre Roll, Frédéric Albert, Chloé Thyrion, Edith Ribot-Ciscar, Mikael Bergenheim, Benjamin Mattei
+            \item[収録] American Psychological Society 101(2)
+            \item[出版年] 2009
+            \item[ページ数] 8
+        \end{description}
+
+\begin{thebibliography}{99}
+    \bibitem{text} フーリエ解析, 電子制御工学実験$\cdot$ 4年後期テキスト, 2020
+\end{thebibliography}
+\end{document}
