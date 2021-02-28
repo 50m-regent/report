@@ -13,7 +13,7 @@ plt.plot(t, y, label='$\sin t$')
 y = np.sin(6 * t)
 plt.plot(t, y, label='$\sin (6t)$')
 
-plt.xlabel("$t$")
+plt.xlabel("$t$ [s]")
 plt.xticks([0, np.pi / 2, np.pi, np.pi * 3 / 2, np.pi * 2], ["0", "$0.5\pi$", "$\pi$", "$1.5\pi$", "$2\pi$"])
 plt.legend()
 plt.savefig("img/12.eps")

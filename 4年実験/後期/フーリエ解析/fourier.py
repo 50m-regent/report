@@ -42,19 +42,19 @@ if __name__ == '__main__':
     plt.xticks([0, np.pi / 2, np.pi, np.pi * 3 / 2, np.pi * 2], ["0", "$0.5\pi$", "$\pi$", "$1.5\pi$", "$2\pi$"])
     plt.xlim([0, np.pi * 2])
     plt.ylabel("$f$", rotation=0)
-    plt.xlabel("$t$")
+    plt.xlabel("$t$ [s]")
 
     plt.subplot2grid((2, 2), (1, 0))
     plt.bar(np.arange(1, fm + 3), abs(fy)[1:fm + 3])
     plt.xticks(np.arange(1, fm + 3))
     plt.ylabel("$X$", rotation=0)
-    plt.xlabel("$\omega$")
+    plt.xlabel("$\omega$ [rad/s]")
 
     plt.subplot2grid((2, 2), (1, 1))
     plt.bar(np.arange(N - fm - 3, N), abs(fy)[-fm - 3:])
     plt.xticks(np.arange(N - fm - 3, N))
     plt.yticks([])
-    plt.xlabel("$\omega$")
+    plt.xlabel("$\omega$ [rad/s]")
 
     plt.subplots_adjust(wspace=0, hspace=0.3)
     plt.savefig("img/fourier1.eps")
