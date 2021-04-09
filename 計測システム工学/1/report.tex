@@ -1,0 +1,79 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{comment}
+\usepackage{listings}
+\usepackage{cases}
+\lstset{
+    basicstyle={\ttfamily},
+    identifierstyle={\small},
+    commentstyle={\smallitshape},
+    keywordstyle={\small\bfseries},
+    ndkeywordstyle={\small},
+    stringstyle={\small\ttfamily},
+    frame={tb},
+    breaklines=true,
+    columns=[l]{fullflexible},
+    numbers=left,
+    xrightmargin=0zw,
+    xleftmargin=3zw,
+    numberstyle={\scriptsize},
+    stepnumber=1,
+    numbersep=1zw,
+    lineskip=-0.5ex,
+    keepspaces=true,
+    language=c
+}
+\renewcommand{\lstlistingname}{リスト}
+\makeatletter
+\newcommand{\figcaption}[1]{\def\@captype{figure}\caption{#1}}
+\newcommand{\tblcaption}[1]{\def\@captype{table}\caption{#1}}
+\makeatother
+
+\title{計測システム工学 第一回課題}
+\author{Ec5 24番 平田 蓮}
+\date{}
+
+\begin{document}
+\maketitle
+\subsection*{"計測"、"測定"、"計量"の定義の中で、キーワードと思われる単語を挙げてみよう}
+    \begin{description}
+        \item[計測] "目的"、"手段"
+        \item[測定] "基準"、"数値"
+        \item[計量] "測定基準"  
+    \end{description}
+
+\subsection*{"計測"、"測定"、"計量"が、通常の国語辞典でどのように記述されているか調べ、上記の定義と比較してみよう}
+    ウェブ上のgoo辞書\cite{goo}での三つの言葉の定義を記す。
+    \begin{description}
+        \item[計測] 器械を使って、数・量・重さ・長さなどをはかること。
+        \item[測定] ある量の大きさを、計器や装置を用いて測ること。
+        \item[計量] 重量や分量をはかること。
+    \end{description}
+    "計測"、"測定"に関しては、同じ定義であると思われる。
+    "計量"は機器を使うという点で違っている。
+
+    一方授業内で扱った定義では、各単語の定義で重点の置かれ方が違う。
+\subsection*{基本単位の基準となる物理定数を確認してみよう}
+    \begin{description}
+        \item[光速$c$] $299792458$ [m/s]
+        \item[万有引力$G$] $6.67430 \times 10^{-11}$ [kg$\cdot$m$^3$/s$^2$]
+        \item[プランク定数$h$] $6.62607015 \times 10^{-34}$ [J$\cdot$s]
+    \end{description}
+    などの物理定数がある。
+\subsection*{JCSSの概要について、独立行政法人製品評価技術基盤機構のHPに掲載されている、「2. 登録区分およびトレーサビリティ体系図」にある各種物理量の具体的なトレーサビリティの体系を確認しよう。}
+    トレーサビリティ体系の一つとして、温度の例を挙げる。
+
+    まず産業技術総合研究所が特定標準器を用いて認定事業者の特定二次標準器を合わせる。
+    それを使いユーザの使う現場計測器の精度を確認することができる。
+\begin{thebibliography}{99}
+    \bibitem{goo}{goo辞書 "https://dictionary.goo.ne.jp/"}
+    \bibitem{jcss}{
+        適合性認定 nite 独立行政法人製品評価技術基盤機構 \\
+        "https://www.nite.go.jp/iajapan/jcss/outline/index.html\#gaiyou2"
+    }
+\end{thebibliography}
+\end{document}
