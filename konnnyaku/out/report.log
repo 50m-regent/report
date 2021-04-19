@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.1.19)  15 APR 2021 18:40
+This is e-pTeX, Version 3.14159265-p3.8.2-190131-2.6 (utf8.euc) (TeX Live 2019) (preloaded format=platex 2020.1.19)  19 APR 2021 16:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -254,14 +254,31 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 (Font)              scaled to size 8.64899pt on input line 83.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 8.64899pt on input line 83.
-[2] (out/report.aux) ) 
+LaTeX Font Info:    Font shape `JT1/gt/bx/n' in size <9> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 122.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 122.
+LaTeX Font Info:    Font shape `JY1/gt/bx/n' in size <9> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 122.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 8.64899pt on input line 122.
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <9> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 122.
+File: images/A-2.jpg Graphic file (type bmp)
+<images/A-2.jpg>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: images/A-3.jpg Graphic file (type bmp)
+<images/A-3.jpg>
+[2] [3] [4] (out/report.aux) ) 
 Here is how much of TeX's memory you used:
- 3636 strings out of 493223
- 45437 string characters out of 6144415
- 318466 words of memory out of 5000000
- 7584 multiletter control sequences out of 15000+600000
- 24702 words of font info for 109 fonts, out of 8000000 for 9000
+ 3690 strings out of 493223
+ 46069 string characters out of 6144415
+ 361466 words of memory out of 5000000
+ 7635 multiletter control sequences out of 15000+600000
+ 25007 words of font info for 110 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  27i,6n,49p,260b,1214s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on out/report.dvi (2 pages, 5116 bytes).
+Output written on out/report.dvi (4 pages, 12988 bytes).

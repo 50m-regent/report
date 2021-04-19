@@ -144,4 +144,9 @@ OUTPUT out/report.dvi
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/ptex-fonts/standard/tmin10.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/ptex-fonts/standard/tgoth10.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/ptex-fonts/jis/jisg.tfm
+INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmss10.tfm
+INPUT images/A-2.jpg
+INPUT extractbb -B cropbox -O images/A-2.jpg
+INPUT images/A-3.jpg
+INPUT extractbb -B cropbox -O images/A-3.jpg
 INPUT out/report.aux
