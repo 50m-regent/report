@@ -1,0 +1,107 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{comment}
+\usepackage{listings}
+\usepackage{cases}
+\lstset{
+    basicstyle={\ttfamily},
+    identifierstyle={\small},
+    commentstyle={\smallitshape},
+    keywordstyle={\small\bfseries},
+    ndkeywordstyle={\small},
+    stringstyle={\small\ttfamily},
+    frame={tb},
+    breaklines=true,
+    columns=[l]{fullflexible},
+    numbers=left,
+    xrightmargin=0zw,
+    xleftmargin=3zw,
+    numberstyle={\scriptsize},
+    stepnumber=1,
+    numbersep=1zw,
+    lineskip=-0.5ex,
+    keepspaces=true,
+    language=c
+}
+\renewcommand{\lstlistingname}{リスト}
+\makeatletter
+\newcommand{\figcaption}[1]{\def\@captype{figure}\caption{#1}}
+\newcommand{\tblcaption}[1]{\def\@captype{table}\caption{#1}}
+\makeatother
+
+\title{計測システム工学 第二回課題}
+\author{Ec5 24番 平田 蓮}
+\date{}
+
+\begin{document}
+\maketitle
+\subsection*{以下のように、正規母集団から無作為に抽出した20個分のデータが得られているとき、以下の問いに答えよ。}
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{cccccccccc}
+            3.1 & 4.0 & 2.9 & 3.2 & 5.1 & 3.6 & 4.1 & 3.3 & 4.0 & 4.0 \\
+            4.4 & 4.3 & 2.8 & 3.0 & 4.2 & 4.8 & 4.4 & 5.0 & 5.3 & 4.5 
+        \end{tabular}
+    \end{table}
+
+    \subsubsection*{1) 母分散$\sigma ^2=1.0$が既知である場合、母平均$m$の95\%信頼区間を求めよ。}
+        母標準偏差は$\sigma = 1.0$、試料平均は$\bar{x} = 4.0$
+
+        母平均の分布は正規分布である。
+        95\%の確率に対応する$\displaystyle\alpha = \frac{1 - 0.95}{2} = 0.025$について、
+        標準正規分布のパーセント点を表から調べると、
+        $z(\alpha) = a(0.025) = 1.9600$だから、
+        母平均$m$の90\%信頼区間は
+        \begin{equation*}
+            4.0 - 1.9600\frac{1.0}{\sqrt{20}} \leq m \leq 4.0 + 1.9600\frac{1.0}{\sqrt{20}}
+            \leftrightarrow 3.56 \leq m \leq 4.44
+        \end{equation*}
+
+    \subsubsection*{2) 母分散(母標準偏差)が未知の場合、母平均$m$の95\%信頼区間を求めよ。}
+        試料不偏分散は、$\displaystyle s_n^2=\frac{(3.1-4.0)^2+(4.0-4.0)^2+\cdots +(4.5-4.0)^2}{19}=0.58$
+
+        $\therefore$試料標準偏差は$s_n=0.76$
+
+        母平均の分布はt分布である。
+        $\displaystyle\alpha = \frac{1 - 0.95}{2} = 0.025, n=20$について、
+        t分布のパーセント点を表から調べると、
+        $t_{n-1}(\alpha)=t_19(0.025)=2.093$だから、
+        母平均$m$の95\%信頼区間は
+        \begin{equation*}
+            4.0 - 2.093\frac{0.76}{\sqrt{20}} \leq m \leq 4.0 + 2.093\frac{0.76}{\sqrt{20}}
+            \leftrightarrow 3.64 \leq m \leq 4.36
+        \end{equation*}
+
+    \subsubsection*{3) 母平均$m = 3.9$が既知である場合、母分散$\sigma ^2$の90\%信頼区間を求めよ。}
+        $nS_0^2=(3.1-3.9)^2+(4.0-3.9)^2+\cdots +(4.5-3.9)^2=11.2$
+
+        $\displaystyle\alpha = \frac{1 - 0.9}{2} = 0.05, n=20$
+        に対応する$\chi ^2$分布のパーセント点を調べると、
+
+        $\chi_n^2(\alpha)=\chi_{20}^2(0.05)=31.41, \chi_n^2(1-\alpha)=\chi_{20}^2(0.95)=10.85$だから、
+        母分散の90\%信頼区間は
+        \begin{equation*}
+            \frac{11.2}{31.41} \leq \sigma^2 \leq \frac{11.2}{10.85}
+            \leftrightarrow 0.357 \leq m \leq 1.03
+        \end{equation*}
+
+    \subsubsection*{4) 母平均が未知の場合、母分散$\sigma ^2$の90\%信頼区間を求めよ。}
+        母平均が未知なので、試料平均$\bar{x}=4.0$を用いて
+
+        $nS^2=(3.1-4.0)^2+(4.0-4.0)^2+\cdots +(4.5-4.0)^2=11.0$
+
+        $\displaystyle\alpha = \frac{1 - 0.9}{2} = 0.05, n-1=19$
+        に対応する$\chi ^2$分布のパーセント点を調べると、
+
+        $\chi_{n-1}^2(\alpha)=\chi_{19}^2(0.05)=30.14, \chi_{n-1}^2(1-\alpha)=\chi_{19}^2(0.95)=10.12$だから、
+        母分散の90\%信頼区間は
+        \begin{equation*}
+            \frac{11.2}{30.14} \leq \sigma^2 \leq \frac{11.2}{10.12}
+            \leftrightarrow 0.372 \leq m \leq 1.11
+        \end{equation*}
+
+\end{document}
