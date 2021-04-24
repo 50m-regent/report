@@ -1,0 +1,73 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{comment}
+\usepackage{listings}
+\usepackage{cases}
+\lstset{
+    basicstyle={\ttfamily},
+    identifierstyle={\small},
+    commentstyle={\smallitshape},
+    keywordstyle={\small\bfseries},
+    ndkeywordstyle={\small},
+    stringstyle={\small\ttfamily},
+    frame={tb},
+    breaklines=true,
+    columns=[l]{fullflexible},
+    numbers=left,
+    xrightmargin=0zw,
+    xleftmargin=3zw,
+    numberstyle={\scriptsize},
+    stepnumber=1,
+    numbersep=1zw,
+    lineskip=-0.5ex,
+    keepspaces=true,
+    language=c
+}
+\renewcommand{\lstlistingname}{リスト}
+\makeatletter
+\newcommand{\figcaption}[1]{\def\@captype{figure}\caption{#1}}
+\newcommand{\tblcaption}[1]{\def\@captype{table}\caption{#1}}
+\makeatother
+
+\title{計測システム工学 第三回課題}
+\author{Ec5 24番 平田 蓮}
+\date{}
+
+\begin{document}
+\maketitle
+\subsection*{1. 角度の測定結果が$\theta + \Delta\theta [\mathrm{rad}]$であるとき、$\cos\theta$の誤差の式を求めよ。}
+    \begin{equation*}
+        \Delta\cos\theta = \frac{\partial}{\partial\theta}\cos\theta\Delta\theta = -\sin\theta\Delta\theta
+    \end{equation*}
+
+\subsection*{2. 測定値が$x + \Delta x$であるとき、$q = e^x$の誤差の式を求めよ。}
+    \begin{equation*}
+        \Delta q = \frac{\partial q}{\partial x}\Delta x = e^x\Delta x
+    \end{equation*}
+
+\subsection*{3. $q=x^2$の総合誤差率は、$\displaystyle\frac{\Delta q}{q} = 2\frac{\Delta x}{x}$と考えるべきか、$q = x \cdot x$であることから$\displaystyle\frac{\Delta q}{q} = \sqrt{\left(\frac{\Delta x}{x}\right)^2 + \left(\frac{\Delta x}{x}\right)^2}=\sqrt{2}\frac{\Delta x}{x}$と考えるべきか。}
+    $x$は単一の量であるので、$x^2 = x \cdot x$とは考えずに計算を行う。
+
+    \begin{equation*}
+        \therefore \displaystyle\frac{\Delta q}{q} = 2\frac{\Delta x}{x}
+    \end{equation*}
+
+\subsection*{4. 単振り子の周期から重力加速度を求めたい。測定の結果、振り子の長さが$l\pm\varepsilon_l$、周期が$T\pm\varepsilon_T$であったとき、重力加速度$g$を求めよ。}
+    単振り子の周期は$\displaystyle T = 2\pi\sqrt{\frac{l}{g}}$であるので、
+    $\displaystyle g = \frac{4\pi^2l}{T^2}$
+
+    よって、$g$の総合誤差を$\varepsilon_g$とすると、
+    $\displaystyle g = \frac{4\pi^2l}{T^2}\pm\varepsilon_g$
+
+    ここで、$\displaystyle\varepsilon_g = \frac{4\pi^2l}{T^2}\sqrt{1^2\left(\frac{\varepsilon_l}{l}\right)^2+(-2)^2\left(\frac{\varepsilon_T}{T}\right)^2}=\frac{4\pi^2l}{T^2}\sqrt{\left(\frac{\varepsilon_l}{l}\right)^2+4\left(\frac{\varepsilon_T}{T}\right)^2}$
+    であるので、
+
+    \begin{equation*}
+        g = \frac{4\pi^2l}{T^2}\left(1\pm\sqrt{\left(\frac{\varepsilon_l}{l}\right)^2+4\left(\frac{\varepsilon_T}{T}\right)^2}\right)
+    \end{equation*}
+
+\end{document}
