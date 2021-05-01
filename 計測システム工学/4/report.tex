@@ -1,0 +1,146 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{comment}
+\usepackage{listings}
+\usepackage{cases}
+\usepackage{siunitx}
+\usepackage[hyphens]{url}
+\lstset{
+    basicstyle={\ttfamily},
+    identifierstyle={\small},
+    commentstyle={\smallitshape},
+    keywordstyle={\small\bfseries},
+    ndkeywordstyle={\small},
+    stringstyle={\small\ttfamily},
+    frame={tb},
+    breaklines=true,
+    columns=[l]{fullflexible},
+    numbers=left,
+    xrightmargin=0zw,
+    xleftmargin=3zw,
+    numberstyle={\scriptsize},
+    stepnumber=1,
+    numbersep=1zw,
+    lineskip=-0.5ex,
+    keepspaces=true,
+    language=c
+}
+\renewcommand{\lstlistingname}{リスト}
+\makeatletter
+\newcommand{\figcaption}[1]{\def\@captype{figure}\caption{#1}}
+\newcommand{\tblcaption}[1]{\def\@captype{table}\caption{#1}}
+\makeatother
+
+\title{計測システム工学 第四回課題}
+\author{Ec5 24番 平田 蓮}
+\date{}
+
+\begin{document}
+\maketitle
+\subsection*{a) $\displaystyle y = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n = \sum_{i = 0}^n a_ix^i$}
+    測定データを$\{(x_1, y_1), (x_2, y_2), \cdots (x_N, y_N)\}$とする。
+
+    $\displaystyle x_i = x^i$とすると、
+    $\displaystyle y = \sum_{i = 0}^n a_ix_i$であるので$n$変数一次式の場合を1変数として同様に考えることができる。
+
+    \begin{equation*}
+        \left(
+            \begin{array}{ccccc}
+                N & \displaystyle\sum_{i=1}^N x_i & \displaystyle\sum_{i=1}^N x_i^2 & \cdots & \displaystyle\sum_{i=1}^N x_i^n \\
+                \displaystyle\sum_{i=1}^N x_i & \displaystyle\sum_{i=1}^N x_i^2 & \displaystyle\sum_{i=1}^N x_i^3 & \cdots & \displaystyle\sum_{i=1}^N x_i^{n+1} \\
+                \displaystyle\sum_{i=1}^N x_i^2 & \displaystyle\sum_{i=1}^N x_i^3 & \displaystyle\sum_{i=1}^N x_i^4 & \cdots & \displaystyle\sum_{i=1}^N x_i^{n + 2} \\
+                \vdots & \vdots & \vdots & \ddots & \vdots \\
+                \displaystyle\sum_{i=1}^N x_i^n & \displaystyle\sum_{i=1}^N x_i^{n + 1} & \displaystyle\sum_{i=1}^N x_i^{n + 2} & \cdots & \displaystyle\sum_{i=1}^N x_i^{2n}
+            \end{array}
+        \right)\left(
+            \begin{array}{c}
+                a_0 \\
+                a_1 \\
+                a_2 \\
+                \vdots \\
+                a_n
+            \end{array}
+        \right) = \left(
+            \begin{array}{c}
+                \displaystyle\sum^N_{i=1}y_i \\
+                \displaystyle\sum^N_{i=1}x_iy_i \\
+                \displaystyle\sum^N_{i=1}x_i^2y_i \\
+                \vdots \\
+                \displaystyle\sum^N_{i=1}x_i^ny_i
+            \end{array}
+        \right)
+    \end{equation*}
+
+    この連立方程式を解くことで各係数を求めることができる。
+\subsection*{b) $\displaystyle y = a_0 + a_1\sin x + a_2\sin 2x + \cdots + a_n\sin nx = a_0 + \sum_{i = 1}^n a_i\sin ix$}
+    測定データを$\{(x_1, y_1), (x_2, y_2), \cdots (x_N, y_N)\}$とする。
+
+    $i > 0$について$x_i = \sin ix$とすると$\displaystyle y = a_0 + \sum_{i = 1}^n a_ix_i$となり、前問と同様に考えることができる。
+
+    \begin{equation*}
+        \left(
+            \begin{array}{ccccc}
+                N & \displaystyle\sum_{i=1}^N \sin x_i & \displaystyle\sum_{i=1}^N \sin 2x_i & \cdots & \displaystyle\sum_{i=1}^N \sin nx_i \\
+                \displaystyle\sum_{i=1}^N \sin x_i & \displaystyle\sum_{i=1}^N \sin^2x_i & \displaystyle\sum_{i=1}^N  \sin x_i\sin 2x_i & \cdots & \displaystyle\sum_{i=1}^N \sin x_i\sin nx_i \\
+                \displaystyle\sum_{i=1}^N \sin 2x_i & \displaystyle\sum_{i=1}^N \sin x_i\sin 2x_i & \displaystyle\sum_{i=1}^N \sin^2 2x_i & \cdots & \displaystyle\sum_{i=1}^N \sin 2x_i\sin nx_i \\
+                \vdots & \vdots & \vdots & \ddots & \vdots \\
+                \displaystyle\sum_{i=1}^N \sin nx_i & \displaystyle\sum_{i=1}^N \sin x_i\sin nx_i & \displaystyle\sum_{i=1}^N \sin 2x_i\sin nx_i & \cdots & \displaystyle\sum_{i=1}^N \sin^2 nx_i
+            \end{array}
+        \right)\left(
+            \begin{array}{c}
+                a_0 \\
+                a_1 \\
+                a_2 \\
+                \vdots \\
+                a_n
+            \end{array}
+        \right) = \left(
+            \begin{array}{c}
+                \displaystyle\sum^N_{i=1}y_i \\
+                \displaystyle\sum^N_{i=1}\sin x_i \cdot y_i \\
+                \displaystyle\sum^N_{i=1}\sin 2x_i \cdot y_i \\
+                \vdots \\
+                \displaystyle\sum^N_{i=1}\sin nx_i \cdot y_i
+            \end{array}
+        \right)
+    \end{equation*}
+    この連立方程式を解けば良い。
+\subsection*{c) $\displaystyle y = a_0x_1^{a_1}x_2^{a_2}\cdots x_n^{a_n} = a_0\prod_{i = 1}^n x_i^{a_i}$}
+    測定データを$\{(x_{11}, x_{21}, \cdots x_{n1}; y_1), (x_{12}, x_{22}, \cdots x_{n2}; y_2), \cdots (x_{1N}, x_{2N}, \cdots x_{nN}; y_N)\}$とする。
+
+    与式の対数を取ると、$\displaystyle\ln y=\ln a_0 + \sum_{i=1}^na_i\ln x_i$となる。
+    よって、$i>0$について$x_i=\ln x_i$とすると、$\displaystyle\ln y=\ln a_0 + \sum_{i=1}^na_ix_i$とでき、これまで同様に近似を行うことができる。
+
+    \begin{equation*}
+        \left(
+            \begin{array}{ccccc}
+                N & \displaystyle\sum_{i=1}^N \ln x_{1i} & \displaystyle\sum_{i=1}^N \ln x_{2i} & \cdots & \displaystyle\sum_{i=1}^N \ln x_{ni} \\
+                \displaystyle\sum_{i=1}^N \ln x_{1i} & \displaystyle\sum_{i=1}^N \ln^2 x_{1i} & \displaystyle\sum_{i=1}^N \ln x_{1i}\ln x_{2i} & \cdots & \displaystyle\sum_{i=1}^N \ln x_{1i}\ln x_{ni} \\
+                \displaystyle\sum_{i=1}^N \ln x_{2i} & \displaystyle\sum_{i=1}^N \ln x_{1i}\ln x_{2i} & \displaystyle\sum_{i=1}^N \ln^2 x_{2i} & \cdots & \displaystyle\sum_{i=1}^N \ln x_{2i}\ln x_{ni} \\
+                \vdots & \vdots & \vdots & \ddots & \vdots \\
+                \displaystyle\sum_{i=1}^N \ln x_{ni} & \displaystyle\sum_{i=1}^N \ln x_{1i}\ln x_{ni} & \displaystyle\sum_{i=1}^N \ln x_{2i}\ln x_{ni} & \cdots & \displaystyle\sum_{i=1}^N \ln^2 x_{ni}
+            \end{array}
+        \right)\left(
+            \begin{array}{c}
+                \ln a_0 \\
+                a_1 \\
+                a_2 \\
+                \vdots \\
+                a_n
+            \end{array}
+        \right) = \left(
+            \begin{array}{c}
+                \displaystyle\sum^N_{i=1}\ln y_i \\
+                \displaystyle\sum^N_{i=1}\ln x_{1i}\ln y_i \\
+                \displaystyle\sum^N_{i=1}\ln x_{2i}\ln y_i \\
+                \vdots \\
+                \displaystyle\sum^N_{i=1}\ln x_{ni}\ln y_i
+            \end{array}
+        \right)
+    \end{equation*}
+    この連立方程式を解けば$\ln a_0$と各係数を求めることができるので、元の式に代入して近似ができる。
+\end{document}
