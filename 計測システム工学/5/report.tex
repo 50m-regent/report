@@ -1,0 +1,55 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{comment}
+\usepackage{listings}
+\usepackage{cases}
+\usepackage{siunitx}
+\usepackage[hyphens]{url}
+\lstset{
+    basicstyle={\ttfamily},
+    identifierstyle={\small},
+    commentstyle={\smallitshape},
+    keywordstyle={\small\bfseries},
+    ndkeywordstyle={\small},
+    stringstyle={\small\ttfamily},
+    frame={tb},
+    breaklines=true,
+    columns=[l]{fullflexible},
+    numbers=left,
+    xrightmargin=0zw,
+    xleftmargin=3zw,
+    numberstyle={\scriptsize},
+    stepnumber=1,
+    numbersep=1zw,
+    lineskip=-0.5ex,
+    keepspaces=true,
+    language=c
+}
+\renewcommand{\lstlistingname}{リスト}
+\makeatletter
+\newcommand{\figcaption}[1]{\def\@captype{figure}\caption{#1}}
+\newcommand{\tblcaption}[1]{\def\@captype{table}\caption{#1}}
+\makeatother
+
+\title{計測システム工学 第五回課題}
+\author{Ec5 24番 平田 蓮}
+\date{}
+
+\begin{document}
+\maketitle
+\section{零位法、偏位法の同種の用語に"置換法"、"補償法"、"差動法"がある。どのような測定法であるかを調べよ。可能であれば例を挙げよ。}
+    \paragraph{置換法} 測定量と基準値を置き換えて2回の測定結果から測定量を知る方法 \\
+        例: 天秤で分銅の重さを測り、次に計測したいものを乗せることでそれの重さを知る。
+    \paragraph{補償法} 計測量と既知量との差を測る \\
+        例: 自分の体重を測り、次にペットを抱っこして体重を測り、その差からペットの体重を知る。
+    \paragraph{差動法} 作用する二つの量の差が対象 \\
+        例: 差動変圧器を用いた測定
+\section{検出器の内部インピーダンスを考慮して出力電圧の補正を行えば、伝送器は必要ないと言えるか。言えないとすればその理由を答えよ。}
+    伝送器の重要な役割として、インピーダンス変換とレベル変換がある。
+    出力電圧を補正することでレベル変換は賄えるが、
+    入出力のインピーダンスの変換は行えないため、必要である。
+\end{document}
