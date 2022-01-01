@@ -1,0 +1,107 @@
+\documentclass[]{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{comment}
+\usepackage{listings}
+\usepackage{cases}
+\usepackage{siunitx}
+\usepackage[hyphens]{url}
+\lstset{
+    basicstyle={\ttfamily},
+    identifierstyle={\small},
+    commentstyle={\smallitshape},
+    keywordstyle={\small\bfseries},
+    ndkeywordstyle={\small},
+    stringstyle={\small\ttfamily},
+    frame={tb},
+    breaklines=true,
+    columns=[l]{fullflexible},
+    numbers=left,
+    xrightmargin=0zw,
+    xleftmargin=3zw,
+    numberstyle={\scriptsize},
+    stepnumber=1,
+    numbersep=1zw,
+    lineskip=-0.5ex,
+    keepspaces=true,
+    language=c
+}
+\renewcommand{\lstlistingname}{リスト}
+\makeatletter
+\newcommand{\figcaption}[1]{\def\@captype{figure}\caption{#1}}
+\newcommand{\tblcaption}[1]{\def\@captype{table}\caption{#1}}
+\makeatother
+
+\title{受験報告書}
+\date{}
+
+\begin{document}
+\maketitle
+\section*{概要}
+    \begin{description}
+        \item[受験校] 東京農工大学 工学部 知能情報システム工学科
+        \item[日程] 出願 6/16〜6/22、試験日 7/8, 7/9
+        \item[結果] 合格
+    \end{description}
+\section*{移動}
+    三鷹にある従兄弟の家に滞在していたので、
+    二日間ともそこから大学に行きました。
+    バスで三鷹駅に行き、中央線で東小金井駅まで行って徒歩で、
+    合わせて1時間くらいかかりました。
+\section*{試験内容}
+    農工は日程が二日間にわかれていて、
+    一日目に数学物理英語の筆記試験、
+    二日目に専門科目の筆記試験と面接が行われました。
+    \subsection*{英語}
+        読解が2問と英作文です。
+        
+        
+        農工の過去問は著作権の関係で英語の過去問が見れないので心配になりますが、
+        読解は阪大や東大の過去問をやっておけば問題ないレベルです。
+
+        今年の英作文のお題は「オンライン授業に対して、
+        面接授業の利点を2つ50語で挙げよ」でした。
+        普通はオンライン授業と面接授業のどちらかを選んで書かせませんか？
+        意見の押し付けは良くないと思います。
+        というか50語は短すぎます。
+        あの量に縮められた文で十分に評価できるのか疑問です。
+    \subsection*{数学}
+        数学は偏微分、積分、線形代数、2階微分方程式の問題が出題されます。
+        どれも過去問をやっておけば苦労しないレベルですが、
+        僕は簡単な式変形が思い浮かばず積分の問題が1問解けず、
+        複素積分の知識を使ってゴリ押しました。
+        採点官はどんな気持ちだったでしょう。
+    \subsection*{物理}
+        物理は力学と電磁気が出題されます。
+        募集要項には波動やら熱力学やら書いてありますがアレはなんでしょう。
+        僕は直前まで電磁気が不安だったのでひたすら先に紹介した
+        電磁気の本を東大の試験が終わってからずっと読んでました。
+        結果的には力学が難しく、杞憂に終わりました。
+        この力学が合格者と不合格者を分けたのかもしれません。
+    \subsection*{専門科目}
+        専門科目は計算機基礎、
+        論理回路、数理情報工学を選択しました。
+        問題は詳しくは覚えていませんが、
+        点を落とした記憶はないので、
+        授業で扱う内容をしっかり押さえておけば問題ないと思います。
+    \subsection*{面接}
+        面接官は2人でしたが、片方は喋らなかったと思います。
+        おそらく僕の答案や調査書を読んでいたのでしょう。
+        僕の受けたコースは事前にアンケートがあり、
+        一般的な面接で聞かれそうな内容はすべてそちらで答えました。
+        実際の面接の方で聞かれた内容を書いておきます。
+        \begin{itemize}
+            \item 二年次編入になるかもしれないが問題ないか
+            \item これまでどのような大規模なプログラミングの開発を行ってきたか
+        \end{itemize}
+        内容は少なく、面接は5分程度で終わりました。
+        あまりに手応えがありませんが、
+        他の合格した受験者も同じ感じだったようなので、
+        そういうものなのでしょう。
+\section*{雑記}
+    都会のバスはICが使える上に定額で感動しました。
+    農工大は平地にあり高専と比較してとても通いやすいと思いました。
+\end{document}

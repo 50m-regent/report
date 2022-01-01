@@ -1,0 +1,124 @@
+\documentclass[]{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{comment}
+\usepackage{listings}
+\usepackage{cases}
+\usepackage{siunitx}
+\usepackage[hyphens]{url}
+\lstset{
+    basicstyle={\ttfamily},
+    identifierstyle={\small},
+    commentstyle={\smallitshape},
+    keywordstyle={\small\bfseries},
+    ndkeywordstyle={\small},
+    stringstyle={\small\ttfamily},
+    frame={tb},
+    breaklines=true,
+    columns=[l]{fullflexible},
+    numbers=left,
+    xrightmargin=0zw,
+    xleftmargin=3zw,
+    numberstyle={\scriptsize},
+    stepnumber=1,
+    numbersep=1zw,
+    lineskip=-0.5ex,
+    keepspaces=true,
+    language=c
+}
+\renewcommand{\lstlistingname}{リスト}
+\makeatletter
+\newcommand{\figcaption}[1]{\def\@captype{figure}\caption{#1}}
+\newcommand{\tblcaption}[1]{\def\@captype{table}\caption{#1}}
+\makeatother
+
+\title{受験報告書}
+\date{}
+
+\begin{document}
+\maketitle
+\section*{概要}
+    \begin{description}
+        \item[受験校] 大阪大学 基礎工学部 システム科学科 知能システム学コース
+        \item[日程] 出願 6/1〜6/7、試験日 7/10, 7/11
+        \item[結果] 合格
+    \end{description}
+\section*{移動}
+    前日に東京農工大の受験があったため、
+    それが終わった後に高速を走って大阪の祖父母の家に泊まりました。
+    そこから大学までは徒歩3分と脅威的に恵まれた立地のおかげで朝は余裕を持って過ごせました。
+\section*{試験内容}
+    数学、物理、制御工学、コンピュータの基礎、電子回路があります。
+    後ろ3つはうち2つ選択で、僕は電子回路を選びませんでした。
+    阪大基礎工の入試はトップクラスに難しかったです。
+    受けるなら心して臨みましょう。
+    \subsection*{数学}
+        微積分、線形代数、確率の3問が出題されます。
+        \subsubsection*{微積分}
+            ベルヌーイの微分方程式を解き、$x\rightarrow \infty$のときの極限値を求める問題
+            とその関数が単調関数であることを示す問題です。
+            しっかり勉強していれば10割とれる問題です。
+        \subsubsection*{線形代数}
+            三次元極座標系について、$xy$平面の回転行列と$zx$平面の回転行列が与えられ、
+            その積の行列式と固有値を求める問題です。
+            前者は自明に1、後者は絶対値も求めるのですが、
+            しっかりと条件に注意してそのまま計算をするだけです。
+        \subsubsection*{確率}
+            それぞれ確率$p$, $1-p$で表が出る2枚のコイン$A$, $B$についての問題です。
+            $(1)$は2枚とも投げて両方表の確率、
+            $(3)$はどちらかのコインを選んで投げるという試行を$N$回
+            行って全部表が出たとき、毎回$A$を投げていた確率を求める典型問題です。
+
+            $(2)$が変わっていて、2枚のコインを用いて平等な抽選方法を記述する問題でした。
+            \textbf{何を書かせたいんでしょう。}
+            とりあえずコインを表が出るまで投げ続けて回数が少ない方が勝ちみたいなことを
+            書きましたが、あれでいいなら全員満点です。
+
+            確率漸化式が出なかったのは残念でした。
+    \subsection*{物理}
+        力学、電磁気学、熱力学の3問から2問を選択して解きます。
+        電磁気がぱっと見難しかったので力学と熱力学を選びました。
+        \subsubsection*{力学}
+            剛体振り子と、その固定点が動くやつ。制御工学かな？
+
+            前半は普通の剛体振り子問題を解くだけです。
+            後半は剛体振り子の固定点が動くので重心の運動方程式を求めて運動を考察します。
+            ゴリ押しで解きましたが、合ってるかはわかりません。
+        \subsubsection*{熱力学}
+            前半は気体運動論の穴埋め問題で、後半はスターリングエンジンの問題でした。
+            どちらも過去問に似たような問題があったので解けました。
+    \subsection*{制御工学}
+        制御工学は例年通り伝達関数とその応答に関する問題と、
+        ゲイン補償の問題でした。
+        4年生の制御工学2の授業を復習しておけば問題ありません。
+    \subsection*{コンピュータの基礎}
+        コンピュータの基礎は例年ハードウェアに関する穴埋め、
+        論理回路、Cのコード読解などが出ます。
+        穴埋め問は完全に知識なので出たら嫌だなと思っていたのですが、
+        今年は論理回路とCプログラムの問題が出たのでラッキーでした。
+        これらの内容は2年の情報処理や2年のディジタル工学基礎、
+        3年のディジタル論理回路を復習すれば簡単に解ける内容です。
+    \subsection*{面接}
+        面接官は7人いました。聞かれた内容を下に書いておきます。
+        \begin{itemize}
+            \item 志望動機
+            \item 試験の出来
+            \item 制御科だけど制御工学の試験は授業内容と被ってるか
+            \item 帰国子女としての強み
+            \item 海外インターンの感想
+            \item 将来したいこと
+            \item 卒研内容
+            \item バイト
+            \item 併願校
+        \end{itemize}
+\section*{雑記}
+    今年は試験問題が簡単なこともあり、
+    ほぼ満点の人たちが合格したようです。
+    国内でもレベルの高い明石高専生が7人中2人しか受かっていなかったことを鑑みると
+    今年受かったのは非常にラッキーだったと思います。
+
+    建物内で飲み物を買うことができなかったので一日分の飲み物を持参することをお勧めします。
+\end{document}

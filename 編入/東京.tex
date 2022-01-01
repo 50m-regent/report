@@ -1,0 +1,121 @@
+\documentclass[]{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{comment}
+\usepackage{listings}
+\usepackage{cases}
+\usepackage{siunitx}
+\usepackage[hyphens]{url}
+\lstset{
+    basicstyle={\ttfamily},
+    identifierstyle={\small},
+    commentstyle={\smallitshape},
+    keywordstyle={\small\bfseries},
+    ndkeywordstyle={\small},
+    stringstyle={\small\ttfamily},
+    frame={tb},
+    breaklines=true,
+    columns=[l]{fullflexible},
+    numbers=left,
+    xrightmargin=0zw,
+    xleftmargin=3zw,
+    numberstyle={\scriptsize},
+    stepnumber=1,
+    numbersep=1zw,
+    lineskip=-0.5ex,
+    keepspaces=true,
+    language=c
+}
+\renewcommand{\lstlistingname}{リスト}
+\makeatletter
+\newcommand{\figcaption}[1]{\def\@captype{figure}\caption{#1}}
+\newcommand{\tblcaption}[1]{\def\@captype{table}\caption{#1}}
+\makeatother
+
+\title{受験報告書}
+\date{}
+
+\begin{document}
+\maketitle
+\section*{概要}
+    \begin{description}
+        \item[受験校] 東京大学 工学部 システム創生学科
+        \item[日程] 出願 5/10〜5/14、試験日 7/4, 7/16
+        \item[結果] 合格
+    \end{description}
+\section*{移動}
+    前日に横浜国立大学の受験があり、
+    それが終わった後に東大近くのホテルに移動し、
+    当日は徒歩で大学に行きました。
+    二次試験は集合時間が11:25と余裕があったので三鷹にある
+    従兄弟の家から電車を乗り継いで行きました。
+    二次試験日は平日だったため少し人が多かったです。
+    余裕を持って移動しておくと良いかもしれません。
+\section*{試験内容}
+    一次試験（筆記）は英語と数学を受けました。
+    二次試験は面接です。
+    \subsection*{英語}
+        和訳、英訳、読解の3問です。
+        \subsubsection*{和訳}
+            オンライン業務の増加によるズーム疲れに関する文でした。
+            ズーム疲れという単語は世間的には有名だそうですが、
+            僕は情報に疎く、知らなかったのでズーム疲弊と訳していました。
+            比較的過去の文章よりも簡単で、
+            解き終わった後の暇つぶしに全文読んでみたら内容も
+            面白かったです。
+        \subsubsection*{英訳}
+            量子コンピュータに関する文章が与えられ、
+            下線部を英訳する問題でした。
+            しっかりと文章を読めば単語がわからないこともなく、
+            訳しやすい文章でした。
+        \subsubsection*{読解}
+            微生物や細菌についての文章でした。
+            コロナウィルスの影響だと思われます。
+            こちらも例年より簡単な文章で、
+            点を落としてる人は少ないと思います。
+    \subsection*{数学}
+        微分方程式、確率、複素関数、線形代数の4問です。
+        \subsubsection*{微分方程式}
+            前半は難しい微分方程式を誘導付きで解く問題、
+            後半は一般的な微分方程式を場合分けで解く問題でした。
+            前半は少し閃きが要求されましたが、
+            基礎を押さえておけば7割ほど取れたと思います。
+        \subsubsection*{確率}
+            全体を通して一般的な確率の問題でした。
+            確率漸化式が出ずに残念です。
+            最後に4変数関数が最大値を取るときに
+            ある変数を他の3変数で表す問題が置いてあり、
+            明らかに重いので見なかったふりをしました。
+        \subsubsection*{複素関数}
+            最初に$\sqrt[6]{i}$を求めろと、
+            加法定理を知ってるか問われました。
+
+            次に、置換をしてから留数定理を使う、
+            最初に置換を思いつけば全部解け、
+            そうでなければ何も解けない積分が出ました。
+            これは合格不合格の一つの分かれ目になったと思います。
+
+            最後は写像問題で、僕は何もわかりませんでした。
+            写像問題はあまり出ない代わりに練習をしていないと全く解けないため
+            余裕があれば解く練習をしておきましょう。
+    \subsection*{面接}
+        面接官は10人いました。聞かれた内容を下に書いておきます。
+        \begin{itemize}
+            \item 志望動機
+            \item 入学して何をしたいか
+            \item 今解決するべき社会問題は
+            \item プログラミングの技術は何で得たか
+            \item なぜ英語ができるか
+            \item 英語を活かして何かしてみたいか
+        \end{itemize}
+\section*{雑記}
+    英語の筆記試験が終わったときは全て解けたのでテンションが高かったのですが、
+    数学でボコボコにされたので数学が終わったときにはとてもテンションが下がっていました。
+    その分、一次試験の発表で受かってた時は嬉しかったです。
+
+    特に東大の試験は運の要素が大きいので直前はあまり詰めすぎずに
+    リラックスして過ごせば良いと思います。
+\end{document}

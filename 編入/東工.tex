@@ -1,0 +1,117 @@
+\documentclass[]{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{comment}
+\usepackage{listings}
+\usepackage{cases}
+\usepackage{siunitx}
+\usepackage[hyphens]{url}
+\lstset{
+    basicstyle={\ttfamily},
+    identifierstyle={\small},
+    commentstyle={\smallitshape},
+    keywordstyle={\small\bfseries},
+    ndkeywordstyle={\small},
+    stringstyle={\small\ttfamily},
+    frame={tb},
+    breaklines=true,
+    columns=[l]{fullflexible},
+    numbers=left,
+    xrightmargin=0zw,
+    xleftmargin=3zw,
+    numberstyle={\scriptsize},
+    stepnumber=1,
+    numbersep=1zw,
+    lineskip=-0.5ex,
+    keepspaces=true,
+    language=c
+}
+\renewcommand{\lstlistingname}{リスト}
+\makeatletter
+\newcommand{\figcaption}[1]{\def\@captype{figure}\caption{#1}}
+\newcommand{\tblcaption}[1]{\def\@captype{table}\caption{#1}}
+\makeatother
+
+\title{受験報告書}
+\date{}
+
+\begin{document}
+\maketitle
+\section*{概要}
+    \begin{description}
+        \item[受験校] 東京工業大学 工学院 情報通信系
+        \item[日程] 出願 7/13〜7/15、試験日 8/24, 25
+        \item[結果] 合格
+    \end{description}
+\section*{移動}
+    前日に調布にある親戚の家に移動し、そこから下見に行きました。
+    約1時間半で到着しましたが、他の大学と違って大岡山駅の目の前に大学があり、非常にアクセスが良いです。
+    東工大の試験は9時半開始で時間に余裕があったので二日とも親戚の家から通いました。
+    少し遅い時間だったので通勤・通学ラッシュに巻き込まれずに済みました。
+\section*{試験内容}
+    数学、物理、化学、英語と面接があります。
+    \subsection*{数学}
+        偏微分、重積分、線形代数から4問出題されます。今年は3問目が行列式を漸化式を絡めた問題でした。
+        例年は過去問を解いておけば問題ない程度ですが、今年は難化しており、あまり解けなかった受験生も多かったようです。
+
+        ベクトル空間などの知識も身に付けておくと良いと思います。
+    \subsection*{物理}
+        例年は力学、電磁気、熱力学が出題されるのですが、{\bf 今年は何故か熱力学の代わりに波動が出題されました}。
+        来年以降の傾向がわからなくなったので気をつけましょう。
+        僕は何も対策をしていなかったので点を落としました。
+
+        全体の難易度としてはあまり難しくありませんが、
+        学校で扱うような問題よりは理論を理解しているか問われる問題が多いので
+        そこに重きを置いて勉強すると良いかもしれません。
+        例として、今年の力学は火星の重力加速度がテーマでした。
+    \subsection*{化学}
+        正直何もわかりませんでした。
+
+        授業で化学がない分独学で頑張ろうと思いましたが、
+        気づいたら受験直前になってしまい、
+        過去問を数年分調べながら解いてみることしかできませんでした。
+        体感1割は割っているのであまり化学が得意でない人も気負いしないでください。
+
+        分野は理論化学、有機化学、熱力学、量子力学です。
+        有識者によるとこれも物理と同様に理論を問う問題が多いようです。
+    \subsection*{英語}
+        東工大の英語はとにかく文量が多いです。今年の問題は14ページありました。
+        内容は一般的な文章題が2問と作文ですが、
+        TOEICなどと違って文を全て読まないと解けない問題もあるので
+        英語が苦手な人はそれを避けるなどの対策が必要です。
+        周りの受験者の中には作文を全く書けずに時間がなくなっている人もいたので
+        問題の取捨選択の練習をおすすめします。
+
+        ちなみに今年の英文のテーマは「学校内外での子供の学習について」と
+        「自然災害に見舞われた生態系の変化」でした。
+    \subsection*{面接}
+        面接官は3人でした。
+        受験校の中でも一番話が弾み、純粋に楽しい面接でした。
+        最初にあちらが質問を求めてきたのには不意を突かれました。
+        以下質問内容。
+        \begin{itemize}
+            \item 質問ありますか
+            \item 趣味
+            \item 志望動機
+            \item 高専で頑張った科目
+            \item プログラミングの面白さを教えて
+            \item 卒業後はどうするか
+            \item 興味のある研究室について
+        \end{itemize}
+
+        ちなみに質問を聞かれた時に「化学が悪すぎるけどそれだけで落ちますか」
+        という内容の質問をしたら「総合的にみますとは言っておく」と言われました。
+        受かったので多分そういうことなんでしょう。
+\section*{雑記}
+    受験校の中でも一番アクセスが良かったと思います。
+    駅と学校が近いだけでなく、周りに飲食店も多く、
+    楽しい大学生活を送れる学校だと思いました。
+
+    東工大は試験が遅いので他の大学に比べて本命の受験生が多く、
+    会場は心なしか緊張感が走ってるように感じました。
+    また、服装についてですが、面接のある二日目のみみんなスーツでした。
+    面接会場では土足ではなかったので無理に革靴を履いて行く必要はないかもしれません。
+\end{document}

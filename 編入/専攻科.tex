@@ -1,0 +1,86 @@
+\documentclass[]{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{comment}
+\usepackage{listings}
+\usepackage{cases}
+\usepackage{siunitx}
+\usepackage[hyphens]{url}
+\lstset{
+    basicstyle={\ttfamily},
+    identifierstyle={\small},
+    commentstyle={\smallitshape},
+    keywordstyle={\small\bfseries},
+    ndkeywordstyle={\small},
+    stringstyle={\small\ttfamily},
+    frame={tb},
+    breaklines=true,
+    columns=[l]{fullflexible},
+    numbers=left,
+    xrightmargin=0zw,
+    xleftmargin=3zw,
+    numberstyle={\scriptsize},
+    stepnumber=1,
+    numbersep=1zw,
+    lineskip=-0.5ex,
+    keepspaces=true,
+    language=c
+}
+\renewcommand{\lstlistingname}{リスト}
+\makeatletter
+\newcommand{\figcaption}[1]{\def\@captype{figure}\caption{#1}}
+\newcommand{\tblcaption}[1]{\def\@captype{table}\caption{#1}}
+\makeatother
+
+\title{受験報告書}
+\date{}
+
+\begin{document}
+\maketitle
+\section*{概要}
+    \begin{description}
+        \item[受験校] 専攻科 電子機械システム工学専攻
+        \item[日程] 出願5/31〜6/3、試験日6/13
+        \item[結果] 合格
+    \end{description}
+\section*{移動}
+    家からいつも通り登校しました。
+\section*{試験内容}
+    数学、物理と電気回路があります。
+    \subsection*{数学}
+        例年より易化しつつ、問題量が増えた形でした。
+        授業で扱う内容をしっかり抑えている人は苦労しません。
+    \subsection*{物理}
+        今年から出題形式が変わり、過去問が存在しませんでした。
+        募集要項には力学と物理の基礎と書いてあって、実際に何が出るのかわからず、
+        一緒に受験をする人と何が出そうか話したりしました。
+
+        結果的には古典力学と波動の分野からドップラー効果が出題されました。
+        ドップラー効果は3年生の授業でやって以来一切勉強していなかったので
+        試験中に祈りながら解きましたが、
+        終わってから友達と答え合わせをしたら間違っていました。
+        力学については特に制御科の学生なら対策なしで解けるレベルです。
+    \subsection*{電気回路}
+        ごく普通の平衡ブリッジ問題が出題されました。
+        計算ミスにだけ注意すれば大丈夫でした。
+
+        電気系が専門でない機械科も同じ専攻を受けることから、
+        制御科は1年生で習う程度の内容
+        （キルヒホッフの法則、テブナンの定理、等価回路など）
+        しか出題されないと予想されます。
+\section*{雑記}
+    他の大学の受験と比べて当たり前ですがみんなホーム感が強く、
+    ほとんどの人が私服でした。
+    一人だけスーツの人がいました。気合が感じられて良いと思います。
+
+    他の大学の滑り止めとして受ける人も多いと思いますが、
+    僕は他の大学の滑り止めの大学のさらに滑り止めとして受けました。
+    しかし、本命で専攻科を受ける人の枠を潰すことになるこの受け方は正直お勧めしません。
+    そんなこと気にしねえよって人は専攻科も技大も受けましょう。
+
+    また、東京農工大は専攻科と試験科目と出題範囲が似ているので
+    そこまで専攻科にこだわりのない人は農工大を受けてみるといいと思います。
+\end{document}

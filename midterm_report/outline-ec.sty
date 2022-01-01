@@ -1,0 +1,164 @@
+% outline-ec.sty
+% version 1.0 13.Oct.2004 by H. Satoh
+% version 1.1 18.Feb.2005 by H. Satoh
+% version 1.2 19.Feb.2005 by H. Satoh
+% version 1.3 06.Oct.2017 by H. Satoh
+% version 1.4 22.Jan.2018 by H. Satoh
+% version 1.5 20.Dec.2018 by H. Satoh
+% version 1.6 21.Oct. 2020 by K. KAMIMURA
+
+\typeout{Style File: `outline-ec' <21 Oct. 2020>.}
+
+%\input jarticle.cls
+
+\hoffset = -5mm
+\oddsidemargin = 5mm
+\evensidemargin = 0mm
+\textwidth = 165mm 
+\voffset = -8mm
+\topmargin = 0mm
+\headheight = 0mm
+\headsep = 0mm
+\textheight = 260mm
+\columnsep = 6mm
+
+\parskip = 0mm
+\intextsep = \baselineskip
+
+\setlength\abovecaptionskip{0pt}
+
+\pagestyle{empty}
+
+\def\氏名#1{\gdef\@氏名{#1}}
+\def\出席番号#1{\gdef\@出席番号{#1}}
+\def\研究室名#1{\gdef\@研究室名{#1}}
+\def\指導教官#1{\gdef\@指導教官{#1}}
+\def\発表番号#1{\gdef\@発表番号{#1}}
+\def\研究題目#1{\gdef\@研究題目{#1}}
+\def\研究副題#1{\gdef\@研究副題{#1}}
+\def\アブストラクト#1{\gdef\@abstract{#1}}% 概要
+
+% ---------------------------------------------------------------------
+\def\maketitle{%
+  \begingroup
+   \renewcommand{\thefootnote}{\fnsymbol{footnote}}
+   \twocolumn[\@maketitle]%
+   \thispagestyle{empty}
+  \endgroup
+  \let\maketitle\relax
+  \let\@maketitle\relax
+  \let\affiliation\relax
+  \let\@affiliation\relax
+  \let\etitle\relax
+  \let\@etitle\relax
+  \let\eauthor\relax
+  \let\@eauthor\relax
+  \let\eaffiliation\relax
+  \let\@eaffiliation\relax
+  \let\abstract\relax
+  \let\@abstract\relax%
+  \let\keyword\relax
+  \let\@keyword\relax%
+}
+%
+% ---------------------------------------------------------------------
+\def\@maketitle{%
+  \newpage\null%
+  \begin{center}%
+    \begin{tabular}{|l|}%
+      \hline%
+      \hspace*{160mm}\\[-2pt]%
+      % 題目: 12pt相当
+      \@ifundefined{@研究題目}{}{{%
+        \textbf{\fontsize{12pt}{12pt}\selectfont\@発表番号　\@研究題目}}
+      }%
+      \@ifundefined{@研究副題}{}{\\{%
+        \textbf{\fontsize{12pt}{12pt}\selectfont \hspace{3zw}　\@研究副題}}
+      }%%
+      \par\\[5pt]
+      % 著者: 10pt相当
+      \multicolumn{1}{|r|}{%
+      \@ifundefined{@氏名}{}{%
+        {\fontsize{10pt}{10pt}\selectfont\@出席番号 番　\@氏名%
+         （\@研究室名/\@指導教官）}\par}} \\[5pt]%
+      \hline%
+    \end{tabular}%
+  \end{center}%
+  \vspace{\baselineskip}%  1行分の空き
+  \@ifundefined{@abstract}{}{%
+    \begin{minipage}{\linewidth}%
+      \small%
+      \vspace{-\baselineskip}%  1行分の空き
+      \noindent\textbf{Abstract}\par
+      \setlength{\baselineskip}{14bp}%
+      \setlength{\parindent}{1em}%
+      \@abstract%
+      \vspace{1.5\baselineskip}%  1.5行分の空き
+    \end{minipage}}\par%
+}
+%
+% 節見出し 9pt,ゴシック,センタリング
+% ---------------------------------------------------------------------
+\renewcommand{\section}{\@startsection{section}{1}{\z@}%
+   {0.7\baselineskip}%
+   {0.7\baselineskip}%
+%   {\centering\reset@font\bfseries\large}}
+   {\reset@font\bfseries\large}}
+%
+% 小節見出し 9pt,ゴシック,左寄せ
+% ---------------------------------------------------------------------
+\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+   {0.7\baselineskip}%
+   {0.7\baselineskip}%
+   {\reset@font\bfseries}}
+%
+% 小小節見出し 9pt,ゴシック,左寄せ
+% ---------------------------------------------------------------------
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
+   {0.05\baselineskip}%
+   {0.05\baselineskip}%
+   {\reset@font\bfseries}}
+%
+% 図表の題
+% ---------------------------------------------------------------------
+%\renewcommand{\figurename}{図}
+%\renewcommand{\tablename}{表}
+%
+% 脚注記号
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+%
+% 文献引用
+% 上付きで [1],[2]
+% ---------------------------------------------------------------------
+\def\@cite#1#2{\leavevmode\unskip
+  \ifnum\lastpenalty=\z@\penalty\@highpenalty\fi
+  \,\smash{%
+   $^{\mbox{\tiny {[\multiply\@highpenalty 3 #1%
+      \if@tempswa,\penalty\@highpenalty\ #2\fi %(
+    }]}}$}\spacefactor\@m}
+%
+% 本文中での文献引用
+% 標準サイズで [1],[2]
+% ---------------------------------------------------------------------
+\let\org@cite\@cite
+\def\cite{\@ifnextchar[% ]
+ {\@tempswatrue\let\@cite\org@cite\@citex}
+ {\@tempswafalse\let\@cite\org@cite\@citex[]}}
+\def\Cite{\@ifnextchar[% ]
+ {\@tempswatrue\let\@cite\@Cite\@citex}
+ {\@tempswafalse\let\@cite\@Cite\@citex[]}}
+
+\def\@Cite#1#2{\leavevmode %% \unskip
+  \ifnum\lastpenalty=\z@\penalty\@highpenalty\fi% highpenalty before
+  [{\multiply\@highpenalty 3 #1%             % triple-highpenalties within
+      \if@tempswa,\penalty\@highpenalty\ #2\fi % and before note.%(
+    }]\spacefactor\@m}
+%
+% 行間の調整
+% ---------------------------------------------------------------------
+\renewcommand{\baselinestretch}{0.9}
+%
+% 文献リスト番号 (1),(2)
+% ---------------------------------------------------------------------
+%\def\@biblabel#1{(#1）}
+
