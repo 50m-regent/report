@@ -1,0 +1,52 @@
+%% 平成17年度電気電子第1研究室卒業論文スタイルファイル(拓研様よりh17art.sty)
+%% Ver.1 <2005/11/17>
+%% 平成24年度情報伝送研究室卒業論文スタイルファイル(h24-GT.sty)
+%% Ver.1 <2013/02/05>
+%
+\def\reportname#1{\gdef\@reportname{#1}}
+\def\reporttitle#1{\gdef\@reporttitle{#1}}
+\def\reportdate#1{\gdef\@reportdate{#1}}
+\def\autheraff#1{\gdef\@autheraff{#1}}
+\def\reportauther#1{\gdef\@reportauther{#1}}
+\renewcommand{\maketitle}{%
+  \begin{titlepage}%
+    \let\footnotesize\small
+    \let\footnoterule\relax
+    \let\footnote\thanks
+%    \null\vfil
+%    \vskip 2.5\p@
+    \begin{center}%
+{\Large
+	\vspace*{-2em}
+	\@reportname
+\par}
+	\vskip 14em
+	{\bf {\LARGE \@reporttitle \par} }
+	\vskip 7em
+	{\large \@autheraff \par}
+	\vskip 5em
+	{\LARGE \@reportauther \par}
+	\vskip 9em
+	{\large \@reportdate}
+	\vspace*{-2em}
+    \@thanks\vfil\null
+	\end{center}
+  \end{titlepage}%
+  \setcounter{footnote}{0}%
+  \global\let\thanks\relax
+  \global\let\maketitle\relax
+  \global\let\@thanks\@empty
+  \global\let\@author\@empty
+%  \global\let\@date\@empty
+  \global\let\@title\@empty
+  \global\let\title\relax
+  \global\let\author\relax
+  \global\let\date\relax
+  \global\let\and\relax
+  \global\let\reportname\relax
+  \global\let\reporttitle\relax
+  \global\let\reportdate\relax
+  \global\let\autheraff\relax
+  \global\let\reportauther\relax
+}%
+\endinput

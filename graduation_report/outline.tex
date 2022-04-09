@@ -17,142 +17,196 @@
 \出席番号{24}
 \研究室名{制御工学研究室}
 \指導教官{外山}
-\発表番号{C\;--\;4}
-\研究題目{メタ認知獲得を促進する手軽な運動再現システム}
+\発表番号{C\;--\;5}
+\研究題目{情報端末の内蔵カメラを用いた運動再現システム}
 \研究副題{}
 \アブストラクト{
-	本研究は、情報端末の内蔵カメラのみを用いて
-	スポーツの映像から選手の動きをデータ化し、
-	選手の能力向上に貢献することを目的としている。
-	結果として、一台のカメラを用いて選手の位置及び姿勢を追跡・再現
-	可能なシステムが完成した。
-	このシステムを用いて選手が自身の動きを見直しながら
-	練習することによるメタ認知獲得促進を目指す。 
+    This research aims to contribute to the improvement of athletes'
+    abilities by collecting data on players' movements from sports videos
+    using only built-in cameras of mobile devices.
+    As a result, a system that can track and reproduce the
+    position of athletes using single camera has been built.
+    The goal of this project is to promote the athletes to gain metacognition
+    by practicing while reviewing their own movements.
 }
 \begin{document}
 \maketitle
 \section{研究背景・目的}
-	現在、スポーツトレーニングの現場では、
-	従来の熟練した指導者の経験に基づく感覚的な指導ではなく、
-	科学的に選手の動きを分析して改善する定量的な指導が求められている。
-	実際に、バレーボール業界では、イタリア発祥の「データバレー」
-	と呼ばれる解析ソフトが実用化されている。
-	これを用いアナリストが試合を通して情報の手入力を行うことで、
-	選手がコートのどの位置でどのようなプレイをしたか後から見直せる。
-	しかし、手入力の練習が必要であること、人為的な入力ミスなど、
-	問題点がいくつかあげられる。
+    近年、スポーツトレーニングの現場では、従来の「熟練した指導者の経験に基づく感覚的な指導」ではなく、
+    「選手の動きを科学的に分析して改善する定量的な指導」が求められている。
+    実際に、バレーボール業界では、イタリア発祥の解析ソフトウェア「データバレー」
+    を用いて選手の動きを解析しているチームがある。
+    しかし、ソフトウェア活用の難易度が高いこと、人為的な入力ミスなど、問題点がいくつか挙げられる。
 
-	そこで本研究では、バレーボールの試合中の選手の動きのうち、
-	特に選手の位置に注目し、人の手を介さない解析を目指す。
-	バレーボールの試合映像から試合中の選手のコート上での位置を推定・追跡する。 
-	これは現在モーションキャプチャーを用いることで実現可能であるが、
-	高価な機器や複雑なキャリブレーションが必要なため、
-	実際の試合や練習での利用は難しい。
-	そこで、本研究では情報端末の内蔵カメラのみでこれを実現する。 
+    本研究では、バレーボール選手の動きのうち、特にコート上の位置に注目し、
+    できる限り人の手を介さない解析を目指す。
+    バレーボールの試合映像から選手のコート上での位置を推定・追跡する。
+    これはモーションキャプチャーを用いることで実現可能であるが、
+    高価な機器やキャリブレーションの手間を要するため、
+    実際の試合や練習での利用は難しい。
+    そこで、本研究では情報端末の内蔵カメラのみを用いてこれの実現を試みる。
 \section{研究内容・方法}
-	選手の位置を推定するにあたってカメラから見たコートの位置情報が必要であるが、
-	これは一般的に図\ref{fig:calibration}に示すような基準グリッドを適当に設置し行う
-	キャリブレーションを要する。このキャリブレーションを毎回行うのは、
-	練習や試合の様子を撮影するにあたって不便である。そのため、
-	本研究ではコートのネットに設置してあるアンテナが両方写っている映像を用い、
-	各フレーム内でのそれらの位置からコートの全体像及び選手の位置推定を行う。 
+    選手の位置を推定するにあたり、コートとカメラの位置関係を知る必要である。
+    一般的にはカメラの設置位置を確定し解析を行うが、
+    これは練習や試合の様子を撮影するにあたって不便である。
+    そのため、本研究では映像内においてコート全面の四隅の座標が既知であるとして解析を行う。
 
-	詳しい研究内容をアンテナの検出と人物の推定の二つに分けて以下に述べる。 
+    詳しい研究内容を選手の位置推定と、その精度の評価に分けて以下に述べる。
 
-	\subsection{アンテナの検出}
-		映像内でアンテナの位置を検出するのに、YOLO\cite{Redmon}を用いる。
-		SSD\cite{Liu}を用いた開発にも挑戦したが、こちらは最終更新が5年前で、
-		現行の周辺ソフトウェアのバージョンと互換性がないため、前者を用いた。
+	\subsection{選手の位置推定} \label{sec:pos}
+        本研究では映像を各フレームごとに一枚一枚の画像として処理を行う。
+        画像内の選手を検出するのに、AlphaPose\cite{Fang}を用いる。
+        これは物体検知ではなく姿勢検出アルゴリズムであるが、
+        本研究の将来性を考え採用した。
+        発展的な機能として、選手の位置だけでなく姿勢の解析も同時に行うことが想定され、
+        両方の解析に適用可能なAlphaPoseを用いた。
+        
+        画像中の選手の位置を取得したのち、現実世界における彼の位置を推定するのに、射影変換を用いる。
+        図\ref{fig:frame}はバレーボールの試合の画像を、
+        図\ref{fig:warped}は図\ref{fig:frame}に写っているコート
+        の形が実際のコート平面(9m$\times$18m)のそれと一致するように射影変換を施したものを示している。
 
-		YOLOを用いると映像内の物体の位置とその物体が何であるかが検出できる。
-		今回は検出された物体のうち2本のポールに注目し、
-		それぞれの上下端の4点に注目して解析を行なった。
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.9\hsize]{frame.png}
+            \caption{試合の画像}
+            \label{fig:frame}
+        \end{figure}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\hsize]{warped.png}
+            \caption{射影変換した画像}
+            \label{fig:warped}
+        \end{figure}
 
-		YOLOの開発者が用意している学習済みモデルを用いると
-		アンテナは検出できなかったため、アンテナを含んだデータセットを自作し、
-		再学習を行った。
-		データセットは適当な背景にアンテナの画像を合わせた画像から成り、
-		学習用、検証用それぞれに3000枚ずつ用意した。
-		
-		詳しい結果は\ref{sec:pole_result}に示す。
+        これらの画像では、AlphaPoseを用いて検出した選手の両足の中間地点
+        を選手の床上の位置として緑色にマークしてある。
+        画像から分かるように、射影変換を施すと、
+        マークが平面上の位置に移動していることがわかる。
+        このことを用いて、画像内での選手の位置に同様の射影変換を施して選手の実際の位置とした。
 
-	\subsection{選手の位置の推定} \label{sec:pos_theory}
-		映像内の選手の位置を検出するのに、AlphaPose\cite{Fang}を用いる。
-		上で述べたYOLOなどの物体検知アルゴリズムを用いても映像内の人物の位置推定は
-		可能であるが、本研究を発展させて、
-		選手の位置だけでなく姿勢の解析も行う際にAlphaPoseによって得られる
-		選手の姿勢情報が必要であると考え、これを用いた。
+	\subsection{推定位置の精度評価}
+        \ref{sec:pos}節で述べたアルゴリズムの推定精度を評価する。
+        精度を評価するにあたって、選手の推定位置と、同時刻の実際の位置が必要であるが、
+        選手の位置を正確に追跡することは困難であるので、コートのラインが交差している点など、
+        いくつかの基準点を設定し、そこに選手がいた瞬間に注目し、精度を評価した。
+        %用いた基準点を図\ref{fig:points}に示す。
+        用いた基準点は以下のとおりである。
 
-		なお、AlphaPoseで検出可能な距離は、
-		コートの端からカメラが約20mの範囲である
-		（一般的なスマートフォンのカメラの場合）。 
+        \begin{enumerate}
+            \item 左サイドラインとアタックラインの交点
+            \item 左サイドラインとエンドラインの交点
+            \item 右サイドラインとアタックラインの交点
+            \item 右サイドラインとエンドラインの交点
+            \item アタックライン中心
+            \item エンドライン中心
+        \end{enumerate}
+        
+        また、カメラの位置による精度の変化を調べるために、
+        図\ref{fig:frame}のようにコートの正面からの他に、
+        コートの中心と左右それぞれの手前のコートの角を結んだ直線上の
+        計3箇所から撮影した映像を用いた。
 
-		アンテナを検出し得られた4点を基準とし、
-		AlphaPoseによって得られた映像内の選手の位置に計算を施すことで
-		選手の現実世界における座標が得られる。結果を\ref{sec:pos_result}に示す。
+        %\begin{figure}[h]
+        %    \centering
+        %    \includegraphics[width=0.9\hsize]{points.png}
+        %    \caption{精度測定に用いた基準点}
+        %    \label{fig:points}
+        %\end{figure}
 
 \section{研究結果}
-	\subsection{ポールの検出} \label{sec:pole_result}
-		アンテナの検出に用いた画像及び、アンテナを検出し、
-		コートの全体像を推定した様子を図\ref{fig:antenna_original},
-		\ref{fig:antenna}に示す。
+    図\ref{fig:estimation}に図\ref{fig:frame}に映っている選手らの位置を推定した結果を示す。
+    審判含め、コート周辺の人物の位置が
+    人間の目で見て違和感のない程度に推定できていることがわかる。
 
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.4\hsize]{estimated.png}
+        \caption{選手の位置推定結果}
+        \label{fig:estimation}
+    \end{figure}
 
-		点で示されているのが前述の4点で、
-		直線で示されているのが推定したコートのラインである。
-		今回使用したカメラでは正確に検出できている。
-		使用するカメラの特性による変化を今後追求検討する。
-		もしカメラの特性を考慮しないといけない場合、
-		OpenCV\cite{Bradski}などを用いてカメラのパラメータを計測することも
-		視野に入れている。
+    表\ref{tab:accuracy_front}、
+    \ref{tab:accuracy_left}、\ref{tab:accuracy_right}
+    に精度の評価結果を示す。
+    表中の番号は基準点の番号で、先述のものと対応している。
 
-		カメラの特性に作用されないアルゴリズムとして画像内の直線検出があるが、
-		一般的な学校の体育館などは複数のスポーツ用にラインが引かれているため、
-		今回は使用を見送った。
+    今回撮影に用いたカメラはApple社のiPad Pro内蔵のもので、
+    映像の解像度はFHDである。
+    また、カメラとコート中心の距離は20mである。
 
-	\subsection{選手の位置の推定} \label{sec:pos_result}
-		図\ref{fig:volley_club},\ref{fig:detection}に位置推定に用いた画像及び、
-		それに写っている学生の位置を推定した結果を示す。
-		人の目で見る程度ではほぼ正確に位置が推定できているといえる。
-		今後、正確に学生の位置を測定した上でどの程度の誤差が発生しているか検証を行う予定である。
+    \begin{table}[h]
+        \caption{位置推定の精度[m] 正面から撮影}
+        \label{tab:accuracy_front}
+        \centering
+        \small
+        \begin{tabular}{c|cccccc}
+            コート & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline \hline
+            手前 & 0.15 & 0.18 & 0.14 & 0.12 & 0.13 & 0.10 \\
+            奥 & 0.27 & 0.32 & 0.24 & 0.29 & 0.19 & 0.28
+        \end{tabular}
+    \end{table}
+    \begin{table}[h]
+        \caption{位置推定の精度[m] 左斜めから撮影}
+        \label{tab:accuracy_left}
+        \centering
+        \small
+        \begin{tabular}{c|cccccc}
+            コート & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline \hline
+            手前 & 0.13 & 0.12 & 0.16 & 0.14 & 0.15 & 0.13 \\
+            奥 & 0.18 & 0.20 & 0.25 & 0.32 & 0.23 & 0.28
+        \end{tabular}
+    \end{table}
+    \begin{table}[h]
+        \caption{位置推定の精度[m] 右斜めから撮影}
+        \label{tab:accuracy_right}
+        \centering
+        \small
+        \begin{tabular}{c|cccccc}
+            コート & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline \hline
+            手前 & 0.17 & 0.15 & 0.13 & 0.13 & 0.14 & 0.14 \\
+            奥 & 0.25 & 0.30 & 0.16 & 0.22 & 0.22 & 0.27
+        \end{tabular}
+    \end{table}
 
+    表より、カメラとの距離が遠い基準点の精度ほど低下していることがわかる。
+    次に、図\ref{fig:distribution}に正面から撮影した際の基準点1に注目した
+    各サンプルの推定点の分布を示す。推定点は、縦長の楕円状に分布している。
+    これは画像内でコートが縦向きに引き伸ばされており、
+    射影変換をした際に横方向より縦方向の誤差が大きく現れたためであると考えられる。
+    他の基準点でも同様の分布を示した。
 
-		また、今回用いたアルゴリズムでは
-		全選手の身長を一定としなければ空中にいる選手に対応することができないため、
-		改善方法を探求する必要がある。
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.9\hsize]{conf.png}
+        \caption{推定点の分布}
+        \label{fig:distribution}
+    \end{figure}
+
+    中心の赤い点が正確な位置で、青い点で示されているのが
+    各サンプルの推定点である。
+    また、点線は半径が分布の平均値の円である。
 
 \section{まとめ・今後の課題}
-	本研究では情報端末の内蔵カメラの映像のみを用いて
-	バレーボールのコート内の選手の位置を推定することに成功した。
-	これを用いてデータバレーのようなシステムを構築することで
-	人為的ミスの余地のないデータ解析を行うことができる。
-	今後、位置推定について誤差がどの程度であるか、
-	また、精度の上昇につながる測定環境などについて研究を行う。 
+    本研究では情報端末の内蔵カメラの映像のみを用いてバレーボールのコート内
+    の選手の位置を推定することに成功した。
+    これを用いてデータバレーのようなシステムを構築することで人為的ミスの余地のないデータ解析を
+    行うことができる。
 
-	また、今後の研究では、\ref{sec:pos_theory}でも述べたように、
-	選手の位置だけでなく姿勢情報を利用し、
-	練習や試合の3次元再現を目標とする。
+    また、選手の位置だけでなく姿勢情報も利用することで、試合の3次元再現に発展させられると予想する。
 
 \begin{thebibliography}{99}
-	\small{
-		\bibitem{Redmon}{
-			J. Redmon, S. Divvala, R. Girshick and A. Farhadi,
-			``You Only Look Once: Unified, Real-Time Object Detection'',
-			2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2016, pp. 779-788, doi: 10.1109/CVPR.2016.91.
-		}
-		\bibitem{Liu}{
-			Liu W. et al., ``SSD: Single Shot MultiBox Detector'',
-			Computer Vision - ECCV 2016. Lecture Notes in Computer Science, vol 9905, 2016
-		}
-		\bibitem{Fang}{
-			Fang Hao-Shu, Xie Shuqin, Tai Yu-Wing and Lu Cewu,
+    \small {
+        \bibitem{Fang}{
+			Fang Hao-Shu et al.
 			``RMPE: Regional Multi-person Pose Estimation'',
-			ICCV, 2017
+			2017, ICCV
 		}
-		\bibitem{Bradski}{
-			Bradski G., ``The OpenCV Library'',
-			Dr Dobb's Journal of Software Tools, 2000
+        \bibitem{Redmon}{
+			J. Redmon et al.
+			``You Only Look Once: Unified, Real-Time Object Detection'',
+			2016, CVPR, pp. 779-788.
 		}
-	}
+    }
 \end{thebibliography}
 \end{document}
